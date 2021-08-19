@@ -10,19 +10,25 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class JDBCTemplate {
-	
+
 	public static Connection getConnection() {
+		
 		Connection con = null;
 		
 		Properties prop = new Properties();
+		
 		try {
-			prop.load(new FileReader("config/driver.properties"));
+			prop.load(new FileReader("config/connection-info.properties"));
 			
 			String driver = prop.getProperty("driver");
 			String url = prop.getProperty("url");
 			
 			Class.forName(driver);
+			
 			con = DriverManager.getConnection(url, prop);
+			
+			/* 생성 된 Connection을 통해 autoCommit 상태를 disabled 상태로 만든다. */
+			con.setAutoCommit(false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -64,6 +70,7 @@ public class JDBCTemplate {
 		}
 	}
 	
+	/* 수동 commit 해본 후 (setAutoCommit(false)로 하고 난 다음) 추가 할 내용 */
 	public static void commit(Connection con) {
 		try {
 			if(con != null && !con.isClosed()) {
@@ -83,4 +90,5 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
+		
 }
