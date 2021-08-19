@@ -1,4 +1,4 @@
-package dev.costomer;
+package dev.customer;
 
 public class main {
 

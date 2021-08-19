@@ -1,4 +1,4 @@
-package ui.costomer;
+package ui.customer;
 
 public class main1 {
 
