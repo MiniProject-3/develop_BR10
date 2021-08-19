@@ -1,0 +1,9 @@
+package dev.costomer;
+
+public class main {
+
+	public static void main(String[] args) {
+
+	}
+
+}
