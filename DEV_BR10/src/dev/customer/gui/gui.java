@@ -76,16 +76,12 @@ public class gui {
 		butt4[2].setLocation(450, 0);
 		butt4[2].setSize(100, 50);
 		
-		
-		
-		
 		JPanel menuSize = new JPanel();
 		menuSize.setLocation(125, 250);
 		menuSize.setSize(350, 450);
 		menuSize.setLayout(new GridLayout(3, 2));
 
 		String[] size = { "싱글콘", "더블콘", "파인트", "쿼터", "패밀리", "하프갤런" };
-
 		JButton[] butt = new JButton[size.length];
 
 		for (int i = 0; i < butt.length; i++) {
@@ -93,9 +89,7 @@ public class gui {
 		}
 
 		for (int i = 0; i < butt.length; i++) {
-
 			menuSize.add(butt[i]);
-
 		}
 
 		mf.add(categoryPanel);
