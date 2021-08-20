@@ -11,9 +11,9 @@ public class ProductDTO implements Serializable{
 
 	private int productNum;			// 상품번호
 	private String productName;		// 상품명
-	private int productPrice;		// 상품가격
+	private Integer productPrice;	// 상품가격
 	private int categoryCode;		// 카테고리코드
-	private int stock;				// 재고
+	private Integer stock;			// 재고
 	
 	public ProductDTO() {
 	}
