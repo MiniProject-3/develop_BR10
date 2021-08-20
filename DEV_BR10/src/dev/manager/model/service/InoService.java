@@ -1,5 +1,5 @@
 package dev.manager.model.service;
 
-public class service {
+public class InoService {
 
 }

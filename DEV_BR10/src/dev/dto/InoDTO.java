@@ -11,7 +11,7 @@ public class InoDTO implements Serializable{
 
 	private int inoNum;		// 입출고 번호
 	private String ino;		// 입출고
-	private int qty;		// 수량
+	private Integer qty;	// 수량
 	private int productNum;	// 상품번호
 	
 	public InoDTO() {

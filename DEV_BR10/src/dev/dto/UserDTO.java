@@ -10,7 +10,7 @@ public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 6321173687825094498L;
 
 	private String phoneNum;		// 핸드폰번호
-	private int point;				// 포인트점수
+	private Integer point;				// 포인트점수
 	private String phoneCo;			// 통신사
 	
 	public UserDTO() {
