@@ -7,10 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui_cake {
-	 private JFrame mf = new JFrame("BR_10");
-	   public void cake() {
-		  mf.setTitle("케이크");
+public class gui_desert {
+	private JFrame mf = new JFrame("BR_10");
+	   public void desert() {
+		  mf.setTitle("디저트");
 	      mf.setBounds(600, 10, 600, 1000);
 	      mf.setLayout(null);
 	      
@@ -19,13 +19,13 @@ public class gui_cake {
 	      panel.setSize(700,750);
 	      panel.setBackground(Color.WHITE);
 	      
-	      JPanel cake = new JPanel();
-	      cake.setLocation(100, 200);
-	      cake.setSize(400, 500);
-	      cake.setLayout(new GridLayout(2,2));
+	      JPanel desert = new JPanel();
+	      desert.setLocation(100, 200);
+	      desert.setSize(400, 500);
+	      desert.setLayout(new GridLayout(2,2));
 	      
 	      
-	      String[] size = {"라인언일병파티", "별빛이내린다", "아이스후르츠와츄원NO.6", "해피해피뽀로로친구들"};
+	      String[] size = {"아이스 롤 케이크 체리초코", "아이스 모찌 바나나킥", "아이스 모찌 초코 바닐라", "아이스크림 롤 바닐라"};
 	      
 	      JButton[] butt = new JButton[size.length];
 	      
@@ -36,12 +36,13 @@ public class gui_cake {
 	      
 	      for (int i = 0; i < butt.length; i++) {
 
-	    	  cake.add(butt[i]);
+	    	  desert.add(butt[i]);
 
 			}
 	      
 	      
-	      mf.add(cake);
+	      mf.add(desert);
+	      
 	      
 	      mf.add(panel);
 	      
