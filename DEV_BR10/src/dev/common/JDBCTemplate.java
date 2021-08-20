@@ -27,7 +27,6 @@ public class JDBCTemplate {
 			
 			con = DriverManager.getConnection(url, prop);
 			
-			/* 생성 된 Connection을 통해 autoCommit 상태를 disabled 상태로 만든다. */
 			con.setAutoCommit(false);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -70,7 +69,6 @@ public class JDBCTemplate {
 		}
 	}
 	
-	/* 수동 commit 해본 후 (setAutoCommit(false)로 하고 난 다음) 추가 할 내용 */
 	public static void commit(Connection con) {
 		try {
 			if(con != null && !con.isClosed()) {
