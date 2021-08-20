@@ -3,11 +3,14 @@ package dev.customer.gui;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class gui_drink {
+	
 	private JFrame mf = new JFrame("BR_10");
 	   public void drink() {
 		  mf.setTitle("음료");
@@ -18,7 +21,7 @@ public class gui_drink {
 	      panel.setLocation(0, 100);
 	      panel.setSize(700,750);
 	      panel.setBackground(Color.WHITE);
-	      
+	      	      
 	      JPanel drink = new JPanel();
 	      drink.setLocation(100, 200);
 	      drink.setSize(400, 500);
@@ -39,8 +42,8 @@ public class gui_drink {
 	    	  drink.add(butt[i]);
 
 			}
-	      
-	      
+	      	        
+	      	        
 	      mf.add(drink);
 	      
 	      
