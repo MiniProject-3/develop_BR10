@@ -20,6 +20,7 @@ public class gui_waitingNum {
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
 
+		
 		JPanel panel = new JPanel();
 		panel.setLocation(0, 100);
 		panel.setSize(600, 750);
