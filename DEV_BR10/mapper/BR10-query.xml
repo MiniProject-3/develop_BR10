@@ -2,7 +2,16 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment></comment>
+	<entry key="selectAllProducts">
+	    SELECT productNum,
+	           productName,
+	           productPrice,
+	           categoryCode,
+	           stock
+	      FROM PRODUCT;
+	</entry>
 	<entry key="">
 	
 	</entry>
+	
 </properties>
