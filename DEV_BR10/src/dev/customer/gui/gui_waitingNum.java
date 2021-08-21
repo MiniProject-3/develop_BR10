@@ -44,7 +44,8 @@ public class gui_waitingNum {
 		waitingPanel.getBorder();
 		waitingPanel.setBorder(Tb1);
 
-		ImageKickPanel waitingPanel1 = new ImageKickPanel(new ImageIcon("BR10_images/waitingNum.jpg").getImage()
+		ImageKickPanel waitingPanel1 = new ImageKickPanel
+				(new ImageIcon("BR10_images/waitingNum.jpg").getImage()
 				.getScaledInstance(waitingPanel.getWidth() - 4, 300, 4));
 		waitingPanel1.setLocation(2, 2);
 		waitingPanel1.setSize(waitingPanel.getWidth(), 500);

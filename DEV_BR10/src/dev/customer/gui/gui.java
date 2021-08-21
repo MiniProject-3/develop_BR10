@@ -10,7 +10,9 @@ import javax.swing.JPanel;
 
 public class gui {
 	private JFrame mf = new JFrame("BR_10");
-
+	private ImageKick kb = new ImageKick();
+	
+	
 	public void OrderSize() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
@@ -92,6 +94,10 @@ public class gui {
 			menuSize.add(butt[i]);
 		}
 
+		butt[0].setIcon(kb.ImageKickButton("BR10_images/a_single.png", 150, 150));
+		
+		
+		
 		mf.add(categoryPanel);
 		mf.add(homePanel);
 		mf.add(menuSize);
