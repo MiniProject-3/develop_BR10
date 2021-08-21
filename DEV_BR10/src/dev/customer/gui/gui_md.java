@@ -8,12 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui {
+public class gui_md {
 	private JFrame mf = new JFrame("BR_10");
-	private ImageKick kb = new ImageKick();
-	
-	
-	public void OrderSize() {
+
+	public void md() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
@@ -32,24 +30,6 @@ public class gui {
 		butt2.setPreferredSize(new Dimension(50, 50));
 		homePanel.add(butt2);
 
-		JPanel categoryPanel = new JPanel();
-		categoryPanel.setLocation(0, 200);
-		categoryPanel.setSize(600, 50);
-		categoryPanel.setBackground(Color.WHITE);
-
-		String[] category = { "아이스크림", "케이크", "디저트", "음료" };
-
-		JButton[] butt3 = new JButton[category.length];
-
-		for (int i = 0; i < butt3.length; i++) {
-			butt3[i] = new JButton(category[i]);
-		}
-
-		for (int i = 0; i < butt3.length; i++) {
-
-			categoryPanel.add(butt3[i]);
-
-		}
 
 		JPanel controllPanel = new JPanel();
 		controllPanel.setLayout(null);
@@ -78,29 +58,35 @@ public class gui {
 		butt4[2].setLocation(450, 0);
 		butt4[2].setSize(100, 50);
 		
-		JPanel menuSize = new JPanel();
-		menuSize.setLocation(125, 250);
-		menuSize.setSize(350, 450);
-		menuSize.setLayout(new GridLayout(3, 2));
+		JPanel mdGoods = new JPanel();
+		mdGoods.setLocation(125, 250);
+		mdGoods.setSize(350, 450);
+		mdGoods.setLayout(null);
+		mdGoods.setBackground(Color.WHITE);
 
-		String[] size = { "싱글콘", "더블콘", "파인트", "쿼터", "패밀리", "하프갤런" };
-		JButton[] butt = new JButton[size.length];
+		String[] md_butt = { "핑크", "블루", "건너뛰기", "추가하기","md상품 취소" };
+		JButton[] butt = new JButton[md_butt.length];
 
 		for (int i = 0; i < butt.length; i++) {
-			butt[i] = new JButton(size[i]);
+			butt[i] = new JButton(md_butt[i]);
 		}
 
 		for (int i = 0; i < butt.length; i++) {
-			menuSize.add(butt[i]);
+			mdGoods.add(butt[i]);
 		}
-
-		butt[0].setIcon(kb.ImageKickButton("BR10_images/a_single.png", 150, 150));
+		butt[0].setLocation(50, 200);
+		butt[0].setSize(100, 100);
+		butt[1].setLocation(200, 200);
+		butt[1].setSize(100, 100);
+		butt[2].setLocation(25, 350);
+		butt[2].setSize(125, 30);
+		butt[3].setLocation(200, 350);
+		butt[3].setSize(125, 30);
+		butt[4].setLocation(310, 15);
+		butt[4].setSize(25, 25);
 		
-		
-		
-		mf.add(categoryPanel);
 		mf.add(homePanel);
-		mf.add(menuSize);
+		mf.add(mdGoods);
 		mf.add(controllPanel);
 		mf.add(panel);
 

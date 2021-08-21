@@ -16,7 +16,7 @@ public class gui_cake {
 	      
 	      JPanel panel = new JPanel();
 	      panel.setLocation(0, 100);
-	      panel.setSize(700,750);
+	      panel.setSize(600,750);
 	      panel.setBackground(Color.WHITE);
 	      
 	      JPanel cake = new JPanel();

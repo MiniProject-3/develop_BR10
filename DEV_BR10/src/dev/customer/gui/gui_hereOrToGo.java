@@ -8,12 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui {
+public class gui_hereOrToGo {
 	private JFrame mf = new JFrame("BR_10");
-	private ImageKick kb = new ImageKick();
-	
-	
-	public void OrderSize() {
+
+	public void hotg() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
@@ -32,24 +30,6 @@ public class gui {
 		butt2.setPreferredSize(new Dimension(50, 50));
 		homePanel.add(butt2);
 
-		JPanel categoryPanel = new JPanel();
-		categoryPanel.setLocation(0, 200);
-		categoryPanel.setSize(600, 50);
-		categoryPanel.setBackground(Color.WHITE);
-
-		String[] category = { "아이스크림", "케이크", "디저트", "음료" };
-
-		JButton[] butt3 = new JButton[category.length];
-
-		for (int i = 0; i < butt3.length; i++) {
-			butt3[i] = new JButton(category[i]);
-		}
-
-		for (int i = 0; i < butt3.length; i++) {
-
-			categoryPanel.add(butt3[i]);
-
-		}
 
 		JPanel controllPanel = new JPanel();
 		controllPanel.setLayout(null);
@@ -57,8 +37,14 @@ public class gui {
 		controllPanel.setSize(600, 50);
 		controllPanel.setBackground(Color.WHITE);
 		
+		JPanel controllPanel2 = new JPanel();
+		controllPanel2.setLayout(null);
+		controllPanel2.setLocation(0, 750);
+		controllPanel2.setSize(600, 50);
+		controllPanel2.setBackground(Color.WHITE);
+
 		
-		String[] controll = { "이전", "장바구니", "결제" };
+		String[] controll = { "이전", "장바구니", "결제", "이전" };
 
 		JButton[] butt4 = new JButton[controll.length];
 
@@ -77,31 +63,37 @@ public class gui {
 		butt4[1].setSize(50, 50);
 		butt4[2].setLocation(450, 0);
 		butt4[2].setSize(100, 50);
+		butt4[3].setLocation(50, 0);
+		butt4[3].setSize(100, 50);
 		
-		JPanel menuSize = new JPanel();
-		menuSize.setLocation(125, 250);
-		menuSize.setSize(350, 450);
-		menuSize.setLayout(new GridLayout(3, 2));
+		controllPanel2.add(butt4[3]);
+		
+		JPanel hgPanel = new JPanel();
+		hgPanel.setLocation(125, 250);
+		hgPanel.setSize(350, 450);
+		hgPanel.setLayout(null);
+//		hgPanel.setBackground(Color.WHITE);
 
-		String[] size = { "싱글콘", "더블콘", "파인트", "쿼터", "패밀리", "하프갤런" };
-		JButton[] butt = new JButton[size.length];
+		String[] hg = { "매장", "포장"};
+		JButton[] butt = new JButton[hg.length];
 
 		for (int i = 0; i < butt.length; i++) {
-			butt[i] = new JButton(size[i]);
+			butt[i] = new JButton(hg[i]);
 		}
 
 		for (int i = 0; i < butt.length; i++) {
-			menuSize.add(butt[i]);
+			hgPanel.add(butt[i]);
 		}
+		butt[0].setLocation(60, 150);
+		butt[0].setSize(100, 100);
+		butt[1].setLocation(190, 150);
+		butt[1].setSize(100, 100);
 
-		butt[0].setIcon(kb.ImageKickButton("BR10_images/a_single.png", 150, 150));
 		
-		
-		
-		mf.add(categoryPanel);
 		mf.add(homePanel);
-		mf.add(menuSize);
-		mf.add(controllPanel);
+		mf.add(hgPanel);
+//		mf.add(controllPanel);
+		mf.add(controllPanel2);
 		mf.add(panel);
 
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
