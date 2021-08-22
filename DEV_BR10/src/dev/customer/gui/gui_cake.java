@@ -2,12 +2,17 @@ package dev.customer.gui;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui_cake {
+import ui.manager.ManagerPanel;
+import ui.manager.page.StockPage;
+
+public class gui_cake extends JPanel{
 	 private JFrame mf = new JFrame("BR_10");
 	   public void cake() {
 		  mf.setTitle("케이크");
@@ -39,7 +44,7 @@ public class gui_cake {
 	    	  cake.add(butt[i]);
 
 			}
-	      
+	      	      
 	      
 	      mf.add(cake);
 	      
@@ -48,4 +53,6 @@ public class gui_cake {
 	      mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	      mf.setVisible(true);
 	   }
+	   
+	
 }

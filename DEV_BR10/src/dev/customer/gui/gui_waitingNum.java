@@ -67,19 +67,3 @@ public class gui_waitingNum {
 		mf.setVisible(true);
 	}
 }
-
-class ImageKickPanel extends JPanel {
-
-	private Image img;
-
-	public ImageKickPanel(Image img) {
-
-		this.img = img;
-		setPreferredSize(new Dimension(img.getWidth(null), img.getHeight(null)));
-		setLayout(null);
-	}
-
-	public void paintComponent(Graphics g) {
-		g.drawImage(img, 0, 0, null);
-	}
-}

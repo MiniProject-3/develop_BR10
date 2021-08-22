@@ -7,7 +7,7 @@ public class Application {
 		gui ordersize = new gui();
 		
 		
-		gui_waitingNum wN = new gui_waitingNum();
+//		gui_waitingNum wN = new gui_waitingNum();
 //		gui_md md = new gui_md();
 //		gui_hereOrToGo hto = new gui_hereOrToGo();
 //		gui_payment paymentM = new gui_payment();
@@ -17,8 +17,8 @@ public class Application {
 //		gui_drink drink = new gui_drink();
 		
 		
-		wN.waitingNum();
-//		ordersize.OrderSize();
+		ordersize.OrderSize();
+//		wN.waitingNum();
 //		md.md();
 //		hto.hotg();
 //		paymentM.payment();

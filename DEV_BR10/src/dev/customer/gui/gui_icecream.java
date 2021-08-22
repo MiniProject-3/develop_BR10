@@ -2,12 +2,14 @@ package dev.customer.gui;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui_icecream {
+public class gui_icecream extends JPanel{
 	 private JFrame mf = new JFrame("BR_10");
 	   public void Icecream() {
 		  mf.setTitle("아이스크림 맛");
@@ -40,6 +42,29 @@ public class gui_icecream {
 
 			}
 	      
+	      butt[0].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+				}
+			});
+	      
+	      butt[1].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+				}
+			});		// 장바구니
+	      
+	      butt[2].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+				}
+			});		// 장바구니
 	      
 	      mf.add(icecream);
 	      

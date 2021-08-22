@@ -1,14 +1,19 @@
 package dev.customer.gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui {
+import dev.customer.md.md;
+
+public class gui extends JPanel{
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
 	
@@ -50,7 +55,63 @@ public class gui {
 			categoryPanel.add(butt3[i]);
 
 		}
+		butt3[0].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui_icecream icecream = new gui_icecream();
+				changePanel(icecream);
+			}
 
+			private void changePanel(JPanel icecream) {
+				mf.remove(mf);
+				mf.add(icecream);
+				mf.repaint();				
+			}
+		});
+
+		
+		butt3[1].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui_cake cake = new gui_cake();
+				changePanel(cake);
+			}
+
+			private void changePanel(JPanel cake) {
+				mf.remove(mf);
+				mf.add(cake);
+				mf.repaint();
+				
+			}		
+		});
+
+		
+		butt3[2].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui_desert desert = new gui_desert();
+			}
+		});
+		
+		butt3[3].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui drink = new gui();
+				changePanel(drink);
+			}
+
+			private void changePanel(JPanel drink) {
+				mf.remove(mf);
+				mf.add(drink);
+				mf.repaint();
+			}
+		});
+
+		
 		JPanel controllPanel = new JPanel();
 		controllPanel.setLayout(null);
 		controllPanel.setLocation(0, 750);
@@ -78,6 +139,38 @@ public class gui {
 		butt4[2].setLocation(450, 0);
 		butt4[2].setSize(100, 50);
 		
+		butt4[0].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+												
+			}
+		});		// 이전
+		
+		butt4[1].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});		// 장바구니
+		
+		butt4[2].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui mdPanel = new gui();
+				changePanel(mdPanel);
+			}
+
+			private void changePanel(JPanel mdPanel) {
+				mf.remove(mf);
+				mf.add(mdPanel);
+				mf.repaint();				
+			}
+
+		});		// 결제
+				
 		JPanel menuSize = new JPanel();
 		menuSize.setLocation(125, 250);
 		menuSize.setSize(350, 450);
@@ -95,7 +188,7 @@ public class gui {
 		}
 
 		butt[0].setIcon(kb.ImageKickButton("BR10_images/a_single.png", 150, 150));
-		
+	
 		
 		
 		mf.add(categoryPanel);
@@ -106,5 +199,6 @@ public class gui {
 
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mf.setVisible(true);
-	}
+	}	
+	
 }
