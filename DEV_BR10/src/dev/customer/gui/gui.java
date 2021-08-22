@@ -1,7 +1,6 @@
 package dev.customer.gui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,8 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import dev.customer.md.md;
 
 public class gui extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
@@ -68,7 +65,6 @@ public class gui extends JPanel {
 		for (int i = 0; i < controll.length; i++) {
 			butt4[i] = new JButton(controll[i]);
 		}
-
 		for (int i = 0; i < controll.length; i++) {
 
 			controllPanel.add(butt4[i]);
@@ -135,7 +131,6 @@ public class gui extends JPanel {
 				gui_icecream icecream = new gui_icecream(mf);
 				changePanel(icecream);
 			}
-
 			private void changePanel(JPanel icecream) {
 				mf.remove(menuSize);
 				mf.add(icecream);
@@ -174,7 +169,7 @@ public class gui extends JPanel {
 				gui drink = new gui();
 				changePanel(drink);
 			}
-
+			
 			private void changePanel(JPanel drink) {
 				mf.remove(mf);
 				mf.add(drink);

@@ -52,7 +52,7 @@ public class TextButtonPage extends JPanel{
 		// 폰트 설정
 		Font font = new Font("맑은 고딕",Font.BOLD, 30);
 		
-		JLabel label = new JLabel("키오스크가 종료됩니다.정말 종료하시겠습니까? ");
+		JLabel label = new JLabel("키오스크가 종료됩니다." + "<br>정말 종료하시겠습니까?");
 		label.setSize(540, 400);
 		label.setLocation(25, 200);
 		label.setFont(font);
