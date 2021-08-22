@@ -22,13 +22,34 @@ public class StockPage extends JPanel{
 		
 		BackButton();
 		CategoryButton();
+		viewPanel();
 	}
+	
+	public void viewPanel() {
+		JPanel viewPanel = new JPanel();
+		viewPanel.setSize(490, 690);
+		viewPanel.setLocation(5,5);
+		viewPanel.setBackground(Color.white);
+		
+		JPanel viewPanel2 = new JPanel();
+		viewPanel2.setSize(500, 700);
+		viewPanel2.setLocation(40, 140);
+		viewPanel2.setBackground(Color.black);
+		
+		this.add(viewPanel2);
+		viewPanel2.add(viewPanel);
+	}
+	
+	public void namePanel() {
+		
+	}
+
 	
 	public void BackButton() {
 		JButton back = new JButton();
 		
-		back.setLocation(40,800);
-		back.setSize(100,100);
+		back.setLocation(40,850);
+		back.setSize(100,50);
 		
 		this.add(back);
 		
