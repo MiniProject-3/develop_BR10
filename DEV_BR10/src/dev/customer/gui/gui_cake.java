@@ -15,6 +15,7 @@ import ui.manager.page.StockPage;
 
 public class gui_cake extends JPanel{
 	 private JFrame mf = new JFrame("BR_10");
+	 private ImageKick kb = new ImageKick();
 	   public void gui_cake(MainFrame mainFrame) {
 		  mf.setTitle("케이크");
 	      mf.setBounds(600, 10, 600, 1000);
