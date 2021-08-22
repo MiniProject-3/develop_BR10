@@ -14,26 +14,20 @@ import javax.swing.border.TitledBorder;
 
 public class gui_waitingNum {
 	private JFrame mf = new JFrame("BR_10");
-
+	private ImageKick kb = new ImageKick();
 	public void waitingNum() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
 
 		
-		JPanel panel = new JPanel();
+		ImageKickPanel panel = new ImageKickPanel(new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage()
+				.getScaledInstance(585, 750, 3));
 		panel.setLocation(0, 100);
 		panel.setSize(600, 750);
 		panel.setBackground(Color.WHITE);
 
-		JPanel homePanel = new JPanel();
-		homePanel.setLocation(50, 130);
-		homePanel.setSize(50, 50);
-		homePanel.setBackground(Color.WHITE);
 
-		JButton butt2 = new JButton("홈버튼");
-		butt2.setPreferredSize(new Dimension(50, 50));
-		homePanel.add(butt2);
 
 		TitledBorder Tb1 = new TitledBorder(new LineBorder(Color.black, 2));
 
@@ -59,7 +53,6 @@ public class gui_waitingNum {
 		butt.setSize(100, 50);
 		waitingPanel.add(butt);
 
-		mf.add(homePanel);
 		mf.add(waitingPanel);
 		mf.add(panel);
 

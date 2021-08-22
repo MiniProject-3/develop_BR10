@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class gui_hereOrToGo {
 	private JFrame mf = new JFrame("BR_10");
-
+	private ImageKick kb = new ImageKick();
 	public void hotg() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);

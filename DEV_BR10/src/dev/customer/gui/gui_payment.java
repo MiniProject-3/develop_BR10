@@ -4,19 +4,21 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class gui_payment {
 	private JFrame mf = new JFrame("BR_10");
-
+	private ImageKick kb = new ImageKick();
 	public void payment() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
 
-		JPanel panel = new JPanel();
+		ImageKickPanel panel = new ImageKickPanel(new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage()
+				.getScaledInstance(585, 750, 3));
 		panel.setLocation(0, 100);
 		panel.setSize(600, 750);
 		panel.setBackground(Color.WHITE);
