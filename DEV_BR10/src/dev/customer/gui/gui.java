@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,10 +20,14 @@ public class gui extends JPanel {
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
 
-		JPanel panel = new JPanel();
+		ImageKickPanel panel = new ImageKickPanel(new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage()
+				.getScaledInstance(585, 750, 3));
 		panel.setLocation(0, 100);
 		panel.setSize(600, 750);
-		panel.setBackground(Color.WHITE);
+		
+		
+		
+		
 
 		JPanel homePanel = new JPanel();
 		homePanel.setLocation(50, 130);
@@ -56,7 +61,7 @@ public class gui extends JPanel {
 		controllPanel.setLayout(null);
 		controllPanel.setLocation(0, 750);
 		controllPanel.setSize(600, 50);
-		controllPanel.setBackground(Color.WHITE);
+		controllPanel.setBackground(new Color(255, 0, 0, 0));
 
 		String[] controll = { "이전", "장바구니", "결제" };
 
