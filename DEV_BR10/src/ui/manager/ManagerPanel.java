@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import ui.manager.page.ExitPage;
 import ui.manager.page.JournalPage;
 import ui.manager.page.StockPage;
 import ui.manager.page.UpdateMenu;
@@ -67,6 +68,14 @@ public class ManagerPanel extends JPanel{
 		JButton exit = new JButton("종료");
 		exit.setLocation(290, 500);
 		exit.setSize(270, 400);
+		exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ExitPage exitpage = new ExitPage(mf);
+				changePanel(exitpage);
+			}
+		});
 		
 		this.add(searchStock);
 		this.add(searchJournal);

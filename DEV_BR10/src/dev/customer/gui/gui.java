@@ -1,18 +1,22 @@
 package dev.customer.gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui {
+import dev.customer.md.md;
+
+public class gui extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
-	
-	
+
 	public void OrderSize() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
@@ -56,8 +60,7 @@ public class gui {
 		controllPanel.setLocation(0, 750);
 		controllPanel.setSize(600, 50);
 		controllPanel.setBackground(Color.WHITE);
-		
-		
+
 		String[] controll = { "이전", "장바구니", "결제" };
 
 		JButton[] butt4 = new JButton[controll.length];
@@ -65,7 +68,6 @@ public class gui {
 		for (int i = 0; i < controll.length; i++) {
 			butt4[i] = new JButton(controll[i]);
 		}
-		
 
 		for (int i = 0; i < controll.length; i++) {
 
@@ -77,7 +79,39 @@ public class gui {
 		butt4[1].setSize(50, 50);
 		butt4[2].setLocation(450, 0);
 		butt4[2].setSize(100, 50);
-		
+
+		butt4[0].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		}); // 이전
+
+		butt4[1].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		}); // 장바구니
+
+		butt4[2].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui mdPanel = new gui();
+				changePanel(mdPanel);
+			}
+
+			private void changePanel(JPanel mdPanel) {
+				mf.remove(mf);
+				mf.add(mdPanel);
+				mf.repaint();
+			}
+
+		}); // 결제
+
 		JPanel menuSize = new JPanel();
 		menuSize.setLocation(125, 250);
 		menuSize.setSize(350, 450);
@@ -94,10 +128,62 @@ public class gui {
 			menuSize.add(butt[i]);
 		}
 
+		butt3[0].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui_icecream icecream = new gui_icecream(mf);
+				changePanel(icecream);
+			}
+
+			private void changePanel(JPanel icecream) {
+				mf.remove(menuSize);
+				mf.add(icecream);
+				mf.repaint();
+			}
+		});
+
+		butt3[1].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui_cake cake = new gui_cake();
+				changePanel(cake);
+			}
+
+			private void changePanel(JPanel cake) {
+				mf.remove(mf);
+				mf.add(cake);
+				mf.repaint();
+
+			}
+		});
+
+		butt3[2].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui_desert desert = new gui_desert();
+			}
+		});
+
+		butt3[3].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui drink = new gui();
+				changePanel(drink);
+			}
+
+			private void changePanel(JPanel drink) {
+				mf.remove(mf);
+				mf.add(drink);
+				mf.repaint();
+			}
+		});
+
 		butt[0].setIcon(kb.ImageKickButton("BR10_images/a_single.png", 150, 150));
-		
-		
-		
+
 		mf.add(categoryPanel);
 		mf.add(homePanel);
 		mf.add(menuSize);
@@ -107,4 +193,5 @@ public class gui {
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mf.setVisible(true);
 	}
+
 }
