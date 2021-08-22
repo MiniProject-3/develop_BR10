@@ -7,11 +7,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import dev.customer.gui.ImageKick;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
 public class UpdateMenu extends JPanel{
 	private MainFrame mf;
+	private ImageKick kb = new ImageKick();
 	
 	public UpdateMenu(MainFrame mainFrame) {
 
@@ -29,8 +31,9 @@ public class UpdateMenu extends JPanel{
 		
 		back.setLocation(40,850);
 		back.setSize(100,50);
+		back.setBorderPainted(false);
 		
-		this.add(back);
+		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 50));
 		
 		back.addActionListener(new ActionListener() {
 			
@@ -40,6 +43,7 @@ public class UpdateMenu extends JPanel{
 				changePanel(managerPanel);
 			}
 		});
+		this.add(back);
 	}
 
 	public void CategoryButton() {
