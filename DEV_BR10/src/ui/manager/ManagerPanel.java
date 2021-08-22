@@ -1,6 +1,7 @@
 package ui.manager;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,7 @@ import ui.manager.page.UpdateMenu;
 public class ManagerPanel extends JPanel{
 
 	private MainFrame mf;
+	private Font font = new Font("궁서 보통", Font.PLAIN, 20);
 	
 	public ManagerPanel(MainFrame mainframe) {
 		this.mf = mainframe;
@@ -31,6 +33,7 @@ public class ManagerPanel extends JPanel{
 	
 	public void ManagerButton() {
 		JButton searchStock = new JButton("재고파악");
+		searchStock.setFont(font);
 		searchStock.setLocation(20, 100);
 		searchStock.setSize(270, 400);
 		searchStock.addActionListener(new ActionListener() {
@@ -42,6 +45,7 @@ public class ManagerPanel extends JPanel{
 		});
 		
 		JButton searchJournal = new JButton("저널조회");
+		searchJournal.setFont(font);
 		searchJournal.setLocation(290, 100);
 		searchJournal.setSize(270, 400);
 		searchJournal.addActionListener(new ActionListener() {
@@ -54,6 +58,7 @@ public class ManagerPanel extends JPanel{
 		});
 		
 		JButton updateMenu = new JButton("메뉴관리");
+		updateMenu.setFont(font);
 		updateMenu.setLocation(20, 500);
 		updateMenu.setSize(270, 400);
 		updateMenu.addActionListener(new ActionListener() {
@@ -66,6 +71,7 @@ public class ManagerPanel extends JPanel{
 		});
 		
 		JButton exit = new JButton("종료");
+		exit.setFont(font);
 		exit.setLocation(290, 500);
 		exit.setSize(270, 400);
 		exit.addActionListener(new ActionListener() {
