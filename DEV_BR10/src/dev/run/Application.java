@@ -7,13 +7,10 @@ public class Application {
 
 	public static void main(String[] args) {
 
+//		gui ordersize = new gui();
+//		ordersize.OrderSize();
 		
-		gui ordersize = new gui();
-		
-		
-		ordersize.OrderSize();
-		
-		
+		/* DAO & DTO 테스트 - 유정 */
 		
 		
 	}
