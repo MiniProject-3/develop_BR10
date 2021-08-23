@@ -12,7 +12,7 @@ public class ManagerController {
 	private ManagerResultView managerResultView = new ManagerResultView();
 	private ManagerService managerService = new ManagerService();
 
-	/* 모든 상품 조회 (재고 조회) - 작성 중 */
+	/* 모든 상품 조회 (재고 조회) */
 	public void selectAllProducts() {
 		
 		List<ProductDTO> productList = managerService.selectAllProducts();
@@ -35,9 +35,25 @@ public class ManagerController {
 //	}
 	
 	/* 메뉴 추가 */
-	public void insertProduct(Map<String, String> map) {
+	public void registNewProduct(Map<String, String> ansMap) {
+	
+		ProductDTO productDTO = new ProductDTO();
 		
+		productDTO.setProductNum(Integer.valueOf(ansMap.get("num")));
+		productDTO.setProductName(ansMap.get("name"));
+		productDTO.setProductPrice(Integer.valueOf(ansMap.get("price")));
+		productDTO.setCategoryCode(Integer.valueOf(ansMap.get("categoryCode")));
+		productDTO.setStock(Integer.valueOf(ansMap.get("stock")));
+	
+		int result = managerService.insertProduct(productDTO);
+		
+		if (result > 0)
+			managerResultView.displayDmlResult("insertSuccess");
+		else
+			managerResultView.displayDmlResult("insertFailed");
+
 	}
+
 	/* 메뉴 수정 - 가격 */
 	public void modifyProductPrice(int productNum, int productPrice) {
 		int result = managerService.updateProductPrice(productNum, productPrice);
