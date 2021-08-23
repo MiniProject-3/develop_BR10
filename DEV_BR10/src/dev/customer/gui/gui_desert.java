@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 public class gui_desert {
 	private JFrame mf = new JFrame("BR_10");
+	private ImageKick kb = new ImageKick();
 	   public void desert() {
 		  mf.setTitle("디저트");
 	      mf.setBounds(600, 10, 600, 1000);
@@ -16,7 +17,7 @@ public class gui_desert {
 	      
 	      JPanel panel = new JPanel();
 	      panel.setLocation(0, 100);
-	      panel.setSize(700,750);
+	      panel.setSize(600,750);
 	      panel.setBackground(Color.WHITE);
 	      
 	      JPanel desert = new JPanel();

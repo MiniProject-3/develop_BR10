@@ -9,9 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class gui_drink {
+public class gui_drink extends JFrame {
 	
 	private JFrame mf = new JFrame("BR_10");
+	private ImageKick kb = new ImageKick();
 	   public void drink() {
 		  mf.setTitle("음료");
 	      mf.setBounds(600, 10, 600, 1000);
@@ -19,7 +20,7 @@ public class gui_drink {
 	      
 	      JPanel panel = new JPanel();
 	      panel.setLocation(0, 100);
-	      panel.setSize(700,750);
+	      panel.setSize(600,750);
 	      panel.setBackground(Color.WHITE);
 	      	      
 	      JPanel drink = new JPanel();
