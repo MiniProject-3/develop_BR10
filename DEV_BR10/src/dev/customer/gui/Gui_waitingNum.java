@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class gui_waitingNum {
+public class Gui_waitingNum {
 
 	public JPanel waitingNum() {
 

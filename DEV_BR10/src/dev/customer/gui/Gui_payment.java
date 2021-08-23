@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui_payment {
+public class Gui_payment {
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
 

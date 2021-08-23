@@ -11,8 +11,9 @@ import javax.swing.JPanel;
 
 import ui.manager.MainFrame;
 
-public class gui_icecream extends JPanel {
-	
+public class Gui_icecream extends JPanel {
+	private ImageKick kb = new ImageKick();
+
 	public JPanel gui_icecream() {
 
 		JPanel icecream = new JPanel();
@@ -34,6 +35,14 @@ public class gui_icecream extends JPanel {
 			icecream.add(butt[i]);
 
 		}
+		
+		int j = 25;
+		for (int i = 0; i < butt.length; i++) {
+			
+			butt[i].setIcon(kb.ImageKickButton("BR10_images/gui_order/flavor_" + j + ".jpg", 100, 100));
+			j++;
+		}
+		
 
 		butt[0].addActionListener(new ActionListener() {
 

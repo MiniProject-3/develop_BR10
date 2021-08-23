@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class gui_drink extends JFrame {
+public class Gui_drink extends JFrame {
 
 	public JPanel drink() {
 		

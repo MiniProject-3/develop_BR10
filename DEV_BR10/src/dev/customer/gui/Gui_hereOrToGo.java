@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui_hereOrToGo {
+public class Gui_hereOrToGo {
 	public JPanel hotg() {
 
 		JPanel hgPanel = new JPanel();

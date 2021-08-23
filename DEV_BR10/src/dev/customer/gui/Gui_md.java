@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class gui_md {
+public class Gui_md {
 	private ImageKick kb = new ImageKick();
 	
 	public JPanel md() {

@@ -11,11 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui extends JPanel {
+public class Gui extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
 
-	public gui(MainFrame mainFrame) {
+	public Gui(MainFrame mainFrame) {
 		this.mf = mainFrame;
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
@@ -63,12 +63,24 @@ public class gui extends JPanel {
 			menuSize.add(butt[i]);
 		}
 
-		butt3[0].addActionListener(new ActionListener() {
+		for (int i = 0; i < butt.length; i++) {
+			butt[i].setText("");
+			butt[i].setBackground(Color.WHITE);
+		}
+		
+		butt[0].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_39.jpg", 100, 150));
+		butt[1].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_40.jpg", 100, 150));
+		butt[2].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_41.jpg", 150, 150));
+		butt[3].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_42.jpg", 150, 150));
+		butt[4].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_43.jpg", 150, 150));
+		butt[5].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_44.jpg", 150, 150));
+		
+		butt3[0].addActionListener(new ActionListener() {                     // 카테고리 아이스크림
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui_icecream icecream = new gui_icecream();
-				changePanel(icecream);
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
 			}
 
 			private void changePanel(JPanel icecream) {
@@ -78,11 +90,11 @@ public class gui extends JPanel {
 			}
 		});
 
-		butt3[1].addActionListener(new ActionListener() {
+		butt3[1].addActionListener(new ActionListener() {                        //  카테고리 아이스크림
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui_cake cake = new gui_cake();
+				Gui_cake cake = new Gui_cake();
 				changePanel(cake);
 			}
 
@@ -93,8 +105,39 @@ public class gui extends JPanel {
 
 			}
 		});
+		
+		butt3[2].addActionListener(new ActionListener() {                        // 카테고리 아이스크림
 
-		butt[0].setIcon(kb.ImageKickButton("BR10_images/a_single.png", 150, 150));
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_cake cake = new Gui_cake();
+				changePanel(cake);
+			}
+
+			private void changePanel(JPanel cake) {
+				mf.remove(mf);
+				mf.add(cake);
+				mf.repaint();
+
+			}
+		});
+		
+		butt3[3].addActionListener(new ActionListener() {                        // 카테고리 아이스크림
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_cake cake = new Gui_cake();
+				changePanel(cake);
+			}
+
+			private void changePanel(JPanel cake) {
+				mf.remove(mf);
+				mf.add(cake);
+				mf.repaint();
+
+			}
+		});
+		
 
 		mf.add(menuSize);
 		mf.add(categoryPanel);

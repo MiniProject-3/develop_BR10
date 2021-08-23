@@ -13,7 +13,7 @@ import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 import ui.manager.page.StockPage;
 
-public class gui_cake extends JPanel {
+public class Gui_cake extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
 
 	public JPanel gui_cake() {
