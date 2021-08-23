@@ -12,16 +12,17 @@ import ui.manager.page.StockPage;
 import ui.manager.page.UpdateMenu;
 
 public class ManagerPanel extends JPanel{
-
+ 
 	private MainFrame mf;
 	
-	public ManagerPanel(MainFrame mainframe) {
+	public ManagerPanel(MainFrame  mainframe) {
 		this.mf = mainframe;
 		
 		this.setLocation(0, 0);
 		this.setSize(600, 1000);
 		this.setLayout(null);
-		this.setBackground(Color.white);
+		this.setBackground 
+		(Color.white);
 		
 		this.ManagerButton();
 		
