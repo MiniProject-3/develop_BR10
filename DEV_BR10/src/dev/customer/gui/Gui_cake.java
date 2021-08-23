@@ -20,8 +20,8 @@ public class Gui_cake extends JPanel {
    public JPanel gui_cake() {
 
       JPanel cake = new JPanel();
-      cake.setLocation(150, 300);
-      cake.setSize(300, 400);
+      cake.setLocation(125, 250);
+      cake.setSize(350, 450);
       cake.setLayout(new GridLayout(2, 2));
 
       String[] size = { "라인언일병파티", "별빛이내린다", "아이스후르츠와츄원NO.6", "해피해피뽀로로친구들" };

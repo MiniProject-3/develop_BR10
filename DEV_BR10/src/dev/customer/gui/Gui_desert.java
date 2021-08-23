@@ -12,8 +12,8 @@ public class Gui_desert {
 
    public JPanel gui_desert() {
       JPanel desert = new JPanel();
-      desert.setLocation(150, 300);
-      desert.setSize(300, 400);
+      desert.setLocation(125, 250);
+      desert.setSize(350, 450);
       desert.setLayout(new GridLayout(2, 2));
 
       String[] size = { "아이스 롤 케이크 체리초코", "아이스 모찌 바나나킥", "아이스 모찌 초코 바닐라", "아이스크림 롤 바닐라" };

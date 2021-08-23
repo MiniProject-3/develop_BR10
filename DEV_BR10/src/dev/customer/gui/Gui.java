@@ -24,7 +24,7 @@ public class Gui extends JPanel {
 		this.orderPanel();
 		
 		mf.add(this);
-		
+		revalidate();
 	}
 		
 		public void orderPanel () {
@@ -88,6 +88,7 @@ public class Gui extends JPanel {
 				main = icecream;
 				mf.add(main);
 				mf.repaint();
+				mf.revalidate();
 			}
 		});
 
@@ -103,8 +104,7 @@ public class Gui extends JPanel {
 				mf.remove(main);
 				main = cake;
 				mf.add(main);
-				mf.repaint();
-
+				revalidate();
 			}
 		});
 		
@@ -120,8 +120,7 @@ public class Gui extends JPanel {
 				mf.remove(main);
 				main = desert;
 				mf.add(main);
-				mf.repaint();
-
+				revalidate();
 			}
 		});
 		
@@ -137,8 +136,7 @@ public class Gui extends JPanel {
 				mf.remove(main);
 				main = drink;
 				mf.add(main);
-				mf.repaint();
-
+				revalidate();
 			}
 		});
 		

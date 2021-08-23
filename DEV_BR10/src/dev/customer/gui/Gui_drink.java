@@ -15,8 +15,8 @@ public class Gui_drink extends JFrame {
    public JPanel gui_drink() {
       
       JPanel drink = new JPanel();
-      drink.setLocation(150, 300);
-      drink.setSize(300, 400);
+      drink.setLocation(125, 250);
+      drink.setSize(350, 450);
       drink.setLayout(new GridLayout(2, 2));
 
       String[] size = { "바닐라 라떼", "아메리카노", "아이스 바닐라 라떼", "아이스 아메리카노" };
