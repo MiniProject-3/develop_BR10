@@ -1,6 +1,7 @@
 package dev.run;
 
 import dev.customer.gui.gui;
+import dev.views.ManagerMenu;
 
 
 public class Application {
@@ -11,7 +12,7 @@ public class Application {
 //		ordersize.OrderSize();
 		
 		/* DAO & DTO 테스트 - 유정 */
-		
+		new ManagerMenu().displayManagerMenu();
 		
 	}
 
