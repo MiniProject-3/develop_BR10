@@ -3,20 +3,20 @@
 <properties>
 <comment></comment>
 	<entry key="selectAllProducts">
-	    SELECT PRODUCT_NUM
-	           PROPDUCT_NAME,
+	    SELECT PRODUCT_NUM,
+	           PRODUCT_NAME,
 	           PRODUCT_PRICE,
 	           CATEGORY_CODE,
 	           STOCK
-	      FROM PRODUCT;
+	      FROM PRODUCT
 	</entry>
 	<entry key="selectAllPays">
 		SELECT PAY_NUM,
-		       PAY_TIME,
 		       PHONE_NUM,
+		       PAY_TIME,
 		       PAY_TOTAL,
 		       PAYMENT_NUM
-		  FROM PAY;
+		  FROM PAY
 	</entry>
 	<entry key="insertProduct">
 	    INSERT

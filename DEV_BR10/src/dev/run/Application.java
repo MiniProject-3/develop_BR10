@@ -13,7 +13,7 @@ public class Application {
 		
 		/* DAO & DTO 테스트 - 유정 */
 		new ManagerMenu().displayManagerMenu();
-		
+		System.out.println("종료합니다");
 	}
 
 }

@@ -46,7 +46,7 @@ public class ManagerDAO {
 				ProductDTO product = new ProductDTO();
 				
 				product.setProductNum(rset.getInt("PRODUCT_NUM"));
-				product.setProductName(rset.getString("PROPDUCT_NAME")); 
+				product.setProductName(rset.getString("PRODUCT_NAME")); 
 		        product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
 		        product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
 		        product.setStock(rset.getInt("STOCK"));
@@ -60,6 +60,8 @@ public class ManagerDAO {
 			close(rset);
 			close(pstmt);
 		}
+		
+		System.out.println(productList);
 		return productList;
 	}
 	
@@ -96,6 +98,7 @@ public class ManagerDAO {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println(payList);
 		return payList;
 	}
 	/* 메뉴 관리 */
@@ -121,6 +124,9 @@ public class ManagerDAO {
 		} finally {
 			close(pstmt);
 		}
+		
+		System.out.println(result);
+
 		return result;
 	}
 	

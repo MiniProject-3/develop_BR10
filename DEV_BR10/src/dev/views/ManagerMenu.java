@@ -7,6 +7,8 @@ public class ManagerMenu {
 	public void displayManagerMenu() {
 
 		ManagerController managerController = new ManagerController();
+		
+		/* */
 	}
 
 }
