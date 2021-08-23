@@ -1,0 +1,32 @@
+package dev.views;
+
+import java.util.List;
+
+import dev.dto.ProductDTO;
+
+public class ManagerResultView {
+	
+	public void displayDmlResult(String code) {
+		
+		switch(code) {
+			case"selectFailed" : System.out.println("조회 실패"); break;
+			case"updateFailed" : System.out.println("수정 실패"); break;
+			case"deleteFailed" : System.out.println("삭제 실패"); break;
+			case"selectSuccess" : System.out.println("조회 성공"); break;
+			case"updateSuccess" : System.out.println("수정 성공"); break;
+			case"deleteSuccess" : System.out.println("삭제 성공"); break;
+			default : System.out.println("알 수 없는 에러 발생"); break;
+		}
+	}
+
+	public void display(List<ProductDTO> list) {
+		
+		for(ProductDTO p : list) {
+			System.out.println(p);
+		}
+	}
+	
+	public void diplay(ProductDTO p) {
+		System.out.println(p);
+	}
+}
