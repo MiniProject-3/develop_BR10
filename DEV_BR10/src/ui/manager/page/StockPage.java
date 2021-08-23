@@ -6,16 +6,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
+import dev.customer.gui.ImageKick;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
 public class StockPage extends JPanel{
 	private MainFrame mf;
+	private ImageKick kb = new ImageKick();
+	private LineBorder line = new LineBorder(Color.black);
 	
 	public StockPage(MainFrame mainFrame) {
 		this.mf = mainFrame;
-		this.setLayout(null);
 		
 		this.setSize(600,1000);
 		this.setBackground(Color.white);
@@ -26,18 +29,13 @@ public class StockPage extends JPanel{
 	}
 	
 	public void viewPanel() {
-		JPanel viewPanel = new JPanel();
-		viewPanel.setSize(490, 690);
-		viewPanel.setLocation(5,5);
-		viewPanel.setBackground(Color.white);
+		JPanel viewPanel1 = new JPanel();
+		viewPanel1.setSize(500, 700);
+		viewPanel1.setLocation(40, 140);
+		viewPanel1.setBorder(line);
+		viewPanel1.setBackground(Color.white);
 		
-		JPanel viewPanel2 = new JPanel();
-		viewPanel2.setSize(500, 700);
-		viewPanel2.setLocation(40, 140);
-		viewPanel2.setBackground(Color.black);
-		
-		this.add(viewPanel2);
-		viewPanel2.add(viewPanel);
+		this.add(viewPanel1);
 	}
 	
 	public void namePanel() {
@@ -47,11 +45,11 @@ public class StockPage extends JPanel{
 	
 	public void BackButton() {
 		JButton back = new JButton();
-		
 		back.setLocation(40,850);
 		back.setSize(100,50);
+		back.setBorderPainted(false);
 		
-		this.add(back);
+		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 50));
 		
 		back.addActionListener(new ActionListener() {
 			
@@ -61,6 +59,7 @@ public class StockPage extends JPanel{
 				changePanel(managerPanel);
 			}
 		});
+		this.add(back);
 	}
 	
 	public void CategoryButton() {
