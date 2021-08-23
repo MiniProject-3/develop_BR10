@@ -61,7 +61,6 @@ public class ManagerDAO {
 			close(pstmt);
 		}
 		
-		System.out.println(productList);
 		return productList;
 	}
 	
@@ -98,7 +97,6 @@ public class ManagerDAO {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println(payList);
 		return payList;
 	}
 	/* 메뉴 관리 */
@@ -125,7 +123,6 @@ public class ManagerDAO {
 			close(pstmt);
 		}
 		
-		System.out.println(result);
 
 		return result;
 	}
