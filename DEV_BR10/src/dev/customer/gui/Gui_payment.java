@@ -9,16 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class gui_payment {
+public class Gui_payment {
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
+
 	public void payment() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
 
-		ImageKickPanel panel = new ImageKickPanel(new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage()
-				.getScaledInstance(585, 750, 3));
+		ImageKickPanel panel = new ImageKickPanel(
+				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(585, 750, 3));
 		panel.setLocation(0, 100);
 		panel.setSize(600, 750);
 		panel.setBackground(Color.WHITE);
@@ -52,7 +53,7 @@ public class gui_payment {
 		butt[0].setSize(250, 50);
 		butt[1].setLocation(50, 250);
 		butt[1].setSize(250, 50);
-		
+
 		mf.add(homePanel);
 		mf.add(PaymentPanel);
 		mf.add(panel);
