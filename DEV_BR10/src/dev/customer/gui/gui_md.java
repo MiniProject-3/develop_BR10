@@ -2,14 +2,18 @@ package dev.customer.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class gui_md {
 	private JFrame mf = new JFrame("BR_10");
+	private JDialog jDialog = new JDialog();
 
 	public void md() {
 		mf.setTitle("mini_BR10");
@@ -39,18 +43,17 @@ public class gui_md {
 		
 		
 		String[] controll = { "이전", "장바구니", "결제" };
-
 		JButton[] butt4 = new JButton[controll.length];
 
 		for (int i = 0; i < controll.length; i++) {
 			butt4[i] = new JButton(controll[i]);
 		}
 		
-
 		for (int i = 0; i < controll.length; i++) {
-
 			controllPanel.add(butt4[i]);
 		}
+		
+		
 		butt4[0].setLocation(50, 0);
 		butt4[0].setSize(100, 50);
 		butt4[1].setLocation(275, 0);
@@ -58,22 +61,26 @@ public class gui_md {
 		butt4[2].setLocation(450, 0);
 		butt4[2].setSize(100, 50);
 		
+		
 		JPanel mdGoods = new JPanel();
 		mdGoods.setLocation(125, 250);
 		mdGoods.setSize(350, 450);
 		mdGoods.setLayout(null);
 		mdGoods.setBackground(Color.WHITE);
+		
 
 		String[] md_butt = { "핑크", "블루", "건너뛰기", "추가하기","md상품 취소" };
 		JButton[] butt = new JButton[md_butt.length];
+		
 
 		for (int i = 0; i < butt.length; i++) {
 			butt[i] = new JButton(md_butt[i]);
 		}
-
+		
 		for (int i = 0; i < butt.length; i++) {
 			mdGoods.add(butt[i]);
 		}
+
 		butt[0].setLocation(50, 200);
 		butt[0].setSize(100, 100);
 		butt[1].setLocation(200, 200);
@@ -85,6 +92,29 @@ public class gui_md {
 		butt[4].setLocation(310, 15);
 		butt[4].setSize(25, 25);
 		
+		
+		jDialog.setBounds(150, 250, 150, 150); 
+		jDialog.add(new JLabel(" 옵션을 선택하세요. "));
+		JButton md_check = new JButton("닫아요");
+		jDialog.add(md_check);
+		
+		butt[3].addActionListener(new ActionListener() {
+			
+			
+		@Override
+		public void actionPerformed(ActionEvent e) {
+		jDialog.setVisible(true);
+	    	} 
+	   	});
+		
+		md_check.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+//			md_check.dispose(); // 호진진행중 
+				}
+			});
+	
+		
 		mf.add(homePanel);
 		mf.add(mdGoods);
 		mf.add(controllPanel);
@@ -92,5 +122,6 @@ public class gui_md {
 
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mf.setVisible(true);
+		
 	}
 }

@@ -4,7 +4,7 @@ public class Application {
 
 	public static void main(String[] args) {
 
-	
+		
 		gui gui = new gui();
 //		gui_waitingNum wN = new gui_waitingNum();
 //		gui_md md = new gui_md();
