@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Gui extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
-
+	private JPanel main = null;
 	public Gui(MainFrame mainFrame) {
 		this.mf = mainFrame;
 		mf.setTitle("mini_BR10");
@@ -47,10 +47,10 @@ public class Gui extends JPanel {
 
 		}
 
-		JPanel menuSize = new JPanel();
-		menuSize.setLocation(125, 250);
-		menuSize.setSize(350, 450);
-		menuSize.setLayout(new GridLayout(3, 2));
+		main = new JPanel();
+		main.setLocation(125, 250);
+		main.setSize(350, 450);
+		main.setLayout(new GridLayout(3, 2));
 
 		String[] size = { "싱글콘", "더블콘", "파인트", "쿼터", "패밀리", "하프갤런" };
 		JButton[] butt = new JButton[size.length];
@@ -60,7 +60,7 @@ public class Gui extends JPanel {
 		}
 
 		for (int i = 0; i < butt.length; i++) {
-			menuSize.add(butt[i]);
+			main.add(butt[i]);
 		}
 
 		for (int i = 0; i < butt.length; i++) {
@@ -75,7 +75,7 @@ public class Gui extends JPanel {
 		butt[4].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_43.jpg", 150, 150));
 		butt[5].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_44.jpg", 150, 150));
 		
-		butt3[0].addActionListener(new ActionListener() {                     // 카테고리 아이스크림
+		butt3[0].addActionListener(new ActionListener() {                        // 카테고리 아이스크림
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -84,8 +84,9 @@ public class Gui extends JPanel {
 			}
 
 			private void changePanel(JPanel icecream) {
-				mf.remove(menuSize);
-				mf.add(icecream);
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
 				mf.repaint();
 			}
 		});
@@ -95,12 +96,13 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_cake cake = new Gui_cake();
-				changePanel(cake);
+				changePanel(cake.gui_cake());
 			}
 
 			private void changePanel(JPanel cake) {
-				mf.remove(mf);
-				mf.add(cake);
+				mf.remove(main);
+				main = cake;
+				mf.add(main);
 				mf.repaint();
 
 			}
@@ -110,13 +112,14 @@ public class Gui extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Gui_cake cake = new Gui_cake();
-				changePanel(cake);
+				Gui_desert desert = new Gui_desert();
+				changePanel(desert.gui_desert());
 			}
 
-			private void changePanel(JPanel cake) {
-				mf.remove(mf);
-				mf.add(cake);
+			private void changePanel(JPanel desert) {
+				mf.remove(main);
+				main = desert;
+				mf.add(main);
 				mf.repaint();
 
 			}
@@ -126,20 +129,21 @@ public class Gui extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Gui_cake cake = new Gui_cake();
-				changePanel(cake);
+				Gui_drink drink = new Gui_drink();
+				changePanel(drink.gui_drink());
 			}
 
-			private void changePanel(JPanel cake) {
-				mf.remove(mf);
-				mf.add(cake);
+			private void changePanel(JPanel drink) {
+				mf.remove(main);
+				main = drink;
+				mf.add(main);
 				mf.repaint();
 
 			}
 		});
 		
 
-		mf.add(menuSize);
+		mf.add(main);
 		mf.add(categoryPanel);
 
 	}}
