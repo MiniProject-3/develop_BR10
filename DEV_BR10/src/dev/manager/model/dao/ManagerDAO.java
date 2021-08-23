@@ -27,7 +27,7 @@ public class ManagerDAO {
 		}
 	}
 	
-	/* 재고 조회 */
+	/* 재고 조회 selectAllProducts */
 	public List<ProductDTO> selectAllProducts(Connection con) {
 		
 		PreparedStatement pstmt = null;
@@ -63,7 +63,7 @@ public class ManagerDAO {
 		return productList;
 	}
 	
-	/* 결제내역 조회 - 저널 조회  작성 중*/
+	/* 결제내역(저널) 조회 selectAllPays */
 	public List<PayDTO> selectAllPays(Connection con) {
 		
 		PreparedStatement pstmt = null;
@@ -98,8 +98,8 @@ public class ManagerDAO {
 		}
 		return payList;
 	}
-	
-	/* 메뉴관리 - 메뉴 추가 insertProduct */
+	/* 메뉴 관리 */
+	/* 메뉴 추가 insertProduct */
 	public int insertProduct(Connection con, ProductDTO product) {
 		
 		PreparedStatement pstmt = null;
@@ -124,7 +124,6 @@ public class ManagerDAO {
 		return result;
 	}
 	
-	/* 메뉴 수정 */
 	/* 가격 수정 updateProductPrice */
 	public int updateProductPrice(Connection con, int productNum, int productPrice) {
 		
@@ -191,7 +190,7 @@ public class ManagerDAO {
 		return result;
 	}
 	
-	/* 메뉴관리 - 메뉴 삭제 */
+	/* 메뉴 삭제 deleteProduct */
 	public int deleteProduct(Connection con, int productNum) {
 		
 		PreparedStatement pstmt = null;
