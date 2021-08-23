@@ -20,6 +20,7 @@ public class daotest {
 		close(con);
 		
 		System.out.println(productList);
+		
 	}
 
 }

@@ -2,6 +2,7 @@ package dev.views;
 
 import java.util.List;
 
+import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
 
 public class ManagerResultView {
@@ -19,14 +20,34 @@ public class ManagerResultView {
 		}
 	}
 
+	/* 질문!!
+	 * list에 제네릭이 다른 경우 오버로딩 불가능
+	 * 그러면 어떻게,,?
+	 *  */
 	public void display(List<ProductDTO> list) {
-		
-		for(ProductDTO p : list) {
-			System.out.println(p);
-		}
+	
+			for(ProductDTO p : list) {
+				System.out.println(p);
+			}
 	}
 	
-	public void diplay(ProductDTO p) {
+	
+
+//	public void display(List<PayDTO> list) {
+//	
+//			for(PayDTO p : list) {
+//				System.out.println(p);
+//			}
+//	}	
+
+	
+	public void display(ProductDTO p) {
 		System.out.println(p);
 	}
+	
+	public void display(PayDTO p) {
+		System.out.println(p);
+	}
+
+
 }
