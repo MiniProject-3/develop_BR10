@@ -15,29 +15,19 @@ public class gui extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
 
-	public void OrderSize() {
+	public gui(MainFrame mainFrame) {
+		this.mf = mainFrame;
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
-
-		ImageKickPanel panel = new ImageKickPanel(new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage()
-				.getScaledInstance(585, 750, 3));
-		panel.setLocation(0, 100);
-		panel.setSize(600, 750);
 		
+		this.orderPanel();
 		
+		mf.add(this);
 		
+	}
 		
-
-		JPanel homePanel = new JPanel();
-		homePanel.setLocation(50, 130);
-		homePanel.setSize(50, 50);
-		homePanel.setBackground(Color.WHITE);
-
-		JButton butt2 = new JButton("홈버튼");
-		butt2.setPreferredSize(new Dimension(50, 50));
-		homePanel.add(butt2);
-
+		public void orderPanel () {
 		JPanel categoryPanel = new JPanel();
 		categoryPanel.setLocation(0, 200);
 		categoryPanel.setSize(600, 50);
@@ -56,63 +46,6 @@ public class gui extends JPanel {
 			categoryPanel.add(butt3[i]);
 
 		}
-
-		JPanel controllPanel = new JPanel();
-		controllPanel.setLayout(null);
-		controllPanel.setLocation(0, 750);
-		controllPanel.setSize(600, 50);
-		controllPanel.setBackground(new Color(255, 0, 0, 0));
-
-		String[] controll = { "이전", "장바구니", "결제" };
-
-		JButton[] butt4 = new JButton[controll.length];
-
-		for (int i = 0; i < controll.length; i++) {
-			butt4[i] = new JButton(controll[i]);
-		}
-
-		for (int i = 0; i < controll.length; i++) {
-
-			controllPanel.add(butt4[i]);
-		}
-		butt4[0].setLocation(50, 0);
-		butt4[0].setSize(100, 50);
-		butt4[1].setLocation(275, 0);
-		butt4[1].setSize(50, 50);
-		butt4[2].setLocation(450, 0);
-		butt4[2].setSize(100, 50);
-
-		butt4[0].addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		}); // 이전
-
-		butt4[1].addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		}); // 장바구니
-
-		butt4[2].addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gui mdPanel = new gui();
-				changePanel(mdPanel);
-			}
-
-			private void changePanel(JPanel mdPanel) {
-				mf.remove(mf);
-				mf.add(mdPanel);
-				mf.repaint();
-			}
-
-		}); // 결제
 
 		JPanel menuSize = new JPanel();
 		menuSize.setLocation(125, 250);
@@ -161,39 +94,10 @@ public class gui extends JPanel {
 			}
 		});
 
-		butt3[2].addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gui_desert desert = new gui_desert();
-			}
-		});
-
-		butt3[3].addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gui drink = new gui();
-				changePanel(drink);
-			}
-
-			private void changePanel(JPanel drink) {
-				mf.remove(mf);
-				mf.add(drink);
-				mf.repaint();
-			}
-		});
-
 		butt[0].setIcon(kb.ImageKickButton("BR10_images/a_single.png", 150, 150));
 
-		mf.add(categoryPanel);
-		mf.add(homePanel);
 		mf.add(menuSize);
-		mf.add(controllPanel);
-		mf.add(panel);
+		mf.add(categoryPanel);
 
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mf.setVisible(true);
-	}
+	}}
 
-}

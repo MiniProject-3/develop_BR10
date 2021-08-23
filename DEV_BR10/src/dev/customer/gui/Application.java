@@ -4,7 +4,11 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		gui ordersize = new gui();
+		
+		new MainFrame();
+		
+		
+//		gui ordersize = new gui();
 		gui_waitingNum wN = new gui_waitingNum();
 		gui_md md = new gui_md();
 		gui_hereOrToGo hto = new gui_hereOrToGo();
@@ -18,7 +22,7 @@ public class Application {
 		
 //		ordersize.OrderSize();
 //		wN.waitingNum();
-		md.md();
+//		md.md();
 //		hto.hotg();
 //		paymentM.payment();
 //		icecream.gui_icecream();

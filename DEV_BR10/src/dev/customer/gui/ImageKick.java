@@ -10,5 +10,5 @@ public class ImageKick {
 		ImageIcon icon = new ImageIcon();
 		icon.setImage(img);
 		return icon;
-}
+	}
 }

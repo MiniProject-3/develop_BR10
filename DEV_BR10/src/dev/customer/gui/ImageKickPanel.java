@@ -14,6 +14,7 @@ class ImageKickPanel extends JPanel {
 	public ImageKickPanel(Image img) {
 
 		this.img = img;
+		setSize(new Dimension(img.getWidth(null), img.getHeight(null)));
 		setPreferredSize(new Dimension(img.getWidth(null), img.getHeight(null)));
 		setLayout(null);
 	}

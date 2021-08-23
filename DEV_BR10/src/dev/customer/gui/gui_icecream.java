@@ -75,4 +75,7 @@ public class gui_icecream extends JPanel {
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mf.setVisible(true);
 	}
+	public void gui_icecream() {
+		
+	}
 }
