@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 public class gui_drink extends JFrame {
 	
 	private JFrame mf = new JFrame("BR_10");
+	private ImageKick kb = new ImageKick();
 	   public void drink() {
 		  mf.setTitle("음료");
 	      mf.setBounds(600, 10, 600, 1000);

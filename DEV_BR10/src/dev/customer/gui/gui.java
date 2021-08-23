@@ -41,7 +41,7 @@ public class gui extends JPanel {
 		JPanel categoryPanel = new JPanel();
 		categoryPanel.setLocation(0, 200);
 		categoryPanel.setSize(600, 50);
-		categoryPanel.setBackground(Color.WHITE);
+		categoryPanel.setBackground(new Color(255, 0, 0, 0));
 
 		String[] category = { "아이스크림", "케이크", "디저트", "음료" };
 

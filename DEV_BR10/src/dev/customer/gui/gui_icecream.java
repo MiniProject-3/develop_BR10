@@ -13,7 +13,7 @@ import ui.manager.MainFrame;
 
 public class gui_icecream extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
-
+	private ImageKick kb = new ImageKick();
 	public gui_icecream(JFrame mf) {
 		this.mf = mf;
 		mf.setTitle("아이스크림 맛");
