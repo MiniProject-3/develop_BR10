@@ -11,19 +11,8 @@ import javax.swing.JPanel;
 
 public class gui_drink extends JFrame {
 
-	private JFrame mf = new JFrame("BR_10");
-	private ImageKick kb = new ImageKick();
-
-	public void drink() {
-		mf.setTitle("음료");
-		mf.setBounds(600, 10, 600, 1000);
-		mf.setLayout(null);
-
-		JPanel panel = new JPanel();
-		panel.setLocation(0, 100);
-		panel.setSize(600, 750);
-		panel.setBackground(Color.WHITE);
-
+	public JPanel drink() {
+		
 		JPanel drink = new JPanel();
 		drink.setLocation(100, 200);
 		drink.setSize(400, 500);
@@ -42,12 +31,6 @@ public class gui_drink extends JFrame {
 			drink.add(butt[i]);
 
 		}
-
-		mf.add(drink);
-
-		mf.add(panel);
-
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mf.setVisible(true);
+		return drink;
 	}
 }

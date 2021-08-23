@@ -8,19 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class gui_desert {
-	private JFrame mf = new JFrame("BR_10");
-	private ImageKick kb = new ImageKick();
 
-	public void desert() {
-		mf.setTitle("디저트");
-		mf.setBounds(600, 10, 600, 1000);
-		mf.setLayout(null);
-
-		JPanel panel = new JPanel();
-		panel.setLocation(0, 100);
-		panel.setSize(600, 750);
-		panel.setBackground(Color.WHITE);
-
+	public JPanel desert() {
 		JPanel desert = new JPanel();
 		desert.setLocation(100, 200);
 		desert.setSize(400, 500);
@@ -39,12 +28,7 @@ public class gui_desert {
 			desert.add(butt[i]);
 
 		}
+		return desert;
 
-		mf.add(desert);
-
-		mf.add(panel);
-
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mf.setVisible(true);
 	}
 }

@@ -67,7 +67,7 @@ public class gui extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui_icecream icecream = new gui_icecream(mf);
+				gui_icecream icecream = new gui_icecream();
 				changePanel(icecream);
 			}
 

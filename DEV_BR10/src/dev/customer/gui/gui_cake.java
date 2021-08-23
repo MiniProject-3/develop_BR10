@@ -15,17 +15,8 @@ import ui.manager.page.StockPage;
 
 public class gui_cake extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
-	private ImageKick kb = new ImageKick();
 
-	public void gui_cake(MainFrame mainFrame) {
-		mf.setTitle("케이크");
-		mf.setBounds(600, 10, 600, 1000);
-		mf.setLayout(null);
-
-		JPanel panel = new JPanel();
-		panel.setLocation(0, 100);
-		panel.setSize(600, 750);
-		panel.setBackground(Color.WHITE);
+	public JPanel gui_cake() {
 
 		JPanel cake = new JPanel();
 		cake.setLocation(100, 200);
@@ -45,13 +36,7 @@ public class gui_cake extends JPanel {
 			cake.add(butt[i]);
 
 		}
-
-		mf.add(cake);
-
-		mf.add(panel);
-
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mf.setVisible(true);
+		return cake;
 	}
 
 }
