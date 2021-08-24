@@ -22,10 +22,7 @@ public class ManagerResultView {
 		}
 	}
 
-	/* 질문!!
-	 * list에 제네릭이 다른 경우 오버로딩 불가능
-	 * 그러면 어떻게,,?
-	 *  */
+	/* 질문!! */
 	public void display(List<ProductDTO> list) {
 	
 			for(ProductDTO p : list) {
@@ -33,15 +30,21 @@ public class ManagerResultView {
 			}
 	}
 	
+	/* 오버로딩이 불가능해서 메소드 이름 변경 ㅜ^ㅜ */
+	public void displayPay(List<PayDTO> list) {
 	
-
-//	public void display(List<PayDTO> list) {
-//	
-//			for(PayDTO p : list) {
-//				System.out.println(p);
-//			}
-//	}	
-
+			for(PayDTO p : list) {
+				System.out.println(p);
+			}
+	}	
+	
+	/* Object로 제네릭 선언 */
+//	public void display(List<Object> list) {
+//		
+//		for(Object p : list) {
+//			System.out.println(p);
+//		}
+//}	
 	
 	public void display(ProductDTO p) {
 		System.out.println(p);

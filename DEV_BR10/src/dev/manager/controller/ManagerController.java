@@ -3,6 +3,7 @@ package dev.manager.controller;
 import java.util.List;
 import java.util.Map;
 
+import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
 import dev.manager.model.service.ManagerService;
 import dev.views.ManagerResultView;
@@ -23,16 +24,16 @@ public class ManagerController {
 			managerResultView.displayDmlResult("selectFailed");
 	}
 
-	/* 모든 결제 내역 조회 (저널 조회) - 작성 중 */
-//	public void selectAllPays() {
-//		
-//		List<PayDTO> payList = managerService.selectAllPays();
-//		
-//		if(!payList.isEmpty())		
-//			managerResultView.display(payList);
-//		else
-//			managerResultView.displayDmlResult("selectFailed");
-//	}
+	/* 모든 결제 내역 조회 (저널 조회) */
+	public void selectAllPays() {
+		
+		List<PayDTO> payList = managerService.selectAllPays();
+		
+		if(!payList.isEmpty())		
+			managerResultView.displayPay(payList);
+		else
+			managerResultView.displayDmlResult("selectFailed");
+	}
 	
 	/* 메뉴 추가 */
 	public void registNewProduct(Map<String, String> ansMap) {
@@ -93,5 +94,4 @@ public class ManagerController {
 		else
 			managerResultView.displayDmlResult("deleteFailed");
 	}
-
 }
