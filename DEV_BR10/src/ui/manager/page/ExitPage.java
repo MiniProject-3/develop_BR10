@@ -87,8 +87,8 @@ public class ExitPage extends JPanel{
 		JButton back = new JButton();
 		
 		back.setLocation(40,850);
-		back.setSize(100,50);
-		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 50));
+		back.setSize(100,70);
+		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 70));
 		back.setBorderPainted(false);
 		
 		back.addActionListener(new ActionListener() {

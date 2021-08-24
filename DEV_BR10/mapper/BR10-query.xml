@@ -3,15 +3,60 @@
 <properties>
 <comment></comment>
 	<entry key="selectAllProducts">
-	    SELECT productNum,
-	           productName,
-	           productPrice,
-	           categoryCode,
-	           stock
-	      FROM PRODUCT;
+	    SELECT PRODUCT_NUM,
+	           PRODUCT_NAME,
+	           PRODUCT_PRICE,
+	           CATEGORY_CODE,
+	           STOCK
+	      FROM PRODUCT
 	</entry>
-	<entry key="">
-	
+	<entry key="selectAllPays">
+		SELECT PAY_NUM,
+		       PHONE_NUM,
+		       PAY_TIME,
+		       PAY_TOTAL,
+		       PAYMENT_NUM
+		  FROM PAY
+	</entry>
+	<entry key="insertProduct">
+	    INSERT
+	      INTO PRODUCT P
+	    (
+	      P.PRODUCT_NUM
+	    , P.PROPDUCT_NAME
+	    , P.PRODUCT_PRICE
+	    , P.CATEGORY_CODE
+	    , P.STOCK
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
+	<entry key="updateProductPrice">
+	    UPDATE PRODUCT P
+	       SET P.PRODUCT_PRICE = ?
+	     WHERE P.PRODUCT_NUM = ?
+	    
+	</entry>
+	<entry key="updateProductStock">
+	    UPDATE PRODUCT P
+	       SET STOCK = ?
+	     WHERE P.PRODUCT_NUM = ?
+	</entry>
+	<entry key="updateProductName">
+	    UPDATE PRODUCT P
+	       SET P.PRODUCT_NAME = ?
+	     WHERE P.PRODUCT_NUM = ?
+	</entry>
+	<entry key="deleteProduct">
+	     DELETE
+	       FROM PROUDCT P
+	      WHERE P.PRODUCT_NUM = ?
 	</entry>
 	
 </properties>
