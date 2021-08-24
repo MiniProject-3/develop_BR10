@@ -11,19 +11,10 @@ import javax.swing.JPanel;
 
 import ui.manager.MainFrame;
 
-public class gui_icecream extends JPanel {
-	private JFrame mf = new JFrame("BR_10");
+public class Gui_icecream extends JPanel {
 	private ImageKick kb = new ImageKick();
-	public gui_icecream(JFrame mf) {
-		this.mf = mf;
-		mf.setTitle("아이스크림 맛");
-		mf.setBounds(600, 10, 600, 1000);
-		mf.setLayout(null);
 
-		JPanel panel = new JPanel();
-		panel.setLocation(0, 100);
-		panel.setSize(600, 750);
-		panel.setBackground(Color.WHITE);
+	public JPanel gui_icecream() {
 
 		JPanel icecream = new JPanel();
 		icecream.setLocation(150, 300);
@@ -44,6 +35,14 @@ public class gui_icecream extends JPanel {
 			icecream.add(butt[i]);
 
 		}
+		
+		int j = 25;
+		for (int i = 0; i < butt.length; i++) {
+			
+			butt[i].setIcon(kb.ImageKickButton("BR10_images/gui_order/flavor_" + j + ".jpg", 100, 100));
+			j++;
+		}
+		
 
 		butt[0].addActionListener(new ActionListener() {
 
@@ -68,11 +67,8 @@ public class gui_icecream extends JPanel {
 
 			}
 		}); // 장바구니
+		
+		return icecream;
 
-		mf.add(icecream);
-		mf.add(panel);
-
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mf.setVisible(true);
 	}
 }

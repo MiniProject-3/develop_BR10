@@ -12,20 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class gui_waitingNum {
-	private JFrame mf = new JFrame("BR_10");
-	private ImageKick kb = new ImageKick();
-	public void waitingNum() {
-		mf.setTitle("mini_BR10");
-		mf.setBounds(600, 10, 600, 1000);
-		mf.setLayout(null);
+public class Gui_waitingNum {
 
-		
-		ImageKickPanel panel = new ImageKickPanel(new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage()
-				.getScaledInstance(585, 750, 3));
-		panel.setLocation(0, 100);
-		panel.setSize(600, 750);
-		panel.setBackground(Color.WHITE);
+	public JPanel waitingNum() {
 
 
 
@@ -52,11 +41,10 @@ public class gui_waitingNum {
 		butt.setLocation(125, 350);
 		butt.setSize(100, 50);
 		waitingPanel.add(butt);
+		
+		return waitingPanel;
 
-		mf.add(waitingPanel);
-		mf.add(panel);
 
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mf.setVisible(true);
+
 	}
 }
