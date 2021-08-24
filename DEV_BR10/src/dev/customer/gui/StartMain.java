@@ -56,38 +56,3 @@ public class StartMain extends JFrame  {
 }	
 
 	
-
-//	JFrame frame;
-//	JPanel main_panel; 
-//	JButton bt_img;
-//	
-//
-//	public StartMain() {
-//		setTitle("mini_BR10"); // 프레임 타이틀바 텍스트 지정
-//		setSize(600,1000); // 프레임 크기 조정(픽셀)
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		
-//		main_panel = new JPanel(); // 패널 객체화 
-//		main_panel.setBackground(Color.WHITE); // 패널 배경색 하얀색으로 설정
-//		ImageIcon img = new ImageIcon("BR10_images/gui_order/OrderMain_pack.jpg");
-//		bt_img = new JButton(img);
-//		bt_img.setBorderPainted(false); // 버튼 테두리 설정해제
-////		bt_img.setSize(600,1000);
-//		bt_img.setPreferredSize(new Dimension(600, 1000)); // 버튼 크기 지정
-//		
-//		main_panel.add(bt_img); // 패널에 버튼을 붙이는 작업
-//		add(main_panel); // 메인 프레임에 메인패널을 붙여주는 작업
-//		setVisible(true); // 프레임 보이게 하기
-//		bt_img.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				MainFrame mainFrame = new MainFrame(); //연결
-//				frame.dispose();
-//			}
-//		});
-//	}
-//	public static void main(String[] args) {
-//		new StartMain();	
-//	}
-//}
