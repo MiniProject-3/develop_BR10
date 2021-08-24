@@ -1,5 +1,5 @@
 package dev.customer.controller;
 
-public class controller {
+public class CustomerController {
 
 }

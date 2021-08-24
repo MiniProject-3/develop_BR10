@@ -2,6 +2,46 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment></comment>
+	<entry key="insertOrder">
+	 INSERT
+	      INTO BR_ORDER O
+	    (
+	      O.ORDER_SEQ
+	    , O.PRODUCT_NUM
+	    , O.PHONE_NUM
+	   	, O.ORDER_NUM
+	    , O.QTY
+	    , O.PAYMENT
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
+	<entry key="insertPay">
+	 INSERT
+	      INTO PAY P
+	    (
+	      P.PAY_NUM
+		, P.PHONE_NUM
+		, P.PAY_TIME
+		, P.PAY_TOTAL
+		, P.PAYMENT_NUM
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
 	<entry key="selectAllProducts">
 	    SELECT PRODUCT_NUM,
 	           PRODUCT_NAME,

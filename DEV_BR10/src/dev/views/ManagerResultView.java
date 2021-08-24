@@ -22,7 +22,6 @@ public class ManagerResultView {
 		}
 	}
 
-	/* 질문!! */
 	public void display(List<ProductDTO> list) {
 	
 			for(ProductDTO p : list) {
