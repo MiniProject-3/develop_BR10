@@ -104,7 +104,7 @@ public class Gui extends JPanel {
 				mf.remove(main);
 				main = icecream;
 				mf.add(main);
-				revalidate();
+				revalidate();	
 			}
 		});
 		

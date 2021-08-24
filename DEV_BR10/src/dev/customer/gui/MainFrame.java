@@ -82,6 +82,42 @@ public class MainFrame extends JFrame {
 		butt4[2].setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_09.jpg", 100, 50));
 		butt4[2].setBorderPainted(false); // 버튼 테두리 설정해제	
 		
+		/* 이전 버튼 연결 */
+		butt4[0].addActionListener(new ActionListener() {  //액션 설정
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StartMain startMain = new StartMain();
+				changePanel(startMain);
+				dispose();
+			}
+			private void changePanel(StartMain startMain) {
+			}
+		});
+		
+//		/* 장바구니에 연결 */
+//		butt4[1].addActionListener(new ActionListener() {  
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				StartMain startMain = new StartMain();
+//				changePanel(startMain);
+//				dispose();
+//			}
+//			private void changePanel(StartMain startMain) {
+//			}
+//		});
+//		
+//		/* 결제버튼 연결 */
+//		butt4[2].addActionListener(new ActionListener() {  
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				StartMain startMain = new StartMain();
+//				changePanel(startMain);
+//				dispose();
+//			}
+//			private void changePanel(StartMain startMain) {
+//			}
+//		});
+		
 		panel.add(homePanel);
 		panel.add(controllPanel);
 
