@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,10 +24,10 @@ public class MainFrame extends JFrame {
 		ImageKickPanel panel = new ImageKickPanel(
 				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setSize(600, 1000);
-
+		
 		JPanel homePanel = new JPanel();
-		homePanel.setLocation(50, 130);
-		homePanel.setSize(50, 50);
+		homePanel.setLocation(50, 50);
+		homePanel.setSize(70, 100);
 		homePanel.setBackground(Color.WHITE);
 
 		JButton butt2 = new JButton("홈버튼");          //  홈버튼
@@ -33,7 +35,19 @@ public class MainFrame extends JFrame {
 		homePanel.add(butt2);
 		butt2.setText("");
 		butt2.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_14.jpg", 50, 50));
-
+		butt2.setBorderPainted(false); // 버튼 테두리 설정해제
+		
+		butt2.addActionListener(new ActionListener() {  //액션 설정
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StartMain startMain = new StartMain();
+				changePanel(startMain);
+				dispose();
+			}
+			private void changePanel(StartMain startMain) {
+			}
+		});
+		
 		JPanel controllPanel = new JPanel();
 		controllPanel.setLayout(null);
 		controllPanel.setLocation(0, 750);
@@ -58,13 +72,16 @@ public class MainFrame extends JFrame {
 		butt4[0].setLocation(50, 0);
 		butt4[0].setSize(100, 50);
 		butt4[0].setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_16.jpg", 100, 50));
+		butt4[0].setBorderPainted(false); // 버튼 테두리 설정해제	
 		butt4[1].setLocation(275, 0);
 		butt4[1].setSize(50, 50);
 		butt4[1].setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_19.jpg", 50, 50));
+		butt4[1].setBorderPainted(false); // 버튼 테두리 설정해제	
 		butt4[2].setLocation(450, 0);
 		butt4[2].setSize(100, 50);
 		butt4[2].setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_09.jpg", 100, 50));
-				
+		butt4[2].setBorderPainted(false); // 버튼 테두리 설정해제	
+		
 		panel.add(homePanel);
 		panel.add(controllPanel);
 
