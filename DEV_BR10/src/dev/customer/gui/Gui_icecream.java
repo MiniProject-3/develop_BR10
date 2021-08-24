@@ -17,8 +17,8 @@ public class Gui_icecream extends JPanel {
 	public JPanel gui_icecream() {
 
 		JPanel icecream = new JPanel();
-		icecream.setLocation(150, 300);
-		icecream.setSize(300, 400);
+		icecream.setLocation(125, 250);
+		icecream.setSize(350, 450);
 		icecream.setLayout(new GridLayout(4, 3));
 
 		String[] size = { "바람과함께보여지다", "민트초코칩", "피스타아몽드", "제주녹차티", "아빠도외계인", "체리마루", "쿠키앤크림", "사과민트", "바나나꿀단지", "자모카모카",
