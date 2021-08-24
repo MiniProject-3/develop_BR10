@@ -75,7 +75,105 @@ public class Gui extends JPanel {
 		butt[4].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_43.jpg", 150, 150));
 		butt[5].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_44.jpg", 150, 150));
 		
-		butt3[0].addActionListener(new ActionListener() {                        // 카테고리 아이스크림
+		/*아이스크림 사이즈 선택 시 아이스클 맛 선택으로 이동 */
+		butt[0].addActionListener(new ActionListener() {                        
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
+			}
+
+			private void changePanel(JPanel icecream) {
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
+				revalidate();
+			}
+		});
+		
+		butt[1].addActionListener(new ActionListener() {                        
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
+			}
+
+			private void changePanel(JPanel icecream) {
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
+				revalidate();	
+			}
+		});
+		
+		butt[2].addActionListener(new ActionListener() {                        
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
+			}
+
+			private void changePanel(JPanel icecream) {
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
+				revalidate();
+			}
+		});
+		
+		butt[4].addActionListener(new ActionListener() {                        
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
+			}
+
+			private void changePanel(JPanel icecream) {
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
+				revalidate();
+			}
+		});
+		
+		butt[5].addActionListener(new ActionListener() {                        
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
+			}
+
+			private void changePanel(JPanel icecream) {
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
+				revalidate();
+			}
+		});
+		
+		butt[3].addActionListener(new ActionListener() {                        
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
+			}
+
+			private void changePanel(JPanel icecream) {
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
+				revalidate();
+			}
+		});
+		
+		/* 메뉴 카테고리 선택 시 각 카테고리 별 메뉴 선택으로 넘어감 */		
+		butt3[0].addActionListener(new ActionListener() {                       
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -92,7 +190,7 @@ public class Gui extends JPanel {
 			}
 		});
 
-		butt3[1].addActionListener(new ActionListener() {                        //  카테고리 아이스크림
+		butt3[1].addActionListener(new ActionListener() {                       
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -108,7 +206,7 @@ public class Gui extends JPanel {
 			}
 		});
 		
-		butt3[2].addActionListener(new ActionListener() {                        // 카테고리 아이스크림
+		butt3[2].addActionListener(new ActionListener() {                       
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -124,7 +222,7 @@ public class Gui extends JPanel {
 			}
 		});
 		
-		butt3[3].addActionListener(new ActionListener() {                        // 카테고리 아이스크림
+		butt3[3].addActionListener(new ActionListener() {                        
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
