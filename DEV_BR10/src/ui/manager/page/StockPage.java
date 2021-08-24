@@ -1,14 +1,28 @@
 package ui.manager.page;
 
+import static dev.common.JDBCTemplate.close;
+import static dev.common.JDBCTemplate.getConnection;
+
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import dev.customer.gui.ImageKick;
+import dev.dto.ProductDTO;
+import dev.manager.model.dao.ManagerDAO;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
@@ -26,8 +40,12 @@ public class StockPage extends JPanel{
 		BackButton();
 		CategoryButton();
 		viewPanel();
+		viewMoney();
 	}
 	
+	public StockPage() {
+	}
+
 	public void viewPanel() {
 		JPanel viewPanel1 = new JPanel();
 		viewPanel1.setSize(500, 700);
@@ -35,21 +53,77 @@ public class StockPage extends JPanel{
 		viewPanel1.setBorder(line);
 		viewPanel1.setBackground(Color.white);
 		
+		createTable(viewPanel1);
+		
 		this.add(viewPanel1);
 	}
 	
-	public void namePanel() {
+	public void createTable(JPanel panel) {
+		String header[] = {"메뉴명", "기존재고", "판매량", "잔량"};
+		DefaultTableModel model = new DefaultTableModel(header, 0);
+		JTable stockTable = new JTable(model);
+		JScrollPane pane = new JScrollPane(stockTable);
 		
+		ManagerDAO managerDAO = new ManagerDAO();
+		Connection con = getConnection();
+		List<ProductDTO> productList = managerDAO.selectAllProducts(con);
+		for (ProductDTO product : productList) {
+			if (product.getCategoryCode() == 1) {
+				String name = product.getProductName();
+				String col = product.getStock() + "";
+				String[] mix = {name, col};
+				model.addRow(mix);
+			}
+		}
+		close(con);
+
+		pane.setLocation(10, 10);
+		pane.setSize(480, 680);
+		
+		panel.add(pane);
+	}
+	
+	public void productList(JTable table) {
+		ManagerDAO managerDAO = new ManagerDAO();
+		Connection con = getConnection();
+		
+		List<ProductDTO> productList = managerDAO.selectAllProducts(con);
+		ProductDTO pro = new ProductDTO();
+		for (ProductDTO product : productList) {
+			if (product.getCategoryCode() == 1) {
+				pro.setProductName(product.getProductName());
+				pro.setStock(product.getStock());
+				
+			}
+		}
+		close(con);
 	}
 
+	public void viewMoney() {
+		Font font = new Font("맑은 고딕", Font.BOLD, 15);
+		String money = "0"; // 정산 값 가져와야함
+		
+		JLabel moneyText = new JLabel("일일매출");
+		JLabel moneyLabel = new JLabel("￦ " + money);
+		
+		moneyLabel.setLocation(450, 860);
+		moneyLabel.setSize(100, 50);
+		moneyLabel.setFont(font);
+		moneyText.setSize(100, 50);
+		moneyText.setLocation(450,835);
+		moneyText.setFont(font);
+		
+		this.add(moneyText);
+		this.add(moneyLabel);
+	}
 	
 	public void BackButton() {
 		JButton back = new JButton();
 		back.setLocation(40,850);
-		back.setSize(100,50);
+		back.setSize(100,70);
 		back.setBorderPainted(false);
 		
-		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 50));
+		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 70));
 		
 		back.addActionListener(new ActionListener() {
 			

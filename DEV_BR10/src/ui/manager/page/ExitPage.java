@@ -35,6 +35,7 @@ public class ExitPage extends JPanel{
 	}
 
 	public void label() {
+		// 폰트 지정 - 맑은 고딕, 굵게, 30사이즈
 		Font font = new Font("맑은 고딕",Font.BOLD, 30);
 		
 		JLabel label = new JLabel("종료할 모드를 선택하세요.");
@@ -48,6 +49,7 @@ public class ExitPage extends JPanel{
 	}
 	
 	public void exitButton() {
+		// 폰트 지정 - 궁서 보통, 보통 굵기, 20사이즈
 		Font font = new Font("궁서 보통", Font.PLAIN, 20);
 		JButton button1 = new JButton("관리자");
 		button1.setFont(font);
@@ -85,8 +87,8 @@ public class ExitPage extends JPanel{
 		JButton back = new JButton();
 		
 		back.setLocation(40,850);
-		back.setSize(100,50);
-		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 50));
+		back.setSize(100,70);
+		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 70));
 		back.setBorderPainted(false);
 		
 		back.addActionListener(new ActionListener() {
