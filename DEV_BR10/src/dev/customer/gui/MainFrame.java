@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
 
 
 		ImageKickPanel panel = new ImageKickPanel(
-				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+		new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setSize(600, 1000);
 		
 		JPanel homePanel = new JPanel();
@@ -42,7 +42,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				StartMain startMain = new StartMain();
 				changePanel(startMain);
-				dispose();
+				dispose(); //창 꺼짐 
 			}
 			private void changePanel(StartMain startMain) {
 			}
@@ -55,15 +55,12 @@ public class MainFrame extends JFrame {
 		controllPanel.setBackground(new Color(255, 0, 0, 0));
 
 		String[] controll = { "이전", "장바구니", "결제" };
-
+		
 		JButton[] butt4 = new JButton[controll.length];
-
 		for (int i = 0; i < controll.length; i++) {
 			butt4[i] = new JButton(controll[i]);
 		}
-
 		for (int i = 0; i < controll.length; i++) {
-
 			controllPanel.add(butt4[i]);
 		}
 		for (int i = 0; i < butt4.length; i++) {
@@ -105,19 +102,20 @@ public class MainFrame extends JFrame {
 //			private void changePanel(StartMain startMain) {
 //			}
 //		});
-//		
-//		/* 결제버튼 연결 */
-//		butt4[2].addActionListener(new ActionListener() {  
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				StartMain startMain = new StartMain();
-//				changePanel(startMain);
+		/* 결제버튼 연결 */ //md 페이지로 이동
+		butt4[2].addActionListener(new ActionListener() {  
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_md gui_md = new Gui_md();
+				changePanel(gui_md);
 //				dispose();
-//			}
-//			private void changePanel(StartMain startMain) {
-//			}
-//		});
-		
+				
+			}
+			private void changePanel(Gui_md gui_md) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		panel.add(homePanel);
 		panel.add(controllPanel);
 
