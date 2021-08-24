@@ -2,6 +2,8 @@ package dev.customer.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,11 +11,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Gui_md {
+public class Gui_md extends JPanel{
 	private ImageKick kb = new ImageKick();
+	private JFrame mf = new JFrame("BR_10");
+	private JPanel main = null;
 	
-	public JPanel md() {
-
+	public Gui_md(MainFrame mainFrame) {
+		this.mf = mainFrame;
 		ImageKickPanel mdPanel = new ImageKickPanel(new ImageIcon("BR10_images/gui_order/bg_04.png").getImage()
 				.getScaledInstance(585, 750, 3));
 		mdPanel.setLocation(0, 0);
@@ -58,6 +62,57 @@ public class Gui_md {
 		butt[4].setText("");
 		butt[4].setBackground(new Color(255, 0, 0, 0));
 		
-		return mdPanel;
+		/* 건너뛰기 버튼 연결 */
+		butt[2].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_hereOrToGo hotg = new Gui_hereOrToGo();
+				changePanel(hotg);
+			}
+			private void changePanel(Gui_hereOrToGo hotg) {
+				mf.remove(main);
+				main = hotg;
+				main.add(main);
+				revalidate();	
+			}
+
+		});
+		
+		/* 추가하기 버튼 연결 */
+		butt[3].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_hereOrToGo hotg = new Gui_hereOrToGo();
+				changePanel(hotg);
+			}
+			private void changePanel(Gui_hereOrToGo hotg) {
+				mf.remove(main);
+				main = hotg;
+				main.add(main);
+				revalidate();	
+			}
+
+		});
+		
+//		/* 취소 버튼 연결  - 장바구니랑 */
+//		butt[4].addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				Gui_hereOrToGo hotg = new Gui_hereOrToGo();
+//				changePanel(hotg);
+//			}
+//			private void changePanel(Gui_hereOrToGo hotg) {
+//				mf.remove(main);
+//				main = hotg;
+//				main.add(main);
+//				revalidate();	
+//			}
+//
+//		});
+		
+		return;
 	}
 }

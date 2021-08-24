@@ -8,9 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Gui_hereOrToGo {
-	public JPanel hotg() {
-
+public class Gui_hereOrToGo extends JPanel{
+	private JFrame mf = new JFrame("BR_10");
+	private JPanel main = null;
+	public JPanel Gui_hereOrToGo(MainFrame mainFrame) {
+		this.mf = mainFrame;
 		JPanel hgPanel = new JPanel();
 		hgPanel.setLocation(125, 250);
 		hgPanel.setSize(350, 450);
@@ -32,6 +34,7 @@ public class Gui_hereOrToGo {
 		butt[1].setLocation(190, 150);
 		butt[1].setSize(100, 100);
 		
+		this.add(hgPanel);
 		return hgPanel;
 
 	}

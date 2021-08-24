@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
+	private JPanel main = null;
+	private JFrame mf = new JFrame("BR_10");
 
 	private ImageKick kb = new ImageKick();
 	public MainFrame() {
@@ -94,6 +96,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
+				
 //		/* 장바구니에 연결 */
 //		butt4[1].addActionListener(new ActionListener() {  
 //			@Override
@@ -106,18 +109,9 @@ public class MainFrame extends JFrame {
 //			}
 //		});
 //		
-//		/* 결제버튼 연결 */
-//		butt4[2].addActionListener(new ActionListener() {  
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				StartMain startMain = new StartMain();
-//				changePanel(startMain);
-//				dispose();
-//			}
-//			private void changePanel(StartMain startMain) {
-//			}
-//		});
+		/* 결제 버튼 연결 */
 		
+					
 		panel.add(homePanel);
 		panel.add(controllPanel);
 
