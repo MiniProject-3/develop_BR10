@@ -61,7 +61,6 @@ public class MainFrame extends JFrame {
 		for (int i = 0; i < controll.length; i++) {
 			butt4[i] = new JButton(controll[i]);
 		}
-
 		for (int i = 0; i < controll.length; i++) {
 
 			controllPanel.add(butt4[i]);
@@ -106,17 +105,16 @@ public class MainFrame extends JFrame {
 //			}
 //		});
 //		
-//		/* 결제버튼 연결 */
-//		butt4[2].addActionListener(new ActionListener() {  
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				StartMain startMain = new StartMain();
-//				changePanel(startMain);
-//				dispose();
-//			}
-//			private void changePanel(StartMain startMain) {
-//			}
-//		});
+		/* 결제버튼 연결 */
+		butt4[2].addActionListener(new ActionListener() {  
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Gui_md();
+				dispose();
+			}
+			private void changePanel(StartMain startMain) {
+			}
+		});
 		
 		panel.add(homePanel);
 		panel.add(controllPanel);
