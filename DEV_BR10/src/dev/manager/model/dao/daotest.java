@@ -24,7 +24,6 @@ public class daotest {
       
       
       System.out.println(productList);
-      System.out.println(payList);
 
       
    }

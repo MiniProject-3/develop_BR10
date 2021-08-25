@@ -3,6 +3,7 @@ package ui.manager.page;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -12,6 +13,9 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import dev.customer.gui.ImageKick;
+import dev.dto.PayDTO;
+import dev.dto.ProductDTO;
+import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
@@ -20,6 +24,7 @@ public class JournalPage extends JPanel{
 	private ImageKick kb = new ImageKick();
 	private LineBorder line = new LineBorder(Color.black);
 	
+	public JournalPage() {}
 	public JournalPage(MainFrame mainFrame) {
 		this.mf = mainFrame;
 		
@@ -27,7 +32,6 @@ public class JournalPage extends JPanel{
 		this.setBackground(Color.white);
 		
 		BackButton();
-		CategoryButton();
 		viewPanel();
 	}
 	
@@ -44,10 +48,22 @@ public class JournalPage extends JPanel{
 	}
 	
 	public void createTable(JPanel panel) {
-		String header[] = {"메뉴명", "가격", "판매량", "총액"};
+		String header[] = {"결제번호", "결제시간", "총결제금액", "결재수단"};
 		DefaultTableModel model = new DefaultTableModel(header, 0);
 		JTable stockTable = new JTable(model);
 		JScrollPane pane = new JScrollPane(stockTable);
+		
+		ManagerController manage = new ManagerController();
+		List<PayDTO> jounal = manage.selectAllPays();
+		for (PayDTO pay : jounal) {
+			String payNum = pay.getPayNum() + "";
+			String payTime = pay.getPayTime();
+			String payTotal = pay.getPayTotal() + "";
+			String payMenu = pay.getPaymentNum() + "";
+			
+			String[] mix = {payNum, payTime, payTotal, payMenu};
+			model.addRow(mix);
+		}
 		
 		pane.setLocation(10, 10);
 		pane.setSize(480, 680);
@@ -75,38 +91,6 @@ public class JournalPage extends JPanel{
 		this.add(back);
 	}
 
-	public void CategoryButton() {
-		JButton ice = new JButton("아이스크림");
-		
-		ice.setLocation(40,100);
-		ice.setSize(100,40);
-		
-		JButton cake = new JButton("케이크");
-		
-		cake.setLocation(140,100);
-		cake.setSize(100,40);
-		
-		JButton dessert = new JButton("디저트");
-		
-		dessert.setLocation(240,100);
-		dessert.setSize(100,40);
-		
-		JButton drink = new JButton("음료");
-		
-		drink.setLocation(340,100);
-		drink.setSize(100,40);
-		
-		JButton md = new JButton("MD");
-		
-		md.setLocation(440,100);
-		md.setSize(100,40);
-		
-		this.add(ice);
-		this.add(cake);
-		this.add(dessert);
-		this.add(drink);
-		this.add(md);
-	}
 	
 	public void changePanel(JPanel panel) {
 		mf.remove(this);
