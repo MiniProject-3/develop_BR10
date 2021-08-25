@@ -19,9 +19,9 @@ public class Gui_payment {
 		mf.setLayout(null);
 
 		ImageKickPanel panel = new ImageKickPanel(
-				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(585, 750, 3));
-		panel.setLocation(0, 100);
-		panel.setSize(600, 750);
+				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+		panel.setLocation(0, 0);
+		panel.setSize(600, 1000);
 		panel.setBackground(Color.WHITE);
 
 		JPanel homePanel = new JPanel();

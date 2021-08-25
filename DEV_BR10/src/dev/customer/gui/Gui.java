@@ -81,7 +81,7 @@ public class Gui extends JPanel {
 		butt[5].setIcon(kb.ImageKickButton(
 				"BR10_images/gui_order/Size_44.jpg", 150, 150));
 		
-		/*아이스크림 사이즈 선택 시 아이스클 맛 선택으로 이동 */
+		/*아이스크림 사이즈 선택 시 아이스크림 맛 선택으로 이동 */
 		butt[0].addActionListener(new ActionListener() {                        
 
 			@Override

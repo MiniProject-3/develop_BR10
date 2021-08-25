@@ -1,63 +1,128 @@
 package dev.customer.gui;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class Take_Out extends JPanel{
+public class Take_Out{
 	private JFrame mf = new JFrame("BR_10");
-	JPanel panel = new JPanel();
+	private ImageKick kb = new ImageKick();
 	
-	public Take_Out(MainFrame mainFrame) {
-		this.mf = mainFrame;
+	public void Take_Out() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
 		
-		this.categoryPanel();
+		ImageKickPanel panel = new ImageKickPanel(
+				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+		panel.setLocation(0, 0);
+		panel.setSize(600, 1000);
+		panel.setBackground(Color.WHITE);
 		
-		mf.add(this);
-		revalidate();
-	}
-	
-	public void categoryPanel() {
-//		JPanel categoryPanel = new JPanel();
-//		categoryPanel.setLocation(0, 200);
-//		categoryPanel.setSize(600, 60);
+		JPanel homePanel = new JPanel();
+		homePanel.setLocation(50, 50);
+		homePanel.setSize(70, 100);
+		homePanel.setBackground(Color.WHITE);
+
+		JButton butt2 = new JButton("홈버튼");          //  홈버튼
+		butt2.setPreferredSize(new Dimension(50, 50));
+		homePanel.add(butt2);
+		butt2.setText("");
+		butt2.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_14.jpg", 50, 50));
+		butt2.setBorderPainted(false); // 버튼 테두리 설정해제
 		
-		JLabel label0 = new JLabel("소요시간");
-		label0.setLocation(0, 100);
-		label0.setSize(600, 60);
+		butt2.addActionListener(new ActionListener() {  //액션 설정
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StartMain startMain = new StartMain();
+				changePanel(startMain);
+				
+			}
+			private void changePanel(StartMain startMain) {
+			}
+		});
 		
-		JLabel label1 = new JLabel("숟가락");
-		label1.setLocation(0, 200);
-		label1.setSize(600, 60);
+		JPanel Back = new JPanel();
+		Back.setLocation(-200,750);
+		Back.setSize(600, 50);
+		Back.setBackground(new Color(255, 0, 0, 0));
 		
-		JLabel label2 = new JLabel("초");
-		label2.setLocation(0, 500);
-		label2.setSize(600, 60);
+		JButton butt3 = new JButton("이전");          //  이전버튼
+		butt3.setPreferredSize(new Dimension(100, 45));
+		Back.add(butt3);
+		butt3.setText("");
+		butt3.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_16.jpg", 100, 50));
+		butt3.setBorderPainted(false); // 버튼 테두리 설정해제
+			      
+		JLabel label1 = new JLabel("소요시간");
+		label1.setLocation(100, 350);
+		label1.setSize(150, 50);
+		label1.setOpaque(true); 
+		label1.setHorizontalAlignment(JLabel.CENTER);
+		label1.setBackground(Color.pink);
 		
-		SpinnerNumberModel time = new SpinnerNumberModel(0, 0, 10, 5);
+		JLabel label2 = new JLabel("숟가락");
+		label2.setLocation(100, 500);
+		label2.setSize(150, 50);
+		label2.setOpaque(true); 
+		label2.setHorizontalAlignment(JLabel.CENTER);
+		label2.setBackground(Color.pink);
 		
-		JSpinner spinner0 = new JSpinner(time);
-		panel.add(spinner0);
-		spinner0.setLocation(300, 100);
+		JLabel label3 = new JLabel("초");
+		label3.setLocation(100, 650);
+		label3.setSize(150, 50);
+		label3.setOpaque(true); 
+		label3.setHorizontalAlignment(JLabel.CENTER);
+		label3.setBackground(Color.pink);
+		
+		JLabel label4 = new JLabel("포장");
+		label4.setLocation(100, 200);
+		label4.setSize(50, 50);
+		label4.setOpaque(true); 
+		label4.setHorizontalAlignment(JLabel.CENTER);
+		label4.setBackground(Color.pink);
+		
+		SpinnerNumberModel time = new SpinnerNumberModel(0, 0, 60, 10);
+		
+		JSpinner spinner1 = new JSpinner(time);
+		spinner1.setLocation(330, 350);
+		spinner1.setSize(150, 50);
+		
 		
 		SpinnerNumberModel spoon = new SpinnerNumberModel(0, 0, 10, 1);
 		
-		JSpinner spinner1 = new JSpinner(spoon);
-		panel.add(spinner1);
-		spinner1.setLocation(300, 200);
+		JSpinner spinner2 = new JSpinner(spoon);
+		spinner2.setLocation(330, 500);
+		spinner2.setSize(150, 50);
 		
 		SpinnerNumberModel candle = new SpinnerNumberModel(0, 0, 10, 1);
 		
-		JSpinner spinner2 = new JSpinner(candle);
-		panel.add(spinner2);
-		spinner2.setLocation(300, 500);
+		JSpinner spinner3 = new JSpinner(candle);
+		spinner3.setLocation(330, 650);
+		spinner3.setSize(150, 50);
+				
+		mf.add(Back);
+		mf.add(homePanel);
+		mf.add(label1);
+		mf.add(label2);
+		mf.add(label3);
+		mf.add(label4);
+		mf.add(spinner1);
+		mf.add(spinner2);
+		mf.add(spinner3);
+		mf.add(panel);
 		
-		
+		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mf.setVisible(true);
 		
 	}
 
