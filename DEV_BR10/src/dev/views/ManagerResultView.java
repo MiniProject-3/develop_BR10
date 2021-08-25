@@ -7,21 +7,22 @@ import dev.dto.ProductDTO;
 
 public class ManagerResultView {
 	
-	public void displayDmlResult(String code) {
+	public String displayDmlResult(String code) {
 		
 		switch(code) {
-			case"selectFailed" : System.out.println("조회 실패"); break;
-			case"updateFailed" : System.out.println("수정 실패"); break;
-			case"deleteFailed" : System.out.println("삭제 실패"); break;
-			case"insertFailed" : System.out.println("삽입 실패"); break;
-			case"insertSuccess" : System.out.println("삽입 성공"); break;
-			case"selectSuccess" : System.out.println("조회 성공"); break;
-			case"updateSuccess" : System.out.println("수정 성공"); break;
-			case"deleteSuccess" : System.out.println("삭제 성공"); break;
-			default : System.out.println("알 수 없는 에러 발생"); break;
+			case"selectFailed" : return ("조회 실패");
+			case"updateFailed" : return("수정 실패"); 
+			case"deleteFailed" : return("삭제 실패"); 
+			case"insertFailed" : return("삽입 실패"); 
+			case"insertSuccess" : return("삽입 성공"); 
+			case"selectSuccess" : return("조회 성공"); 
+			case"updateSuccess" : return("수정 성공"); 
+			case"deleteSuccess" : return("삭제 성공"); 
+			default : return("알 수 없는 에러 발생");
 		}
 	}
 
+	/* display 함수 사용할 일 있는지 확인!! */
 	public void display(List<ProductDTO> list) {
 	
 			for(ProductDTO p : list) {
@@ -29,21 +30,13 @@ public class ManagerResultView {
 			}
 	}
 	
-	/* 오버로딩이 불가능해서 메소드 이름 변경 ㅜ^ㅜ */
+	/* 오버로딩이 불가능 -> 메소드 이름 변경 */
 	public void displayPay(List<PayDTO> list) {
 	
 			for(PayDTO p : list) {
 				System.out.println(p);
 			}
 	}	
-	
-	/* Object로 제네릭 선언 */
-//	public void display(List<Object> list) {
-//		
-//		for(Object p : list) {
-//			System.out.println(p);
-//		}
-//}	
 	
 	public void display(ProductDTO p) {
 		System.out.println(p);

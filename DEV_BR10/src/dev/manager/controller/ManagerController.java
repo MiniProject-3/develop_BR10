@@ -14,29 +14,36 @@ public class ManagerController {
 	private ManagerService managerService = new ManagerService();
 
 	/* 모든 상품 조회 (재고 조회) */
-	public void selectAllProducts() {
+	public List<ProductDTO> selectAllProducts() {
 		
 		List<ProductDTO> productList = managerService.selectAllProducts();
 		
-		if(!productList.isEmpty())		// 리스트가 비어있지 않은 경우 - 값이 존재하는 경우.
-			managerResultView.display(productList);
-		else
-			managerResultView.displayDmlResult("selectFailed");
+		if(!productList.isEmpty()) {		// 리스트가 비어있지 않은 경우 - 값이 존재하는 경우.
+//			managerResultView.display(productList);
+			return productList;
+		} else {							// 리스트가 비어있는 경우
+//			managerResultView.displayDmlResult("selectFailed");
+			return null;
+		}
 	}
 
 	/* 모든 결제 내역 조회 (저널 조회) */
-	public void selectAllPays() {
+	public List<PayDTO> selectAllPays() {
 		
 		List<PayDTO> payList = managerService.selectAllPays();
 		
-		if(!payList.isEmpty())		
-			managerResultView.displayPay(payList);
-		else
-			managerResultView.displayDmlResult("selectFailed");
+		if(!payList.isEmpty())	{	
+//			managerResultView.displayPay(payList);
+			return payList;
+		}
+		else {
+//			return managerResultView.displayDmlResult("selectFailed");
+			return null;
+		}
 	}
 	
 	/* 메뉴 추가 */
-	public void registNewProduct(Map<String, String> ansMap) {
+	public String registNewProduct(Map<String, String> ansMap) {
 	
 		ProductDTO productDTO = new ProductDTO();
 		
@@ -48,50 +55,56 @@ public class ManagerController {
 	
 		int result = managerService.insertProduct(productDTO);
 		
-		if (result > 0)
-			managerResultView.displayDmlResult("insertSuccess");
-		else
-			managerResultView.displayDmlResult("insertFailed");
-
+		if (result > 0) {
+			return managerResultView.displayDmlResult("insertSuccess");
+		}else {
+			return managerResultView.displayDmlResult("insertFailed");
+		}
 	}
 
 	/* 메뉴 수정 - 가격 */
-	public void modifyProductPrice(int productNum, int productPrice) {
+	public String modifyProductPrice(int productNum, int productPrice) {
 		int result = managerService.updateProductPrice(productNum, productPrice);
 		
-		if (result > 0)
-			managerResultView.displayDmlResult("updateSuccess");
-		else
-			managerResultView.displayDmlResult("updateFailed");
+		if (result > 0) {
+			return managerResultView.displayDmlResult("updateSuccess");
+		}else {
+			return managerResultView.displayDmlResult("updateFailed");
+		}
 	}
 	
 	/* 메뉴 수정 - 수량 */
-	public void modifyProductStock(int productNum, int stock) {
+	public String modifyProductStock(int productNum, int stock) {
 		int result = managerService.updateProductPrice(productNum, stock);
 		
-		if (result > 0)
-			managerResultView.displayDmlResult("updateSuccess");
-		else
-			managerResultView.displayDmlResult("updateFailed");
+		if (result > 0) {
+			return managerResultView.displayDmlResult("updateSuccess");
+		}else {
+			return managerResultView.displayDmlResult("updateFailed");
+		}
 	}
 	
 	/* 메뉴 수정 - 이름 */
-	public void modifyProductName(int productNum, int productName) {
+	public String modifyProductName(int productNum, int productName) {
 		int result = managerService.updateProductPrice(productNum, productName);
 		
-		if (result > 0)
-			managerResultView.displayDmlResult("updateSuccess");
-		else
-			managerResultView.displayDmlResult("updateFailed");
+		if (result > 0) {
+			return managerResultView.displayDmlResult("updateSuccess");
+		}
+		else {
+			return managerResultView.displayDmlResult("updateFailed");
+		}
 	}
 	
 	/* 메뉴 삭제 */
-	public void deleteProduct(int productNum) {
+	public String deleteProduct(int productNum) {
 		int result = managerService.deleteProduct(productNum);
 		
-		if (result > 0)
-			managerResultView.displayDmlResult("deleteSuccess");
-		else
-			managerResultView.displayDmlResult("deleteFailed");
+		if (result > 0) {
+			return managerResultView.displayDmlResult("deleteSuccess");
+		}
+		else {
+			return managerResultView.displayDmlResult("deleteFailed");
+		}
 	}
 }
