@@ -102,18 +102,16 @@ public class MainFrame extends JFrame {
 //			private void changePanel(StartMain startMain) {
 //			}
 //		});
-		/* 결제버튼 연결 */ //md 페이지로 이동
+
+//		
+		/* 결제버튼 연결 */
 		butt4[2].addActionListener(new ActionListener() {  
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Gui_md gui_md = new Gui_md();
-				changePanel(gui_md);
-//				dispose();
-				
+				new Gui_md();
+				dispose();
 			}
-			private void changePanel(Gui_md gui_md) {
-				// TODO Auto-generated method stub
-				
+			private void changePanel(StartMain startMain) {
 			}
 		});
 		panel.add(homePanel);

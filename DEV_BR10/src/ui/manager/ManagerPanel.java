@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import ui.manager.page.ExitPage;
 import ui.manager.page.JournalPage;
@@ -16,7 +17,7 @@ import ui.manager.page.UpdateMenu;
 public class ManagerPanel extends JPanel{
  
 	private MainFrame mf;
-	private Font font = new Font("궁서 보통", Font.PLAIN, 20);
+	private Font font = new Font("궁서 보통", Font.BOLD, 20);
 	
 	public ManagerPanel(MainFrame  mainframe) {
 		this.mf = mainframe;
@@ -37,6 +38,11 @@ public class ManagerPanel extends JPanel{
 		searchStock.setFont(font);
 		searchStock.setLocation(20, 100);
 		searchStock.setSize(270, 400);
+		searchStock.setOpaque(false);
+		searchStock.setContentAreaFilled(false);
+		searchStock.setBorderPainted(true);
+		searchStock.setBorder(new LineBorder(Color.black));
+		
 		searchStock.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -49,6 +55,11 @@ public class ManagerPanel extends JPanel{
 		searchJournal.setFont(font);
 		searchJournal.setLocation(290, 100);
 		searchJournal.setSize(270, 400);
+		searchJournal.setOpaque(false);
+		searchJournal.setContentAreaFilled(false);
+		searchJournal.setBorderPainted(true);
+		searchJournal.setBorder(new LineBorder(Color.black));
+		
 		searchJournal.addActionListener(new ActionListener() {
 			
 			@Override
@@ -62,6 +73,11 @@ public class ManagerPanel extends JPanel{
 		updateMenu.setFont(font);
 		updateMenu.setLocation(20, 500);
 		updateMenu.setSize(270, 400);
+		updateMenu.setOpaque(false);
+		updateMenu.setContentAreaFilled(false);
+		updateMenu.setBorderPainted(true);
+		updateMenu.setBorder(new LineBorder(Color.black));
+		
 		updateMenu.addActionListener(new ActionListener() {
 			
 			@Override
@@ -75,6 +91,11 @@ public class ManagerPanel extends JPanel{
 		exit.setFont(font);
 		exit.setLocation(290, 500);
 		exit.setSize(270, 400);
+		exit.setOpaque(false);
+		exit.setContentAreaFilled(false);
+		exit.setBorderPainted(true);
+		exit.setBorder(new LineBorder(Color.black));
+
 		exit.addActionListener(new ActionListener() {
 			
 			@Override
