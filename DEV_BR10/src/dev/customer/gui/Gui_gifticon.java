@@ -2,18 +2,19 @@ package dev.customer.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Gui_payment {
+public class Gui_gifticon {
+
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
 
-	public void payment() {
+	public void gift() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
@@ -33,28 +34,16 @@ public class Gui_payment {
 		butt2.setPreferredSize(new Dimension(50, 50));
 		butt2.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_14.jpg", 50, 50));
 		homePanel.add(butt2);
-
-
-		String[] md_butt = { "기프티콘", "휴대폰 결제" };
-		JButton[] butt = new JButton[md_butt.length];
-
-		for (int i = 0; i < butt.length; i++) {
-			butt[i] = new JButton(md_butt[i]);
-		}
-
-		for (int i = 0; i < butt.length; i++) {
-			panel.add(butt[i]);
-		}
-		butt[0].setLocation(175, 400);
-		butt[0].setSize(250, 50);
-		butt[1].setLocation(175, 500);
-		butt[1].setSize(250, 50);
 		
-		butt[0].setIcon(kb.ImageKickButton(
-				"BR10_images/gui_order/payment_37.jpg", 250, 50));
-		butt[1].setIcon(kb.ImageKickButton(
-				"BR10_images/gui_order/payment_38.jpg", 250, 50));
+		JPanel giftPanel = new JPanel();
+		giftPanel.setLocation(150, 300);
+		giftPanel.setSize(300, 400);
+		giftPanel.setBackground(Color.BLACK);
+		
+		JLabel gifticon = new JLabel();
+		
 
+		panel.add(giftPanel);
 		panel.add(homePanel);
 		mf.add(panel);
 
