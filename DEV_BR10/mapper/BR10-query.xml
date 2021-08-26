@@ -2,6 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment></comment>
+
+	<!-- customer -->
 	<entry key="insertOrder">
 	 INSERT
 	      INTO BR_ORDER O
@@ -42,6 +44,53 @@
 	     , ?
 	     )
 	</entry>
+	<entry key="insertIno">
+	 INSERT
+	      INTO INO I
+	    (
+	      I.INO_NUM
+		, I.INO
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     )
+	</entry>
+	
+	<entry key="selectAllUsers">
+		SELECT PHONE_NUM,
+		       POINT,
+		       PHONE_CO
+		  FROM BR_USER
+	</entry>
+	<entry key="selectAllGifts">
+		SELECT GIFT_NUM,
+		       GIFT_USE
+		  FROM GIFT
+	</entry>
+	<entry key="selectAllInos">
+		SELECT INO_NUM,
+		       INO
+		  FROM INO
+	</entry>
+	
+	<entry key="updateGiftUse">
+	    UPDATE GIFT G
+	       SET G.GIFT_USE = ?
+	     WHERE G.GIFT_NUM = ?
+	</entry>
+	<entry key="updateProductPrice">
+	    UPDATE BR_USER P
+	       SET P.POINT = ?
+	     WHERE P.PHONE_NUM = ?
+	</entry>
+	<entry key="updateManagerKey">
+	    UPDATE MANAGER M
+	       SET M.MANAGER_KEY = ?
+	</entry>
+
+	<!-- manager -->
 	<entry key="selectAllProducts">
 	    SELECT PRODUCT_NUM,
 	           PRODUCT_NAME,

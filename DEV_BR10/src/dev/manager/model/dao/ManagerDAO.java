@@ -85,10 +85,10 @@ public class ManagerDAO {
             pay.setPayNum(rset.getInt("PAY_NUM"));
             pay.setPayTime(rset.getString("PAY_TIME"));
             pay.setPhoneNum(rset.getString("PHONE_NUM"));
-             pay.setPayTotal(rset.getInt("PAY_TOTAL"));
-             pay.setPaymentNum(rset.getInt("PAYMENT_NUM"));
+            pay.setPayTotal(rset.getInt("PAY_TOTAL"));
+            pay.setPaymentNum(rset.getInt("PAYMENT_NUM"));
           
-             payList.add(pay);
+            payList.add(pay);
          }
          
       } catch (SQLException e) {
