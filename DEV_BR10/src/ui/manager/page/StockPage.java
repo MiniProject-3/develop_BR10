@@ -185,7 +185,7 @@ public class StockPage extends JPanel{
 		ManagerDAO managerDAO = new ManagerDAO();
 		Connection con = getConnection();
 		List<ProductDTO> productList = managerDAO.selectAllProducts(con);
-		
+				
 		for (ProductDTO product : productList) {
 			if (num == 1 && product.getCategoryCode() == 1) {
 				String name = product.getProductName();
