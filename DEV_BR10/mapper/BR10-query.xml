@@ -75,6 +75,16 @@
 		  FROM INO
 	</entry>
 	
+	<!-- 
+	
+	<entry key="selectAllSalesProducts">
+		SELECT P.PRODUCT_NAME,
+		       INO
+		  FROM INO
+	</entry>
+	
+	 -->
+	
 	<entry key="updateGiftUse">
 	    UPDATE GIFT G
 	       SET G.GIFT_USE = ?
