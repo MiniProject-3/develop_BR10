@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 public class Gui_md extends JFrame {
 
 	private ImageKick ab = new ImageKick();
-
 	public Gui_md() {
 		this.setTitle("mini_BR10");
 		this.setBounds(600, 10, 600, 1000);
