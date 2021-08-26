@@ -25,12 +25,11 @@ public class Gui_md extends JFrame {
       mdPanel.setSize(600, 1000);
       mdPanel.setLayout(null);
        
-
-	  JPanel homePanel = new JPanel();
+     JPanel homePanel = new JPanel();
       homePanel.setLocation(50, 50);
       homePanel.setSize(50, 50);
       homePanel.setBackground(Color.WHITE);
-		
+      
       JButton butt2 = new JButton("홈버튼");          //  홈버튼
       butt2.setPreferredSize(new Dimension(50, 50));
 
@@ -86,6 +85,14 @@ public class Gui_md extends JFrame {
       butt[4].setIcon(ab.ImageKickButton("BR10_images/gui_order/Buttons_15.png", 25, 25));
 //      butt[4].setText("");
 //      butt[4].setBackground(new Color(255, 0, 0, 0));
+    
+      /* 결제 페이지 넘기기 */ 
+      butt[2].addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+         new Gui_hereOrToGo();
+      }
+   });
       
       /*다이얼로그 설정*/ 
       butt[3].addActionListener(new ActionListener() {
@@ -97,17 +104,6 @@ public class Gui_md extends JFrame {
          }
       });
       
-//      butt[2].addActionListener(new ActionListener() {  //액션 설정
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				Gui_hereOrToGo htgo = new Gui_hereOrToGo();
-//				changePanel(htgo);
-////				dispose();
-//			}
-//			private void changePanel(Gui_hereOrToGo htgo) {
-//				
-//			}
-//		});
       
       homePanel.add(butt2);
       this.add(homePanel);
@@ -119,4 +115,3 @@ public class Gui_md extends JFrame {
       revalidate();
    }
 }
-

@@ -35,7 +35,7 @@ public class Take_Out{
       homePanel.setSize(70, 100);
       homePanel.setBackground(Color.WHITE);
 
-      JButton butt2 = new JButton("Ȩ��ư");          //  Ȩ��ư
+      JButton butt2 = new JButton("홈버튼");          //  Ȩ��ư
       butt2.setPreferredSize(new Dimension(50, 50));
       homePanel.add(butt2);
       butt2.setText("");
@@ -58,29 +58,29 @@ public class Take_Out{
       Back.setSize(600, 50);
       Back.setBackground(new Color(255, 0, 0, 0));
       
-      JButton butt3 = new JButton("����");          //  ������ư
+      JButton butt3 = new JButton("이전");          //  ������ư
       butt3.setPreferredSize(new Dimension(100, 45));
       Back.add(butt3);
       butt3.setText("");
       butt3.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_16.jpg", 100, 50));
       butt3.setBorderPainted(false); // ��ư �׵θ� ��������
       
-//      butt3.addActionListener(new ActionListener() {  //�׼� ����
-//         @Override
-//         public void actionPerformed(ActionEvent e) {
-//        	 Gui_md gui = new Gui_md();
-//            changePanel(gui);
-//         }
-//         private void changePanel(StartMain startMain) {
-//         }
-//      });
+      butt3.addActionListener(new ActionListener() {  //�׼� ����
+          @Override
+          public void actionPerformed(ActionEvent e) {
+             Gui_md md = new Gui_md();
+             changePanel(md);
+          }
+          private void changePanel(Gui_md md) {
+          }
+       });
       
       JPanel Pay = new JPanel();
       Pay.setLocation(200,750);
       Pay.setSize(600, 50);
       Pay.setBackground(new Color(255, 0, 0, 0));
       
-      JButton butt4 = new JButton("����");          //  ������ư
+      JButton butt4 = new JButton("결제");          //  ������ư
       butt4.setPreferredSize(new Dimension(100, 45));
       Pay.add(butt4);
       butt4.setText("");
@@ -99,28 +99,28 @@ public class Take_Out{
          }
       });
                
-      JLabel label1 = new JLabel("�ҿ�ð�");
+      JLabel label1 = new JLabel("소요시간");
       label1.setLocation(100, 350);
       label1.setSize(150, 50);
       label1.setOpaque(true); 
       label1.setHorizontalAlignment(JLabel.CENTER);
       label1.setBackground(Color.pink);
       
-      JLabel label2 = new JLabel("������");
+      JLabel label2 = new JLabel("수저");
       label2.setLocation(100, 500);
       label2.setSize(150, 50);
       label2.setOpaque(true); 
       label2.setHorizontalAlignment(JLabel.CENTER);
       label2.setBackground(Color.pink);
       
-      JLabel label3 = new JLabel("��");
+      JLabel label3 = new JLabel("초");
       label3.setLocation(100, 650);
       label3.setSize(150, 50);
       label3.setOpaque(true); 
       label3.setHorizontalAlignment(JLabel.CENTER);
       label3.setBackground(Color.pink);
       
-      JLabel label4 = new JLabel("����");
+      JLabel label4 = new JLabel("포장");
       label4.setLocation(100, 200);
       label4.setSize(50, 50);
       label4.setOpaque(true); 

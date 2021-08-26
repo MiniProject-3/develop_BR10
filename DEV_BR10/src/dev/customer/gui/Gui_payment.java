@@ -54,7 +54,7 @@ public class Gui_payment extends JPanel{
       PaymentPanel.setLayout(null);
       PaymentPanel.setBackground(Color.WHITE);
 
-      String[] md_butt = { "����Ƽ��", "�޴��� ����" };
+      String[] md_butt = { "기프티콘", "휴대폰 결제" };
       JButton[] butt = new JButton[md_butt.length];
 
       for (int i = 0; i < butt.length; i++) {

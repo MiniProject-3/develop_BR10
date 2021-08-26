@@ -34,14 +34,14 @@ public class Take_In{
       homePanel.setSize(70, 100);
       homePanel.setBackground(Color.WHITE);
 
-      JButton butt2 = new JButton("È¨¹öÆ°");          //  È¨¹öÆ°
+      JButton butt2 = new JButton("í™ˆë²„íŠ¼");          //  È¨ï¿½ï¿½Æ°
       butt2.setPreferredSize(new Dimension(50, 50));
       homePanel.add(butt2);
       butt2.setText("");
       butt2.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_14.jpg", 50, 50));
-      butt2.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
+      butt2.setBorderPainted(false); // ï¿½ï¿½Æ° ï¿½×µÎ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       
-      butt2.addActionListener(new ActionListener() {  //¾×¼Ç ¼³Á¤
+      butt2.addActionListener(new ActionListener() {  //ï¿½×¼ï¿½ ï¿½ï¿½ï¿½ï¿½
          @Override
          public void actionPerformed(ActionEvent e) {
             StartMain startMain = new StartMain();
@@ -57,20 +57,20 @@ public class Take_In{
       Back.setSize(600, 50);
       Back.setBackground(new Color(255, 0, 0, 0));
       
-      JButton butt3 = new JButton("ÀÌÀü");          //  ÀÌÀü¹öÆ°
+      JButton butt3 = new JButton("ì´ì „");          
       butt3.setPreferredSize(new Dimension(100, 45));
       Back.add(butt3);
       butt3.setText("");
       butt3.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_16.jpg", 100, 50));
-      butt3.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
+      butt3.setBorderPainted(false); 
       
-      butt3.addActionListener(new ActionListener() {  //¾×¼Ç ¼³Á¤
+      butt3.addActionListener(new ActionListener() {  
          @Override
          public void actionPerformed(ActionEvent e) {
-            StartMain startMain = new StartMain();
-            changePanel(startMain);
+            Gui_md md = new Gui_md();
+            changePanel(md);
          }
-         private void changePanel(StartMain startMain) {
+         private void changePanel(Gui_md md) {
          }
       });
       
@@ -79,14 +79,14 @@ public class Take_In{
       Pay.setSize(600, 50);
       Pay.setBackground(new Color(255, 0, 0, 0));
       
-      JButton butt4 = new JButton("°áÁ¦");          //  °áÁ¦¹öÆ°
+      JButton butt4 = new JButton("ê²°ì œ");          
       butt4.setPreferredSize(new Dimension(100, 45));
       Pay.add(butt4);
       butt4.setText("");
       butt4.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_09.jpg", 100, 50));
-      butt4.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¼³Á¤ÇØÁ¦
+      butt4.setBorderPainted(false); 
       
-      butt4.addActionListener(new ActionListener() {  //¾×¼Ç ¼³Á¤
+      butt4.addActionListener(new ActionListener() {  
          @Override
          public void actionPerformed(ActionEvent e) {
             Gui_payment payment = new Gui_payment();
@@ -98,21 +98,21 @@ public class Take_In{
          }
       });
       
-      JLabel label1 = new JLabel("¼ù°¡¶ô");
+      JLabel label1 = new JLabel("ìˆ˜ì €");
       label1.setLocation(100, 400);
       label1.setSize(150, 50);
       label1.setOpaque(true); 
       label1.setHorizontalAlignment(JLabel.CENTER);
       label1.setBackground(Color.pink);
       
-      JLabel label2 = new JLabel("ÃÊ");
+      JLabel label2 = new JLabel("ì´ˆ");
       label2.setLocation(100, 550);
       label2.setSize(150, 50);
       label2.setOpaque(true); 
       label2.setHorizontalAlignment(JLabel.CENTER);
       label2.setBackground(Color.pink);
       
-      JLabel label3 = new JLabel("¸ÅÀå");
+      JLabel label3 = new JLabel("ë§¤ì¥");
       label3.setLocation(100, 200);
       label3.setSize(50, 50);
       label3.setOpaque(true); 
