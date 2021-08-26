@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Gui_md extends JFrame {
-   
+  
    private ImageKick ab = new ImageKick();
    
    public Gui_md() {
@@ -107,3 +107,4 @@ public class Gui_md extends JFrame {
       revalidate();
    }
 }
+
