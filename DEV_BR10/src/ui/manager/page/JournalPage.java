@@ -6,10 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 
 import dev.customer.gui.ImageKick;
 import ui.manager.MainFrame;
@@ -38,31 +35,17 @@ public class JournalPage extends JPanel{
 		viewPanel1.setBorder(line);
 		viewPanel1.setBackground(Color.white);
 		
-		createTable(viewPanel1);
-		
 		this.add(viewPanel1);
-	}
-	
-	public void createTable(JPanel panel) {
-		String header[] = {"메뉴명", "가격", "판매량", "총액"};
-		DefaultTableModel model = new DefaultTableModel(header, 0);
-		JTable stockTable = new JTable(model);
-		JScrollPane pane = new JScrollPane(stockTable);
-		
-		pane.setLocation(10, 10);
-		pane.setSize(480, 680);
-		
-		panel.add(pane);
 	}
 	
 	public void BackButton() {
 		JButton back = new JButton();
 		
 		back.setLocation(40,850);
-		back.setSize(100,70);
+		back.setSize(100,50);
 		back.setBorderPainted(false);
 		
-		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 70));
+		back.setIcon(kb.ImageKickButton("BR10_images/Back.jpg", 100, 50));
 		
 		back.addActionListener(new ActionListener() {
 			
