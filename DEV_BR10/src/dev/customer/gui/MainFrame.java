@@ -114,6 +114,7 @@ public class MainFrame extends JFrame {
 			private void changePanel(StartMain startMain) {
 			}
 		});
+		
 		panel.add(homePanel);
 		panel.add(controllPanel);
 
