@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
+import dev.dto.SalesProductDTO;
 
 public class ManagerDAO {
    
@@ -26,6 +27,9 @@ public class ManagerDAO {
          e.printStackTrace();
       }
    }
+   
+   /* 판매량 조회 selectAllSalesProducts -- 작성중*/
+   
    
    /* 재고 조회 selectAllProducts */
    public List<ProductDTO> selectAllProducts(Connection con) {
