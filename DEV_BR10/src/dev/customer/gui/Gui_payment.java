@@ -3,6 +3,8 @@ package dev.customer.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,17 +32,29 @@ public class Gui_payment extends JPanel{
       homePanel.setSize(50, 50);
       homePanel.setBackground(Color.WHITE);
 
-      JButton butt2 = new JButton("È¨¹öÆ°");
+      JButton butt2 = new JButton("í™ˆë²„íŠ¼");          //  í™ˆë²„íŠ¼
       butt2.setPreferredSize(new Dimension(50, 50));
       homePanel.add(butt2);
-
+      butt2.setText("");
+      butt2.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_14.jpg", 50, 50));
+      butt2.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì„¤ì •í•´ì œ
+		
+      butt2.addActionListener(new ActionListener() {  //ì•¡ì…˜ ì„¤ì •
+    	  @Override
+			public void actionPerformed(ActionEvent e) {
+				StartMain startMain = new StartMain();
+				changePanel(startMain);
+			}
+			private void changePanel(StartMain startMain) {
+			}
+		});
       JPanel PaymentPanel = new JPanel();
       PaymentPanel.setLocation(125, 250);
       PaymentPanel.setSize(350, 450);
       PaymentPanel.setLayout(null);
       PaymentPanel.setBackground(Color.WHITE);
 
-      String[] md_butt = { "±âÇÁÆ¼ÄÜ", "ÈŞ´ëÆù °áÁ¦" };
+      String[] md_butt = { "ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½", "ï¿½Ş´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" };
       JButton[] butt = new JButton[md_butt.length];
 
       for (int i = 0; i < butt.length; i++) {
