@@ -106,14 +106,15 @@ public class MainFrame extends JFrame {
 //			}
 //		});
 
+
 		/* 결제버튼 연결 */
 		butt4[2].addActionListener(new ActionListener() {  
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Gui_md();
 				dispose();
-			}
-		});
+
+		}});
 		
 		panel.add(homePanel);
 		panel.add(controllPanel);
