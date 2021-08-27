@@ -191,35 +191,55 @@ public class StockPage extends JPanel{
 				String name = product.getProductName();
 				String preStock = product.getStock() + "";
 				String sellnum = null;
-				String stocknum = (product.getStock() - 0) + "";
+				String stocknum = null;
+				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
+					sellnum = product.getQty() + "";
+					stocknum = (product.getStock() - product.getQty()) + "";
+				}
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 2 && product.getCategoryCode() == 2) {
 				String name = product.getProductName();
 				String preStock = product.getStock() + "";
 				String sellnum = null;
-				String stocknum = (product.getStock() - 0) + "";
+				String stocknum = null;
+				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
+					sellnum = product.getQty() + "";
+					stocknum = (product.getStock() - product.getQty()) + "";
+				}
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 3 && product.getCategoryCode() == 3) {
 				String name = product.getProductName();
 				String preStock = product.getStock() + "";
 				String sellnum = null;
-				String stocknum = (product.getStock() - 0) + "";
+				String stocknum = null;
+				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
+					sellnum = product.getQty() + "";
+					stocknum = (product.getStock() - product.getQty()) + "";
+				}
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 4 && product.getCategoryCode() == 4) {
 				String name = product.getProductName();
 				String preStock = product.getStock() + "";
 				String sellnum = null;
-				String stocknum = (product.getStock() - 0) + "";
+				String stocknum = null;
+				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
+					sellnum = product.getQty() + "";
+					stocknum = (product.getStock() - product.getQty()) + "";
+				}
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 5 && product.getCategoryCode() == 5) {
 				String name = product.getProductName();
 				String preStock = product.getStock() + "";
 				String sellnum = null;
-				String stocknum = (product.getStock() - 0) + "";
+				String stocknum = null;
+				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
+					sellnum = product.getQty() + "";
+					stocknum = (product.getStock() - product.getQty()) + "";
+				}
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			}

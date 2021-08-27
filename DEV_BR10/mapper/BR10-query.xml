@@ -91,6 +91,7 @@
 	     WHERE G.GIFT_NUM = ?
 	</entry>
 	<entry key="updateUserPoint">
+
 	    UPDATE BR_USER P
 	       SET P.POINT = ?
 	     WHERE P.PHONE_NUM = ?
@@ -102,12 +103,16 @@
 
 	<!-- manager -->
 	<entry key="selectAllProducts">
-	    SELECT PRODUCT_NUM,
-	           PRODUCT_NAME,
-	           PRODUCT_PRICE,
-	           CATEGORY_CODE,
-	           STOCK
-	      FROM PRODUCT
+	    SELECT
+  	           A.PRODUCT_NUM
+  	         , A.PRODUCT_NAME
+  	         , A.PRODUCT_PRICE
+       	     , A.CATEGORY_CODE
+  	         , A.STOCK
+  	         , B.QTY
+  	         , B.PAYMENT
+         FROM PRODUCT A
+         LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
 	</entry>
 	<entry key="selectAllPays">
 		SELECT PAY_NUM,
