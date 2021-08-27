@@ -14,6 +14,8 @@ public class ProductDTO implements Serializable{
 	private Integer productPrice;	// 상품가격
 	private int categoryCode;		// 카테고리코드
 	private Integer stock;			// 재고
+	private int qty;
+	private String payment;
 	
 	public ProductDTO() {
 	}
@@ -68,6 +70,22 @@ public class ProductDTO implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public int getQty() {
+		return qty;
+	}
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
 	}
 
 	@Override

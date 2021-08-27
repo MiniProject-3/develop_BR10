@@ -6,15 +6,16 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import dev.customer.gui.ImageKick;
 import dev.dto.PayDTO;
-import dev.dto.ProductDTO;
 import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
@@ -48,10 +49,16 @@ public class JournalPage extends JPanel{
 	}
 	
 	public void createTable(JPanel panel) {
-		String header[] = {"결제번호", "결제시간", "총결제금액", "결재수단"};
+		String header[] = {"결제번호", "결제시간", "총결제금액", "결제수단"};
 		DefaultTableModel model = new DefaultTableModel(header, 0);
 		JTable stockTable = new JTable(model);
 		JScrollPane pane = new JScrollPane(stockTable);
+		DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+	    center.setHorizontalAlignment(JLabel.CENTER);
+		
+	    stockTable.getColumn("결제번호").setCellRenderer(center);
+	    stockTable.getColumn("총결제금액").setCellRenderer(center);
+	    stockTable.getColumn("결제수단").setCellRenderer(center);
 		
 		ManagerController manage = new ManagerController();
 		List<PayDTO> jounal = manage.selectAllPays();
@@ -59,8 +66,12 @@ public class JournalPage extends JPanel{
 			String payNum = pay.getPayNum() + "";
 			String payTime = pay.getPayTime();
 			String payTotal = pay.getPayTotal() + "";
-			String payMenu = pay.getPaymentNum() + "";
-			
+			String payMenu = null;
+			if (pay.getPaymentNum() == 1) {
+				payMenu = "QR 결제";
+			} else {
+				payMenu = "기프티콘 결제";
+			}
 			String[] mix = {payNum, payTime, payTotal, payMenu};
 			model.addRow(mix);
 		}
@@ -70,6 +81,8 @@ public class JournalPage extends JPanel{
 		
 		panel.add(pane);
 	}
+	
+	
 	
 	public void BackButton() {
 		JButton back = new JButton();
@@ -91,7 +104,6 @@ public class JournalPage extends JPanel{
 		this.add(back);
 	}
 
-	
 	public void changePanel(JPanel panel) {
 		mf.remove(this);
 		mf.add(panel);

@@ -2,13 +2,116 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment></comment>
+
+	<!-- customer -->
+	<entry key="insertOrder">
+	 INSERT
+	      INTO BR_ORDER O
+	    (
+	      O.ORDER_SEQ
+	    , O.PRODUCT_NUM
+	    , O.PHONE_NUM
+	   	, O.ORDER_NUM
+	    , O.QTY
+	    , O.PAYMENT
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
+	<entry key="insertPay">
+	 INSERT
+	      INTO PAY P
+	    (
+	      P.PAY_NUM
+		, P.PHONE_NUM
+		, P.PAY_TIME
+		, P.PAY_TOTAL
+		, P.PAYMENT_NUM
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
+	<entry key="insertIno">
+	 INSERT
+	      INTO INO I
+	    (
+	      I.INO_NUM
+		, I.INO
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     )
+	</entry>
+	
+	<entry key="selectAllUsers">
+		SELECT PHONE_NUM,
+		       POINT,
+		       PHONE_CO
+		  FROM BR_USER
+	</entry>
+	<entry key="selectAllGifts">
+		SELECT GIFT_NUM,
+		       GIFT_USE
+		  FROM GIFT
+	</entry>
+	<entry key="selectAllInos">
+		SELECT INO_NUM,
+		       INO
+		  FROM INO
+	</entry>
+	
+	<!-- 
+	
+	<entry key="selectAllSalesProducts">
+		SELECT P.PRODUCT_NAME,
+		       INO
+		  FROM INO
+	</entry>
+	
+	 -->
+	
+	<entry key="updateGiftUse">
+	    UPDATE GIFT G
+	       SET G.GIFT_USE = ?
+	     WHERE G.GIFT_NUM = ?
+	</entry>
+	<entry key="updateProductPrice">
+	    UPDATE BR_USER P
+	       SET P.POINT = ?
+	     WHERE P.PHONE_NUM = ?
+	</entry>
+	<entry key="updateManagerKey">
+	    UPDATE MANAGER M
+	       SET M.MANAGER_KEY = ?
+	</entry>
+
+	<!-- manager -->
 	<entry key="selectAllProducts">
-	    SELECT PRODUCT_NUM,
-	           PRODUCT_NAME,
-	           PRODUCT_PRICE,
-	           CATEGORY_CODE,
-	           STOCK
-	      FROM PRODUCT
+	    SELECT
+  	           A.PRODUCT_NUM
+  	         , A.PRODUCT_NAME
+  	         , A.PRODUCT_PRICE
+       	     , A.CATEGORY_CODE
+  	         , A.STOCK
+  	         , B.QTY
+  	         , B.PAYMENT
+         FROM PRODUCT A
+         LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
 	</entry>
 	<entry key="selectAllPays">
 		SELECT PAY_NUM,
