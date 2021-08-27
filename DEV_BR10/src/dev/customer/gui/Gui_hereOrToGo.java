@@ -19,6 +19,7 @@ public class Gui_hereOrToGo extends JPanel {
       mf.setBounds(600, 10, 600, 1000);
       mf.setLayout(null);
 
+      
       ImageKickPanel panel = new ImageKickPanel(
       new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
       panel.setLocation(0, 0);
