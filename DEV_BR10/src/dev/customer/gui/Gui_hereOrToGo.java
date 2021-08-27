@@ -19,9 +19,8 @@ public class Gui_hereOrToGo extends JPanel {
       mf.setBounds(600, 10, 600, 1000);
       mf.setLayout(null);
 
-      
       ImageKickPanel panel = new ImageKickPanel(
-      new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+            new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
       panel.setLocation(0, 0);
       panel.setSize(600, 1000);
       panel.setBackground(Color.WHITE);
@@ -48,7 +47,8 @@ public class Gui_hereOrToGo extends JPanel {
             new StartMain();
             mf.dispose(); // 창 꺼짐
          }
-         });
+
+      });
 
       String[] controll = { "이전" };
 
@@ -66,13 +66,13 @@ public class Gui_hereOrToGo extends JPanel {
       butt4[0].setSize(100, 50);
       butt4[0].setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_16.jpg", 100, 50));
       butt4[0].setBorderPainted(false); // 버튼 테두리 설정해제
-      butt4[0].addActionListener(new ActionListener() {  //액션 설정
-        @Override
+      butt4[0].addActionListener(new ActionListener() { // 액션 설정
+         @Override
          public void actionPerformed(ActionEvent e) {
-            new Gui_md();
+            new StartMain();
             mf.dispose(); // 창 꺼짐
          }
-         });
+      });
 
       String[] hg = { "매장", "포장" };
       JButton[] butt = new JButton[hg.length];
@@ -89,17 +89,22 @@ public class Gui_hereOrToGo extends JPanel {
       butt[1].setSize(110, 100);
       butt[0].setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_13.jpg", 110, 150));
       butt[1].setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_10.jpg", 110, 150));
-    
+      
+      
       butt[0].addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
             Take_In takein = new Take_In();
             changePanel(takein);
+            
          }
+
+      private void changePanel(Take_In takein) {
+         // TODO Auto-generated method stub
          
-         private void changePanel(Take_In takein) {
-         }
-         });
+      }
+
+      });
 
       butt[1].addActionListener(new ActionListener() {
          @Override
@@ -110,7 +115,7 @@ public class Gui_hereOrToGo extends JPanel {
 
          private void changePanel(Take_Out takeout) {
          }
-         });
+      });
 
       butt[0].setText("");
       butt[1].setText("");
