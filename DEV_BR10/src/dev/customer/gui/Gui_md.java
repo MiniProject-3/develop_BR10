@@ -61,7 +61,6 @@ public class Gui_md extends JFrame {
 		for (int i = 0; i < md_butt.length; i++) {
 			butt[i] = new JButton(md_butt[i]);
 		}
-
 		for (int i = 0; i < md_butt.length; i++) {
 			controllPanel.add(butt[i]);
 		}
@@ -89,7 +88,7 @@ public class Gui_md extends JFrame {
 //      butt[4].setText("");
 //      butt[4].setBackground(new Color(255, 0, 0, 0));
 
-		/* 결제 페이지 넘기기 */
+		/* 매장포장 페이지 넘기기 */
 		butt[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -103,7 +102,15 @@ public class Gui_md extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "옵션을 선택하세요.");
 //            dispose();
-//            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}
+		});
+		
+		/* md상품 취소 -> 메뉴선택화면 전환 */ 
+		butt[4].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MainFrame();
+				dispose();
 			}
 		});
 

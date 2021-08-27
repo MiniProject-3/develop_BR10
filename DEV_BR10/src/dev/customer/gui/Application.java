@@ -6,10 +6,16 @@ public class Application {
 
 	public static void main(String[] args) {
 
-//  	new StartMain();
+  	new StartMain();
 //  	
-		Gui_point af = new Gui_point();
-				af.point();
+		
+//		Gui_hereOrToGo ap = new Gui_hereOrToGo();
+//				new Gui_hereOrToGo();
+		
+		
+		
+//		Gui_point af = new Gui_point();
+//				af.point();
 				
 //				Gui_basket as = new Gui_basket();
 //				as.Gui_basket();
