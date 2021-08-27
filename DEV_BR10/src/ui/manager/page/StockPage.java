@@ -53,7 +53,7 @@ public class StockPage extends JPanel{
 		viewMoney();
 	}
 	
-	// 교체시 보여질 화면 생성자
+	// 교체 시 보여질 화면 생성자
 	public StockPage(MainFrame mainFrame, int num) {
 		JPanel pan = new JPanel();
 		this.mf = mainFrame;

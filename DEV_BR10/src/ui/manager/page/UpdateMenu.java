@@ -134,12 +134,13 @@ public class UpdateMenu extends JPanel{
 		plusbutton.setBorderPainted(false);
 		plusbutton.setIcon(kb.ImageKickButton("BR10_images/Plus.jpg", 65, 65));
 		
+		/* 메뉴 추가 화면 띄우기 */
 		plusbutton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				
+				insertMenuPage insertMenuPage = new insertMenuPage(mf);
+				changePanel(insertMenuPage);	
 			}
 			
 		});
@@ -243,7 +244,6 @@ public class UpdateMenu extends JPanel{
 		this.add(dessert);
 		this.add(drink);
 		this.add(md);
-		
 	}
 	
 	public void changePanel(JPanel panel) {
