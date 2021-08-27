@@ -90,7 +90,8 @@
 	       SET G.GIFT_USE = ?
 	     WHERE G.GIFT_NUM = ?
 	</entry>
-	<entry key="updateProductPrice">
+	<entry key="updateUserPoint">
+
 	    UPDATE BR_USER P
 	       SET P.POINT = ?
 	     WHERE P.PHONE_NUM = ?
@@ -161,5 +162,14 @@
 	       FROM PROUDCT P
 	      WHERE P.PRODUCT_NUM = ?
 	</entry>
-	
+	<entry key="selectOrder">
+	    SELECT
+	           ORDER_SEQ
+	         , PRODUCT_NUM
+	         , PHONE_NUM
+	         , ORDER_NUM
+	         , QTY
+	         , PAYMENT
+	      FROM BR_ORDER
+	</entry>
 </properties>
