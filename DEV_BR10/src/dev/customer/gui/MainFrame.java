@@ -94,17 +94,15 @@ public class MainFrame extends JFrame {
 		});
 		
 				
-//		/* 장바구니에 연결 */
-//		butt4[1].addActionListener(new ActionListener() {  
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				StartMain startMain = new StartMain();
-//				changePanel(startMain);
-//				dispose();
-//			}
-//			private void changePanel(StartMain startMain) {
-//			}
-//		});
+		/* 장바구니에 연결 */
+		butt4[1].addActionListener(new ActionListener() {  
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_basket basket = new Gui_basket();
+				basket.Gui_basket();
+				dispose();
+			}
+		});
 
 
 		/* 결제버튼 연결 */
