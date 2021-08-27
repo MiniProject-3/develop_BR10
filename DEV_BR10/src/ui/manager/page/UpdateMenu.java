@@ -65,6 +65,15 @@ public class UpdateMenu extends JPanel{
 		plusbutton.setBorderPainted(false);
 		plusbutton.setIcon(kb.ImageKickButton("BR10_images/Plus.jpg", 65, 65));
 		
+		plusbutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				
+			}
+			
+		});
 		this.add(plusbutton);
 	}
 	

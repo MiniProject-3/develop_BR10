@@ -90,7 +90,7 @@
 	       SET G.GIFT_USE = ?
 	     WHERE G.GIFT_NUM = ?
 	</entry>
-	<entry key="updateProductPrice">
+	<entry key="updateUserPoint">
 	    UPDATE BR_USER P
 	       SET P.POINT = ?
 	     WHERE P.PHONE_NUM = ?

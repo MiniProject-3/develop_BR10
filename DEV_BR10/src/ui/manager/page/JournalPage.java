@@ -56,7 +56,6 @@ public class JournalPage extends JPanel{
 		ManagerController manage = new ManagerController();
 		List<PayDTO> jounal = manage.selectAllPays();
 		
-		System.out.println(jounal);
 		for (PayDTO pay : jounal) {
 			String payNum = pay.getPayNum() + "";
 			String payTime = pay.getPayTime();
