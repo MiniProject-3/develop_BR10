@@ -24,6 +24,7 @@ import dev.customer.model.dao.CustomerDAO;
 import dev.customer.model.service.CustomerService;
 import dev.dto.OrderDTO;
 import dev.dto.PayDTO;
+import dev.dto.ProductDTO;
 import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
@@ -69,10 +70,11 @@ public class JournalPage extends JPanel{
 	    stockTable.getColumn("결제수단").setCellRenderer(center);
 	    
 		ManagerController manage = new ManagerController();
-		List<PayDTO> jounal = manage.selectAllPays();
 		CustomerService cus = new CustomerService();
+		
+		List<PayDTO> jounal = manage.selectAllPays();
 		List<OrderDTO> order = cus.selectOrder();
-		ArrayList<String> ar = new ArrayList<String>();
+		List<ProductDTO> productList = manage.selectAllProducts();
 		
 		for (PayDTO pay : jounal) {
 			String payNum = pay.getPayNum() + "";
@@ -88,6 +90,10 @@ public class JournalPage extends JPanel{
 			model.addRow(mix);
 		}
 		
+		// 주문한 상품을 조회하기위한 ArrayList
+		ArrayList<String> ar = new ArrayList<String>();
+		
+		// 테이블 클릭시 판매된 상품조회 기능
 		stockTable.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -104,29 +110,27 @@ public class JournalPage extends JPanel{
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				// 테이블안의 행을 클릭시 해당 행의 값을 읽어옴
 				row = stockTable.getSelectedRow();
 				for (OrderDTO orderDTO : order) {
 					if (orderDTO.getOrderNum() == jounal.get(row).getPayNum()) {
-						String menu = orderDTO.getProductNum() + "";
-						ar.add(menu);
+						for (ProductDTO product : productList) {
+							if (product.getProductNum() == orderDTO.getProductNum()) {
+								String menu = product.getProductName();
+								ar.add(menu);
+							}
+						}
 					}
 				}
 				JOptionPane.showMessageDialog(stockTable,ar);
 				ar.clear();
-				
 			}
-			
 		});
-		
-		
-		
 		pane.setLocation(10, 10);
 		pane.setSize(480, 680);
 		
 		panel.add(pane);
 	}
-	
-	
 	
 	public void BackButton() {
 		JButton back = new JButton();
