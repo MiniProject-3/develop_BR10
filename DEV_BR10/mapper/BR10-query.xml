@@ -75,16 +75,6 @@
 		  FROM INO
 	</entry>
 	
-	<!-- 
-	
-	<entry key="selectAllSalesProducts">
-		SELECT P.PRODUCT_NAME,
-		       INO
-		  FROM INO
-	</entry>
-	
-	 -->
-	
 	<entry key="updateGiftUse">
 	    UPDATE GIFT G
 	       SET G.GIFT_USE = ?
@@ -102,6 +92,12 @@
 	</entry>
 
 	<!-- manager -->
+	
+	<entry key="selectProductLastSeq">
+	    SELECT MAX(PRODUCT_NUM)
+	      FROM PRODUCT 
+	</entry>
+	
 	<entry key="selectAllProducts">
 	    SELECT
   	           A.PRODUCT_NUM
@@ -127,7 +123,7 @@
 	      INTO PRODUCT P
 	    (
 	      P.PRODUCT_NUM
-	    , P.PROPDUCT_NAME
+	    , P.PRODUCT_NAME
 	    , P.PRODUCT_PRICE
 	    , P.CATEGORY_CODE
 	    , P.STOCK
@@ -141,11 +137,11 @@
 	     , ?
 	     )
 	</entry>
+	
 	<entry key="updateProductPrice">
 	    UPDATE PRODUCT P
 	       SET P.PRODUCT_PRICE = ?
 	     WHERE P.PRODUCT_NUM = ?
-	    
 	</entry>
 	<entry key="updateProductStock">
 	    UPDATE PRODUCT P
@@ -162,14 +158,5 @@
 	       FROM PROUDCT P
 	      WHERE P.PRODUCT_NUM = ?
 	</entry>
-	<entry key="selectOrder">
-	    SELECT
-	           ORDER_SEQ
-	         , PRODUCT_NUM
-	         , PHONE_NUM
-	         , ORDER_NUM
-	         , QTY
-	         , PAYMENT
-	      FROM BR_ORDER
-	</entry>
+	
 </properties>

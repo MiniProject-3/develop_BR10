@@ -6,15 +6,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import dev.dto.OrderDTO;
 
 public class MainFrame extends JFrame {
 	private JPanel main = null;
@@ -113,6 +109,7 @@ public class MainFrame extends JFrame {
 				new Gui_md();
 				dispose();
 		}});
+		
 		panel.add(homePanel);
 		panel.add(controllPanel);
 
