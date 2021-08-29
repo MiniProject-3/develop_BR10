@@ -274,4 +274,38 @@ public class CustomerDAO {
 		      return result;
 		   }
 	
+	   public List<OrderDTO> selectOrder(Connection con) {
+		   
+		   	PreparedStatement pstmt = null;
+		    ResultSet rset = null;
+		      
+		    List<OrderDTO> orderList = null;
+		      
+		    String query = prop.getProperty("selectOrder");
+		    
+		    try {
+				pstmt = con.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				orderList = new ArrayList<OrderDTO>();
+				
+				while(rset.next()) {
+					OrderDTO order = new OrderDTO();
+					order.setOrderSeq(rset.getInt("ORDER_SEQ"));
+					order.setProductNum(rset.getInt("PRODUCT_NUM"));
+					order.setPhoneNum(rset.getString("PHONE_NUM"));
+					order.setOrderNum(rset.getInt("ORDER_NUM"));
+					order.setQty(rset.getInt("QTY"));
+					order.setPayment(rset.getString("PAYMENT"));
+					
+					orderList.add(order);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+		         close(rset);
+		         close(pstmt); 
+			}
+		   return orderList;
+	   }
 }
