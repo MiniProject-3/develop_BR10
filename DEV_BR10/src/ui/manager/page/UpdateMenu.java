@@ -6,7 +6,10 @@ import static dev.common.JDBCTemplate.getConnection;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -20,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 import dev.customer.gui.ImageKick;
 import dev.dto.ProductDTO;
+import dev.manager.controller.ManagerController;
 import dev.manager.model.dao.ManagerDAO;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
@@ -75,6 +79,10 @@ public class UpdateMenu extends JPanel{
 		DefaultTableCellRenderer right = new DefaultTableCellRenderer();
 		right.setHorizontalAlignment(JLabel.RIGHT);
 		
+		ManagerController managerController = new ManagerController();
+		List<ProductDTO> curProduct = managerController.selectAllProducts();
+		// 기존 상품 모두 저장
+		
 		stockTable.getColumn("가격").setCellRenderer(right);
 		stockTable.getColumn("수량").setCellRenderer(right);
 		
@@ -83,6 +91,55 @@ public class UpdateMenu extends JPanel{
 		pane.setSize(480, 680);
 		
 		panel.add(pane);
+
+		/* 기존 값 저장 list */
+		ArrayList<String> selectedProduct = new ArrayList<String>(); 
+		
+		/* 해당되는 메뉴 선택하여 값 수정 */
+		stockTable.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				row = stockTable.getSelectedRow();
+				String productNum = curProduct.get(row).getProductNum() + "";
+				String productName = curProduct.get(row).getProductName();
+				String productPrice = curProduct.get(row).getProductPrice() + "";
+				String categoryCode = curProduct.get(row).getCategoryCode() + "";
+				String stock = curProduct.get(row).getStock() + "";
+				String qty = curProduct.get(row).getQty() + "";
+
+				selectedProduct.add(productNum);		// 상품번호 0
+				selectedProduct.add(productName);		// 상품명 1
+				selectedProduct.add(productPrice);		// 상품가격 2
+				selectedProduct.add(categoryCode);		// 카테고리코드 3
+				selectedProduct.add(stock);				// 재고 4
+				
+				/* 메뉴 수정 창으로 이동 */
+				ModifyMenuPage modifyMenuPage = new ModifyMenuPage(mf, selectedProduct);
+				changePanel(modifyMenuPage);	
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+			}
+		});
+		
 	}
 	
 	public void addTable(DefaultTableModel model, int num) {
@@ -125,8 +182,8 @@ public class UpdateMenu extends JPanel{
 			}
 		}
 		
-		/* 해당되는 메뉴 선택하여 값 수정 */
-		/**/
+		
+		
 		close(con);
 	}
 	

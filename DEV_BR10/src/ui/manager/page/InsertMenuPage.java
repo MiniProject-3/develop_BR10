@@ -103,7 +103,7 @@ public class InsertMenuPage extends JPanel {
             }
       });
 
-      JLabel labelStock = new JLabel("\uC218\uB7C9");
+      JLabel labelStock = new JLabel("재고");
       labelStock.setHorizontalAlignment(SwingConstants.CENTER);
       labelStock.setFont(new Font("돋움", Font.BOLD, 20));
       labelStock.setBounds(63, 589, 82, 50);

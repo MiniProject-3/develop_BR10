@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -142,6 +143,7 @@ public class CustomerDAO {
 	      return result;
 	}
 	
+	/* 확인 후 삭제 */
 	/* 관리자키 변경(업데이트) */
 	public int updateManagerKey(Connection con, int managerKey) {
 		
@@ -196,7 +198,7 @@ public class CustomerDAO {
 	   }	
 	
 	/* 기프티콘 내역 업데이트(사용) */
-	public int updateGiftUse(Connection con, int giftUse, int giftNum) {
+	public int updateGiftUse(Connection con, String giftUse, int giftNum) {
 		
 		 PreparedStatement pstmt = null;
 	      int result = 0;
@@ -205,7 +207,7 @@ public class CustomerDAO {
 	      
 	      try {
 	         pstmt = con.prepareStatement(query);
-	         pstmt.setInt(1,giftUse);
+	         pstmt.setString(1,giftUse);
 	         pstmt.setInt(2,giftNum);
 	         
 	         result = pstmt.executeUpdate();
@@ -262,6 +264,13 @@ public class CustomerDAO {
 		         pstmt = con.prepareStatement(query);
 		         pstmt.setInt(1, ino.getInoNum());
 		         pstmt.setString(2, ino.getIno());
+		         /* NULL 인 경우 판단하기 */
+		         if (ino.getQty() == null) {
+		        	 pstmt.setNull(3, Types.INTEGER);
+		         } else {        	 
+		        	 pstmt.setInt(3, ino.getQty());
+		         }
+		         pstmt.setInt(4, ino.getProductNum());
 		         
 		         result = pstmt.executeUpdate();
 		      } catch (SQLException e) {
@@ -269,8 +278,6 @@ public class CustomerDAO {
 		      } finally {
 		         close(pstmt);
 		      }
-		      
-
 		      return result;
 		   }
 	

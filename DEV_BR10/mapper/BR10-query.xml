@@ -50,10 +50,14 @@
 	    (
 	      I.INO_NUM
 		, I.INO
+		, I.QTY
+		, I.PRODUCT_NUM
 	     ) 
 	     VALUES
 	     (
 	       ?
+	     , ?
+	     , ?
 	     , ?
 	     )
 	</entry>

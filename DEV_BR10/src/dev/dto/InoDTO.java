@@ -17,7 +17,7 @@ public class InoDTO implements Serializable{
 	public InoDTO() {
 	}
 
-	public InoDTO(int inoNum, String ino, int qty, int productNum) {
+	public InoDTO(int inoNum, String ino, Integer qty, int productNum) {
 		this.inoNum = inoNum;
 		this.ino = ino;
 		this.qty = qty;
@@ -40,11 +40,11 @@ public class InoDTO implements Serializable{
 		this.ino = ino;
 	}
 
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
