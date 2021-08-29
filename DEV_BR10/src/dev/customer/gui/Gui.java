@@ -89,13 +89,11 @@ public class Gui extends JPanel {
 				Gui_icecream icecream = new Gui_icecream();
 				changePanel(icecream.gui_icecream());
 			}
-
 			private void changePanel(JPanel icecream) {
 				mf.remove(main);
 				main = icecream;
 				mf.add(main);
 				revalidate();
-
 			}
 		});
 		
@@ -234,6 +232,7 @@ public class Gui extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Gui_drink drink = new Gui_drink();
 				changePanel(drink.gui_drink());
+	
 			}
 
 			private void changePanel(JPanel drink) {
@@ -243,7 +242,6 @@ public class Gui extends JPanel {
 				revalidate();
 			}
 		});
-		
 
 		mf.add(main);
 		mf.add(categoryPanel);

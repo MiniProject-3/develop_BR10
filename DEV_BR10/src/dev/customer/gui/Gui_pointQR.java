@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class Gui_point extends JFrame {
+public class Gui_pointQR extends JFrame {
 
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
@@ -28,7 +28,7 @@ public class Gui_point extends JFrame {
 		mf.setLayout(null);
 
 		ImageKickPanel panel = new ImageKickPanel(
-				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+		new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setLocation(0, 0);
 		panel.setSize(600, 1000);
 		panel.setBackground(Color.WHITE);
@@ -99,21 +99,24 @@ public class Gui_point extends JFrame {
 				} else {
 					
 					JOptionPane.showMessageDialog(null, "100p 적립 예정입니다.");
-					Gui_gifticon Gcon = new Gui_gifticon();
-					Gcon.gift();
+					new QR();
 					dispose();
-						}
+					
+				}
 			}
 		});
 
 		butt4.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Gui_gifticon Gcon = new Gui_gifticon();
-				   Gcon.gift();
-				   dispose();
-					}
-				});
+		
+		QR qr = new QR();
+		changePanel(qr);
+		dispose();
+	}
+	private void changePanel(QR qr) {
+	}
+});
 
 		panel.add(giftPanel);
 		panel.add(homePanel);

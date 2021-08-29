@@ -22,7 +22,6 @@ public class MainFrame extends JFrame {
 		this.setBounds(600, 10, 600, 1000);
 		this.setLayout(null);
 
-
 		ImageKickPanel panel = new ImageKickPanel(
 		new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setSize(600, 1000);
@@ -93,7 +92,6 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
-				
 		/* 장바구니에 연결 */
 		butt4[1].addActionListener(new ActionListener() {  
 			@Override
@@ -104,14 +102,12 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-
 		/* 결제버튼 연결 */
 		butt4[2].addActionListener(new ActionListener() {  
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Gui_md();
 				dispose();
-
 		}});
 		
 		panel.add(homePanel);

@@ -23,7 +23,7 @@ public class Gui_basket extends JFrame {
 		mf.setLayout(null);
 
 		ImageKickPanel panel = new ImageKickPanel(
-				new ImageIcon("BR10_images/gui_order/bg_07.jpg").getImage().getScaledInstance(600, 1000, 3));
+		new ImageIcon("BR10_images/gui_order/bg_07.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setLocation(0, 0);
 		panel.setSize(600, 1000);
 		panel.setBackground(Color.WHITE);
@@ -44,7 +44,6 @@ public class Gui_basket extends JFrame {
 				new StartMain();
 				mf.dispose(); // 창 꺼짐
 			}
-
 		});
 
 		JPanel controllPanel = new JPanel();
@@ -80,7 +79,6 @@ public class Gui_basket extends JFrame {
 				new StartMain();
 				mf.dispose(); // 창 꺼짐
 			}
-
 		});
 
 		butt4[1].addActionListener(new ActionListener() { // 액션 설정
@@ -89,7 +87,6 @@ public class Gui_basket extends JFrame {
 				new Gui_md();
 				mf.dispose(); // 창 꺼짐
 			}
-
 		});
 
 		panel.add(homePanel);
@@ -98,6 +95,5 @@ public class Gui_basket extends JFrame {
 		mf.add(panel);
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mf.setVisible(true);
-
 	}
 }

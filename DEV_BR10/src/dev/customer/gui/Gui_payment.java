@@ -22,15 +22,15 @@ public class Gui_payment extends JPanel{
       mf.setLayout(null);
 
       ImageKickPanel panel = new ImageKickPanel(
-            new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+      new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
       panel.setLocation(0, 0);
       panel.setSize(600, 1000);
       panel.setBackground(Color.WHITE);
 
-		JPanel homePanel = new JPanel();
-		homePanel.setLocation(50, 50);
-		homePanel.setSize(70, 100);
-		homePanel.setBackground(Color.WHITE);
+	  JPanel homePanel = new JPanel();
+	  homePanel.setLocation(50, 50);
+	  homePanel.setSize(70, 100);
+	  homePanel.setBackground(Color.WHITE);
 
       JButton butt2 = new JButton("홈버튼");          //  홈버튼
       butt2.setPreferredSize(new Dimension(50, 50));
@@ -44,6 +44,7 @@ public class Gui_payment extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				StartMain startMain = new StartMain();
 				changePanel(startMain);
+				mf.dispose();
 			}
 			private void changePanel(StartMain startMain) {
 			}
@@ -73,7 +74,24 @@ public class Gui_payment extends JPanel{
 				"BR10_images/gui_order/payment_37.jpg", 250, 50));
 		butt[1].setIcon(kb.ImageKickButton(
 				"BR10_images/gui_order/payment_38.jpg", 250, 50));
-
+		
+		butt[0].addActionListener(new ActionListener() {
+  	  @Override
+			public void actionPerformed(ActionEvent e) {
+  		Gui_point GiftPo = new Gui_point();
+  		   GiftPo.point();
+  		   mf.dispose();
+			}
+		});
+		
+		butt[1].addActionListener(new ActionListener() {
+	    	  @Override
+				public void actionPerformed(ActionEvent e) {
+	    	  		Gui_pointQR GiftPo = new Gui_pointQR();
+	    	  		   GiftPo.point();
+	    	  		   mf.dispose();
+	    				}
+	    			});
 
 	  panel.add(homePanel);
       mf.add(panel);

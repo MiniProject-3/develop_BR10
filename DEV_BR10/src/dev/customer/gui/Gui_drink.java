@@ -20,17 +20,13 @@ public class Gui_drink extends JFrame {
       drink.setLayout(new GridLayout(2, 2));
 
       String[] size = { "바닐라 라떼", "아메리카노", "아이스 바닐라 라떼", "아이스 아메리카노" };
-
       JButton[] butt = new JButton[size.length];
 
       for (int i = 0; i < butt.length; i++) {
          butt[i] = new JButton(size[i]);
       }
-
       for (int i = 0; i < butt.length; i++) {
-
          drink.add(butt[i]);
-
       }
 		for (int i = 0; i < butt.length; i++) {
 			butt[i].setText("");
