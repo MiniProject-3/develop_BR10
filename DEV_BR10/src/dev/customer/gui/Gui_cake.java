@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dev.customer.menu.MenuOrderList;
+import dev.dto.OrderDTO;
+import dev.dto.UserDTO;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 import ui.manager.page.StockPage;
@@ -44,6 +47,67 @@ public class Gui_cake extends JPanel {
       butt[1].setIcon(kb.ImageKickButton("BR10_images/gui_order/Cake_20.jpg", 200, 200));
       butt[2].setIcon(kb.ImageKickButton("BR10_images/gui_order/Cake_18.jpg", 200, 200));
       butt[3].setIcon(kb.ImageKickButton("BR10_images/gui_order/Cake_17.jpg", 200, 200));
+      
+		butt[0].addActionListener(new ActionListener() {  //액션 설정
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(13);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		
+		
+		butt[1].addActionListener(new ActionListener() {  //액션 설정
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(14);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		
+		butt[2].addActionListener(new ActionListener() {  //액션 설정
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(15);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		
+		butt[3].addActionListener(new ActionListener() {  //액션 설정
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(16);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+				
+			}
+		});
+      
+      
+      
       
       return cake;
    }
