@@ -139,7 +139,7 @@ public class UpdateMenu extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				insertMenuPage insertMenuPage = new insertMenuPage(mf);
+				InsertMenuPage insertMenuPage = new InsertMenuPage(mf);
 				changePanel(insertMenuPage);	
 			}
 			

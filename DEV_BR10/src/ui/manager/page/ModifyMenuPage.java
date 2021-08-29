@@ -1,5 +1,6 @@
 package ui.manager.page;
 
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -19,8 +20,8 @@ import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
-public class insertMenuPage extends JPanel {
-	
+public class ModifyMenuPage extends JPanel{
+		
 	private MainFrame mf;
 	private JTextField nameField;
 	private JTextField priceField;
@@ -29,8 +30,8 @@ public class insertMenuPage extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public insertMenuPage(MainFrame  mainframe) {
-		
+	public ModifyMenuPage(MainFrame  mainframe) {
+			
 		this.mf = mainframe;
 		this.setBackground(Color.white);
 		JComboBox comboBox = new JComboBox();
@@ -39,7 +40,7 @@ public class insertMenuPage extends JPanel {
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"아이스크림", "케이크", "디저트", "음료","MD"}));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				}
 		});
 		this.setLayout(null);
 		
@@ -49,7 +50,7 @@ public class insertMenuPage extends JPanel {
 		Label.setFont(new Font("돋움", Font.BOLD, 30));
 		Label.setHorizontalAlignment(SwingConstants.CENTER);
 		mf.add(Label);
-		
+			
 		JLabel labelCategory = new JLabel("\uCE74\uD14C\uACE0\uB9AC");
 		labelCategory.setHorizontalAlignment(SwingConstants.CENTER);
 		labelCategory.setFont(new Font("돋움", Font.BOLD, 20));
@@ -62,7 +63,7 @@ public class insertMenuPage extends JPanel {
 		labelProductName.setFont(new Font("돋움", Font.BOLD, 20));
 		labelProductName.setBounds(63, 406, 93, 50);
 		mf.add(labelProductName);
-		
+			
 		nameField = new JTextField();
 		nameField.setBounds(201, 409, 337, 50);
 		nameField.setFont(new Font("돋움", Font.BOLD, 20));
@@ -96,12 +97,10 @@ public class insertMenuPage extends JPanel {
 		JButton storeBtn = new JButton("\uC800\uC7A5");
 		storeBtn.setBounds(331, 702, 207, 57);
 		storeBtn.setFont(new Font("돋움", Font.BOLD, 20));
-
-		
+			
 		/* 저장 버튼 눌렀을 때 */
-		/* PRODUCT TABLE에 값 INSERT */
-
-		storeBtn.addActionListener(new ActionListener() {
+		/* PRODUCT TABLE에 값 update */
+			storeBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
@@ -139,8 +138,7 @@ public class insertMenuPage extends JPanel {
 		JButton cancelBtn = new JButton("\uCDE8\uC18C");
 		cancelBtn.setBounds(63, 702, 213, 57);
 		cancelBtn.setFont(new Font("돋움", Font.BOLD, 20));
-
-		cancelBtn.addActionListener(new ActionListener() {
+			cancelBtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					ManagerPanel managerPanel = new ManagerPanel(mf);
@@ -156,5 +154,4 @@ public class insertMenuPage extends JPanel {
 		mf.add(panel);
 		revalidate();
 	}
-
 }
