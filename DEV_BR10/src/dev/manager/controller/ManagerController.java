@@ -24,6 +24,18 @@ public class ManagerController {
    			return 0;
    		}
    	}
+   	
+   	/* 카테고리 별 상품 조회 */
+	public List<ProductDTO> selectProductByCategoryCode(int categoryCode) {
+		
+		List<ProductDTO> productList = managerService.selectProductByCategoryCode(categoryCode);
+		
+		if(!productList.isEmpty()) {		
+			return productList;
+		} else {							
+			return null;
+		}
+	}
    
 	/* 모든 상품 조회 (재고 조회) */
 	public List<ProductDTO> selectAllProducts() {

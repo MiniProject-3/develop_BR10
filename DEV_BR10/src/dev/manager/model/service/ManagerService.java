@@ -28,6 +28,17 @@ public class ManagerService {
 		return productLastSeq;
 	}
 	
+	/* 카테고리 별 상품 조회 selectProductByCategoryCode*/
+	public List<ProductDTO> selectProductByCategoryCode(int categoryCode){
+		
+		Connection con = getConnection();
+		List<ProductDTO> productList = managerDAO.selectProductByCategoryCode(con, categoryCode);
+		
+		close(con);
+		
+		return productList;
+	}
+	
 	/* 재고 조회 */
 	public List<ProductDTO> selectAllProducts(){
 		
@@ -69,7 +80,7 @@ public class ManagerService {
 	}
 	
 	/* 메뉴 수정 - all */
-	public int updateProduct(int productNum, String productName, int productPrice, int productStock) {
+	public int updateProduct(int productNum, String productName, Integer productPrice, Integer productStock) {
 		
 		Connection con = getConnection();
 		int result = 0;

@@ -101,6 +101,29 @@
 	      FROM PRODUCT 
 	</entry>
 	
+	<entry key="selectProductByCategoryCode">
+	    SELECT A.PRODUCT_NUM
+  	         , A.PRODUCT_NAME
+  	         , A.PRODUCT_PRICE
+       	     , A.CATEGORY_CODE
+  	         , A.STOCK
+  	      FROM PRODUCT A
+  	     WHERE A.CATEGORY_CODE = ?
+	</entry>
+	
+	<entry key="selectIceCream">
+		SELECT MAX(PRODUCT_NUM)
+	      FROM PRODUCT 
+	</entry>
+	<entry key="selectDessert">
+	
+	</entry>
+	<entry key="selectDrink">
+	
+	</entry>
+	<entry key="selectMD">
+	
+	</entry>
 	<entry key="selectAllProducts">
 	    SELECT
   	           A.PRODUCT_NUM

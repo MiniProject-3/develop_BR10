@@ -58,6 +58,45 @@ public class ManagerDAO {
 	      return seq;
    }
    
+   /* 카테고리 별 상품 조회 - selectProductByCategoryCode*/
+   public List<ProductDTO> selectProductByCategoryCode(Connection con, int categoryCode) {
+	      
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      List<ProductDTO> productList = null;
+	      
+	      String query = prop.getProperty("selectProductByCategoryCode");
+	      
+	      try {
+	         pstmt = con.prepareStatement(query);
+	         pstmt.setInt(1, categoryCode);
+	         
+	         rset = pstmt.executeQuery();
+	         
+	         productList = new ArrayList<>();
+	         
+	         if(rset.next()) {
+	            ProductDTO product = new ProductDTO();
+	            product.setProductNum(rset.getInt("PRODUCT_NUM"));
+	            product.setProductName(rset.getString("PRODUCT_NAME")); 
+	            product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+	            product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
+	            product.setStock(rset.getInt("STOCK"));
+	            
+	            productList.add(product);
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      
+	      return productList;
+	   }
+   
    /* 재고 조회 selectAllProducts */
    public List<ProductDTO> selectAllProducts(Connection con) {
       
@@ -164,7 +203,7 @@ public class ManagerDAO {
    }
    
    /* 메뉴 수정 updateProduct - all */
-   public int updateProduct(Connection con, int productNum, String productName, int productPrice, int productStock) {
+   public int updateProduct(Connection con, int productNum, String productName, Integer productPrice, Integer productStock) {
 	      
 	      PreparedStatement pstmt = null;
 	      int result = 0;
@@ -174,9 +213,17 @@ public class ManagerDAO {
 	      try {
 	         pstmt = con.prepareStatement(query);
 	         pstmt.setString(1,productName);
-	         pstmt.setInt(2, productNum);
-	         pstmt.setInt(3, productPrice);
-	         pstmt.setInt(4, productStock);
+	         if (productPrice == null) {
+	        	 pstmt.setNull(2, Types.INTEGER);
+	         } else {        	 
+	        	 pstmt.setInt(2, productPrice);
+	         }
+	         if (productStock == null) {
+	        	 pstmt.setNull(3, Types.INTEGER);
+	         } else {        	 
+	        	 pstmt.setInt(3, productStock);
+	         }
+	         pstmt.setInt(4, productNum);
 
 	         result = pstmt.executeUpdate();
 	      } catch (SQLException e) {
