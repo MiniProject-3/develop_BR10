@@ -83,7 +83,7 @@ public class ManagerDAO {
             product.setStock(rset.getInt("STOCK"));
             product.setQty(rset.getInt("QTY"));
             product.setPayment(rset.getString("PAYMENT"));
-              
+
             productList.add(product);
          }
          

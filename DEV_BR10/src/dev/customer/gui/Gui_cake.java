@@ -31,11 +31,8 @@ public class Gui_cake extends JPanel {
       for (int i = 0; i < butt.length; i++) {
          butt[i] = new JButton(size[i]);
       }
-
       for (int i = 0; i < butt.length; i++) {
-
          cake.add(butt[i]);
-
       }
       
   	for (int i = 0; i < butt.length; i++) {
@@ -50,6 +47,4 @@ public class Gui_cake extends JPanel {
       
       return cake;
    }
-   
-
 }

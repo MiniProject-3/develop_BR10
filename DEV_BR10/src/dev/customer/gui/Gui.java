@@ -68,14 +68,20 @@ public class Gui extends JPanel {
 			butt[i].setBackground(Color.WHITE);
 		}
 		
-		butt[0].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_39.jpg", 100, 150));
-		butt[1].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_40.jpg", 100, 150));
-		butt[2].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_41.jpg", 150, 150));
-		butt[3].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_42.jpg", 150, 150));
-		butt[4].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_43.jpg", 150, 150));
-		butt[5].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_44.jpg", 150, 150));
+		butt[0].setIcon(kb.ImageKickButton(
+				"BR10_images/gui_order/Size_39.jpg", 100, 150));
+		butt[1].setIcon(kb.ImageKickButton(
+				"BR10_images/gui_order/Size_40.jpg", 100, 150));
+		butt[2].setIcon(kb.ImageKickButton(
+				"BR10_images/gui_order/Size_41.jpg", 150, 150));
+		butt[3].setIcon(kb.ImageKickButton(
+				"BR10_images/gui_order/Size_42.jpg", 150, 150));
+		butt[4].setIcon(kb.ImageKickButton(
+				"BR10_images/gui_order/Size_43.jpg", 150, 150));
+		butt[5].setIcon(kb.ImageKickButton(
+				"BR10_images/gui_order/Size_44.jpg", 150, 150));
 		
-		/*아이스크림 사이즈 선택 시 아이스클 맛 선택으로 이동 */
+		/*아이스크림 사이즈 선택 시 아이스크림 맛 선택으로 이동 */
 		butt[0].addActionListener(new ActionListener() {                        
 
 			@Override
@@ -83,7 +89,6 @@ public class Gui extends JPanel {
 				Gui_icecream icecream = new Gui_icecream();
 				changePanel(icecream.gui_icecream());
 			}
-
 			private void changePanel(JPanel icecream) {
 				mf.remove(main);
 				main = icecream;
@@ -185,8 +190,7 @@ public class Gui extends JPanel {
 				mf.remove(main);
 				main = icecream;
 				mf.add(main);
-				mf.repaint();
-				mf.revalidate();
+				revalidate();
 			}
 		});
 
@@ -228,6 +232,7 @@ public class Gui extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Gui_drink drink = new Gui_drink();
 				changePanel(drink.gui_drink());
+	
 			}
 
 			private void changePanel(JPanel drink) {
@@ -237,7 +242,6 @@ public class Gui extends JPanel {
 				revalidate();
 			}
 		});
-		
 
 		mf.add(main);
 		mf.add(categoryPanel);

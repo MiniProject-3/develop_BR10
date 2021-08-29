@@ -13,13 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
+	private JPanel main = null;
+	private JFrame mf = new JFrame("BR_10");
 
 	private ImageKick kb = new ImageKick();
 	public MainFrame() {
 		this.setTitle("mini_BR10");
 		this.setBounds(600, 10, 600, 1000);
 		this.setLayout(null);
-
 
 		ImageKickPanel panel = new ImageKickPanel(
 		new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
@@ -91,29 +92,23 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
-//		/* 장바구니에 연결 */
-//		butt4[1].addActionListener(new ActionListener() {  
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				StartMain startMain = new StartMain();
-//				changePanel(startMain);
-//				dispose();
-//			}
-//			private void changePanel(StartMain startMain) {
-//			}
-//		});
+		/* 장바구니에 연결 */
+		butt4[1].addActionListener(new ActionListener() {  
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_basket basket = new Gui_basket();
+				basket.Gui_basket();
+				dispose();
+			}
+		});
 
-//		
 		/* 결제버튼 연결 */
 		butt4[2].addActionListener(new ActionListener() {  
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Gui_md();
 				dispose();
-			}
-			private void changePanel(StartMain startMain) {
-			}
-		});
+		}});
 		
 		panel.add(homePanel);
 		panel.add(controllPanel);
@@ -125,5 +120,4 @@ public class MainFrame extends JFrame {
 		this.setVisible(true);
 		revalidate();
 	}
-
 }

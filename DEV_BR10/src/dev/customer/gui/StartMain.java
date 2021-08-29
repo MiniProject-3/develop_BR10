@@ -40,7 +40,6 @@ public class StartMain extends JFrame  {
 				 changePanel(mainFrame);
 				 dispose();
 			}
-
 			private void changePanel(MainFrame mainFrame) {
 				
 			}

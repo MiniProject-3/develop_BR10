@@ -1,12 +1,17 @@
 package ui.manager.page;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -15,7 +20,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import dev.customer.gui.ImageKick;
+import dev.customer.model.dao.CustomerDAO;
+import dev.customer.model.service.CustomerService;
+import dev.dto.OrderDTO;
 import dev.dto.PayDTO;
+import dev.dto.ProductDTO;
 import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
@@ -24,7 +33,7 @@ public class JournalPage extends JPanel{
 	private MainFrame mf;
 	private ImageKick kb = new ImageKick();
 	private LineBorder line = new LineBorder(Color.black);
-	
+	private int row;
 	public JournalPage() {}
 	public JournalPage(MainFrame mainFrame) {
 		this.mf = mainFrame;
@@ -59,9 +68,13 @@ public class JournalPage extends JPanel{
 	    stockTable.getColumn("결제번호").setCellRenderer(center);
 	    stockTable.getColumn("총결제금액").setCellRenderer(center);
 	    stockTable.getColumn("결제수단").setCellRenderer(center);
-		
+	    
 		ManagerController manage = new ManagerController();
+		CustomerService cus = new CustomerService();
+		
 		List<PayDTO> jounal = manage.selectAllPays();
+		List<OrderDTO> order = cus.selectOrder();
+		List<ProductDTO> productList = manage.selectAllProducts();
 		
 		for (PayDTO pay : jounal) {
 			String payNum = pay.getPayNum() + "";
@@ -77,13 +90,47 @@ public class JournalPage extends JPanel{
 			model.addRow(mix);
 		}
 		
+		// 주문한 상품을 조회하기위한 ArrayList
+		ArrayList<String> ar = new ArrayList<String>();
+		
+		// 테이블 클릭시 판매된 상품조회 기능
+		stockTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// 테이블안의 행을 클릭시 해당 행의 값을 읽어옴
+				row = stockTable.getSelectedRow();
+				for (OrderDTO orderDTO : order) {
+					if (orderDTO.getOrderNum() == jounal.get(row).getPayNum()) {
+						for (ProductDTO product : productList) {
+							if (product.getProductNum() == orderDTO.getProductNum()) {
+								String menu = product.getProductName();
+								ar.add(menu);
+							}
+						}
+					}
+				}
+				JOptionPane.showMessageDialog(stockTable,ar);
+				ar.clear();
+			}
+		});
 		pane.setLocation(10, 10);
 		pane.setSize(480, 680);
 		
 		panel.add(pane);
 	}
-	
-	
 	
 	public void BackButton() {
 		JButton back = new JButton();
@@ -110,5 +157,7 @@ public class JournalPage extends JPanel{
 		mf.add(panel);
 		mf.repaint();
 	}
+		
+		
 		
 }

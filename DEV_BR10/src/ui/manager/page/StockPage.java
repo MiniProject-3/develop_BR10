@@ -16,6 +16,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -53,7 +54,7 @@ public class StockPage extends JPanel{
 		viewMoney();
 	}
 	
-	// 교체 시 보여질 화면 생성자
+	// 교체시 보여질 화면 생성자
 	public StockPage(MainFrame mainFrame, int num) {
 		JPanel pan = new JPanel();
 		this.mf = mainFrame;
@@ -185,7 +186,7 @@ public class StockPage extends JPanel{
 		ManagerDAO managerDAO = new ManagerDAO();
 		Connection con = getConnection();
 		List<ProductDTO> productList = managerDAO.selectAllProducts(con);
-				
+		
 		for (ProductDTO product : productList) {
 			if (num == 1 && product.getCategoryCode() == 1) {
 				String name = product.getProductName();
@@ -194,8 +195,10 @@ public class StockPage extends JPanel{
 				String stocknum = null;
 				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
 					sellnum = product.getQty() + "";
-					stocknum = (product.getStock() - product.getQty()) + "";
-				}
+					if (product.getStock() - product.getQty() > 0) {
+						stocknum = (product.getStock() - product.getQty()) + "";
+					}
+				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 2 && product.getCategoryCode() == 2) {
@@ -205,8 +208,10 @@ public class StockPage extends JPanel{
 				String stocknum = null;
 				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
 					sellnum = product.getQty() + "";
-					stocknum = (product.getStock() - product.getQty()) + "";
-				}
+					if (product.getStock() - product.getQty() > 0) {
+						stocknum = (product.getStock() - product.getQty()) + "";
+					}
+				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 3 && product.getCategoryCode() == 3) {
@@ -216,8 +221,10 @@ public class StockPage extends JPanel{
 				String stocknum = null;
 				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
 					sellnum = product.getQty() + "";
-					stocknum = (product.getStock() - product.getQty()) + "";
-				}
+					if (product.getStock() - product.getQty() > 0) {
+						stocknum = (product.getStock() - product.getQty()) + "";
+					}
+				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 4 && product.getCategoryCode() == 4) {
@@ -227,8 +234,10 @@ public class StockPage extends JPanel{
 				String stocknum = null;
 				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
 					sellnum = product.getQty() + "";
-					stocknum = (product.getStock() - product.getQty()) + "";
-				}
+					if (product.getStock() - product.getQty() > 0) {
+						stocknum = (product.getStock() - product.getQty()) + "";
+					}
+				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 5 && product.getCategoryCode() == 5) {
@@ -238,8 +247,10 @@ public class StockPage extends JPanel{
 				String stocknum = null;
 				if (!("".equals(product.getPayment())) || !(product.getPayment() == null)) {
 					sellnum = product.getQty() + "";
-					stocknum = (product.getStock() - product.getQty()) + "";
-				}
+					if (product.getStock() - product.getQty() > 0) {
+						stocknum = (product.getStock() - product.getQty()) + "";
+					}
+				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			}

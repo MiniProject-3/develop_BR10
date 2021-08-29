@@ -9,6 +9,8 @@ import java.util.List;
 import dev.customer.model.dao.CustomerDAO;
 import dev.dto.GiftDTO;
 import dev.dto.InoDTO;
+
+import dev.dto.OrderDTO;
 import dev.dto.UserDTO;
 
 public class CustomerService {
@@ -58,4 +60,12 @@ public class CustomerService {
 	
 	/* insertIno */
 	
+	/* order 조회 */
+	public List<OrderDTO> selectOrder(){
+		Connection con = getConnection();
+		
+		List<OrderDTO> orderList = customerDAO.selectOrder(con);
+		
+		return orderList;
+	}	
 }
