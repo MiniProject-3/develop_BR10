@@ -129,6 +129,22 @@ public class Gui extends JPanel {
 			}
 		});
 		
+		butt[3].addActionListener(new ActionListener() {                        
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gui_icecream icecream = new Gui_icecream();
+				changePanel(icecream.gui_icecream());
+			}
+			
+			private void changePanel(JPanel icecream) {
+				mf.remove(main);
+				main = icecream;
+				mf.add(main);
+				revalidate();
+			}
+		});
+		
 		butt[4].addActionListener(new ActionListener() {                        
 
 			@Override
@@ -161,21 +177,6 @@ public class Gui extends JPanel {
 			}
 		});
 		
-		butt[3].addActionListener(new ActionListener() {                        
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
-			}
-
-			private void changePanel(JPanel icecream) {
-				mf.remove(main);
-				main = icecream;
-				mf.add(main);
-				revalidate();
-			}
-		});
 		
 		/* 메뉴 카테고리 선택 시 각 카테고리 별 메뉴 선택으로 넘어감 */		
 		butt3[0].addActionListener(new ActionListener() {                       

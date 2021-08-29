@@ -348,7 +348,7 @@ public class CustomerDAO {
 		      
 		    int seq = 0 ;
 		      
-		    String query = prop.getProperty("selectOrderNum");
+		    String query = prop.getProperty("selectSeqNum");
 		    
 		    try {
 				pstmt = con.prepareStatement(query);
@@ -356,7 +356,7 @@ public class CustomerDAO {
 				
 				while(rset.next()) {
 
-					seq = rset.getInt("MAX(ORDER_NUM)") + 1;
+					seq = rset.getInt("MAX(A.ORDER_SEQ)") + 1;
 
 				}
 				

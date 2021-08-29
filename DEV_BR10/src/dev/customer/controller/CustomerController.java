@@ -6,7 +6,7 @@ import dev.customer.model.service.CustomerService;
 import dev.dto.OrderDTO;
 
 public class CustomerController {
-	private CustomerService customerService = new CustomerService();
+	private static CustomerService customerService = new CustomerService();
 	
 	public int selectOrderNum() {
 		
@@ -15,20 +15,20 @@ public class CustomerController {
 		if(orderNum > 0) {		// 값이 0보다 큰 경우.
 
 			return orderNum;
-		} else {							// 리스트가 비어있는 경우
+		} else {							// 비어있는 경우
 
 			return 1;
 		}
 	}
 	
-	public int selectSeqNum() {
+	public static int selectSeqNum() {
 		
-		int seq = customerService.selectOrderNum();
+		int seq = customerService.selectSeqNum();
 		
 		if(seq > 0) {		// 값이 0보다 큰 경우.
 
 			return seq;
-		} else {							// 리스트가 비어있는 경우
+		} else {							// 비어있는 경우
 
 			return 1;
 		}
