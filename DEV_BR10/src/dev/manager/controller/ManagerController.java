@@ -81,7 +81,7 @@ public class ManagerController {
 	}
 
 	/* 메뉴 수정 - ALL */
-	public String modifyProduct(int productNum, String productName, int productPrice, int productStock) {
+	public String modifyProduct(int productNum, String productName, Integer productPrice, Integer productStock) {
 		int result = managerService.updateProduct(productNum, productName, productPrice, productStock);
 		
 		if (result > 0) {

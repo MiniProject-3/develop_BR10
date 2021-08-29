@@ -8,15 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
-
 import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
@@ -51,7 +47,6 @@ public class ModifyMenuPage  extends JPanel {
       labelCategory.setFont(new Font("돋움", Font.BOLD, 20));
       labelCategory.setBounds(63, 311, 93, 50);
       this.add(labelCategory);
-      this.add(comboBox);
       
       JLabel labelProductName = new JLabel("제품명");
       labelProductName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -77,9 +72,8 @@ public class ModifyMenuPage  extends JPanel {
       priceField.setFont(new Font("돋움", Font.BOLD, 20));
       this.add(priceField);      
       priceField.setColumns(10);
-      /* 아이스크림의 경우 가격 입력 X - 콤보박스의 기본값 : 아이스크림 */
-      priceField.enable(false);
-      priceField.setBackground(Color.LIGHT_GRAY);
+//      priceField.enable(false);
+//      priceField.setBackground(Color.LIGHT_GRAY);
       
       JLabel labelStock = new JLabel("\uC218\uB7C9");
       labelStock.setHorizontalAlignment(SwingConstants.CENTER);
@@ -157,17 +151,11 @@ public class ModifyMenuPage  extends JPanel {
             /* textField에 넣어진 값들 받아오기 */
             String newName = nameField.getText();
             Integer newPrice = Integer.valueOf(priceField.getText());
-            Integer newStock = Integer.valueOf(stockField.getText());            
-             
+            Integer newStock = Integer.valueOf(stockField.getText()); 
+            
             /* productNum 받아오기 */
-            String productNum = selectedProduct.get(0);
-            
-            /* map에 데이터 추가하기 */
-            ansMap.put("num", productNum); // 인트로 형변환
-            ansMap.put("name", newName);
-            ansMap.put("price", newPrice);
-            ansMap.put("stock", newStock);
-            
+      		int productNum = Integer.valueOf(selectedProduct.get(0));
+           
             /* DB에 값 넣기 */
             managerController.modifyProduct(productNum, newName, newPrice, newStock);
             
