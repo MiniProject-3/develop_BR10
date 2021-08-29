@@ -74,20 +74,33 @@ public class CustomerService {
 	
 	
 	/* order 시퀀스 조회 */
-	public int selectOrderSeq(){
+	public int selectOrderNum(){
 		Connection con = getConnection();
-		int seq = customerDAO.selectOrderSeq(con);
+		int orderNum = customerDAO.selectOrderNum(con);
+		
+		return orderNum;
+	}	
+	
+	
+	public int selectSeqNum(){
+		Connection con = getConnection();
+		int seq = customerDAO.selectOrderNum(con);
 		
 		return seq;
 	}	
 	
 	
-	public int insertOrder(OrderDTO orderlist){
+	public int insertOrder(List orderList){
 		Connection con = getConnection();
 		int insertResult = 0;
-
-		insertResult = customerDAO.insertOrder(con, orderlist);
+		OrderDTO order[] = new OrderDTO [MenuOrderList.orderList.size()];
+		for (int i = 0 ; i < MenuOrderList.orderList.size() ; i++) {
+			order[i] = (OrderDTO) MenuOrderList.orderList.get(i);
 		
+		System.out.println(order[i]);
+		
+		insertResult = customerDAO.insertOrder(con, order[i]);
+		}
 		if(insertResult > 0) 
 			commit(con);
 		else 

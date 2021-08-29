@@ -8,7 +8,9 @@ import dev.dto.OrderDTO;
 public class MenuOrderList {
 	
 	
-	public static List<OrderDTO> orderList = new ArrayList<>();
+	public static List orderList = new ArrayList<>();
 	
+	
+	public static int orderSeq = 
 	
 }
