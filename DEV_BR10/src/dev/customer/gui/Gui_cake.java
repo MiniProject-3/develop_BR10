@@ -13,10 +13,6 @@ import javax.swing.JPanel;
 import dev.customer.menu.MenuOrderList;
 import dev.customer.model.service.CustomerService;
 import dev.dto.OrderDTO;
-import dev.dto.UserDTO;
-import ui.manager.MainFrame;
-import ui.manager.ManagerPanel;
-import ui.manager.page.StockPage;
 
 public class Gui_cake extends JPanel {
 	private JFrame mf = new JFrame("BR_10");

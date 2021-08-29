@@ -14,6 +14,7 @@ import dev.customer.model.dao.CustomerDAO;
 import dev.dto.GiftDTO;
 import dev.dto.InoDTO;
 import dev.dto.OrderDTO;
+import dev.dto.PayDTO;
 import dev.dto.UserDTO;
 
 public class CustomerService {

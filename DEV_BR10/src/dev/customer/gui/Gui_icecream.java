@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dev.customer.menu.MenuOrderList;
+import dev.dto.OrderDTO;
 import ui.manager.MainFrame;
 
 public class Gui_icecream extends JPanel {
@@ -40,17 +42,146 @@ public class Gui_icecream extends JPanel {
 		butt[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(1);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("Y");
+				MenuOrderList.orderList.add(order);
 			}
 		});
 
 		butt[1].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(2);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
 			}
 		}); 
 		butt[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(3);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[3].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(4);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[4].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(5);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[5].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(6);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[6].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(7);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[7].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(8);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[8].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(9);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[9].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(10);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[10].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(11);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
+			}
+		});
+		butt[11].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(12);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
 			}
 		});
 		return icecream;

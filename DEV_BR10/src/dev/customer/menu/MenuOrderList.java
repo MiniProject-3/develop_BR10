@@ -10,7 +10,6 @@ public class MenuOrderList {
 	
 	public static List orderList = new ArrayList<>();
 	
-	
 	public static int orderSeq;
 	
 }

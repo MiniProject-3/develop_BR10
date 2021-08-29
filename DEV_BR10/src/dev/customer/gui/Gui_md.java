@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import dev.customer.menu.MenuOrderList;
+import dev.dto.OrderDTO;
+
 public class Gui_md extends JFrame {
 
 	private ImageKick ab = new ImageKick();
@@ -101,7 +104,13 @@ public class Gui_md extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "옵션을 선택하세요.");
-//            dispose();
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(25);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
 			}
 		});
 		
@@ -111,6 +120,13 @@ public class Gui_md extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new MainFrame();
 				dispose();
+				OrderDTO order = new OrderDTO();
+//				order.setOrderSeq();
+				order.setProductNum(26);
+//				order.setOrderNum();
+				order.setQty(1);
+				order.setPayment("N");
+				MenuOrderList.orderList.add(order);
 			}
 		});
 

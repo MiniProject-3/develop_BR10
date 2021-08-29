@@ -1,8 +1,9 @@
 package dev.customer.gui;
 
+import dev.customer.menu.Payment;
+import dev.dto.OrderDTO;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import dev.dto.PaymentDTO;
 
 public class Gui_payment extends JPanel{
    private JFrame mf = new JFrame("BR_10");
@@ -79,8 +82,12 @@ public class Gui_payment extends JPanel{
   	  @Override
 			public void actionPerformed(ActionEvent e) {
   		Gui_point GiftPo = new Gui_point();
-  		   GiftPo.point();
-  		   mf.dispose();
+  				GiftPo.point();
+  				mf.dispose();
+  		   		PaymentDTO payment = new PaymentDTO();
+  		   		payment.setPaymentNum(2);
+  		   		payment.setPaymentName("기프티콘");
+  		   		Payment.payment.add(payment);
 			}
 		});
 		
@@ -90,8 +97,12 @@ public class Gui_payment extends JPanel{
 	    	  		Gui_pointQR GiftPo = new Gui_pointQR();
 	    	  		   GiftPo.point();
 	    	  		   mf.dispose();
-	    				}
-	    			});
+	    	  		  PaymentDTO payment = new PaymentDTO();
+	    	  		   payment.setPaymentNum(1);
+	    	  		   payment.setPaymentName("휴대폰 결제");
+	    	  		   Payment.payment.add(payment);
+	    	}
+	    });
 
 	  panel.add(homePanel);
       mf.add(panel);

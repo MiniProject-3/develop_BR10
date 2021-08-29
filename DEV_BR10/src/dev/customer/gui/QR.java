@@ -84,8 +84,8 @@ public class QR extends JFrame {
 		    Gui_waitingNum gui_wait = new Gui_waitingNum();
 		    gui_wait.waitingNum();
 		    dispose();
-		         }
-		      });
+		    }
+		    });
 		
 		JPanel controllPanel = new JPanel();
 		controllPanel.setLayout(null);

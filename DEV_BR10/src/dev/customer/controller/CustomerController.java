@@ -1,7 +1,6 @@
 package dev.customer.controller;
 
 import java.util.List;
-
 import dev.customer.menu.MenuOrderList;
 import dev.customer.model.service.CustomerService;
 import dev.dto.OrderDTO;
@@ -42,9 +41,5 @@ public class CustomerController {
 		return 0;
 
 	}
-	
-	
-	
-	
 
 }

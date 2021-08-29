@@ -102,7 +102,7 @@ public class Gui_point extends JFrame {
 					Gui_gifticon Gcon = new Gui_gifticon();
 					Gcon.gift();
 					mf.dispose();
-						}
+				}
 			}
 		});
 
