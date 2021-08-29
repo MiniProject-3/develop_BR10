@@ -1,20 +1,23 @@
 package ui.manager.page;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.SwingConstants;
-
-import ui.manager.MainFrame;
-import ui.manager.ManagerPanel;
-
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import dev.manager.controller.ManagerController;
+import ui.manager.MainFrame;
+import ui.manager.ManagerPanel;
 
 public class insertMenuPage extends JPanel {
 	
@@ -33,7 +36,7 @@ public class insertMenuPage extends JPanel {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(201, 313, 337, 50);
 		comboBox.setFont(new Font("돋움", Font.BOLD, 20));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uC544\uC774\uC2A4\uD06C\uB9BC", "\uCF00\uC774\uD06C", "\uB514\uC800\uD2B8", "\uC74C\uB8CC"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"아이스크림", "케이크", "디저트", "음료","MD"}));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -94,13 +97,40 @@ public class insertMenuPage extends JPanel {
 		storeBtn.setBounds(331, 702, 207, 57);
 		storeBtn.setFont(new Font("돋움", Font.BOLD, 20));
 
-//		storeBtn.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
+		
+		/* 저장 버튼 눌렀을 때 */
+		/* PRODUCT TABLE에 값 INSERT */
+		/*
+		 * 카테고리 - comboBox
+		 * 이름 - nameField
+		 * 가격 - priceField
+		 * 수량 - stockField
+		 */
+		storeBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				ManagerController manageController = new ManagerController();
+				
+				/* 값을 넣어 전달할 map 생성*/
+				Map<String, ?> ansMap;
+				
+				/* textField에 넣어진 값들 받아오기 */
+				int newCategoryCode = comboBox.getSelectedIndex() + 1;
+				String newName = nameField.getText();
+				String newPrice = priceField.getText();
+				int newStock = Integer.parseInt(stockField.getText());				
+				
+				/* 일련번호 만들기 */
+				int newSeq;
+				
+//				newSeq = 
+				/* map에 데이터 추가하기 */
+				
 //				StockPage stock = new StockPage(mf);
 //				changePanel(stock);
-//			}
-//		});
+			}
+		});
 		mf.add(storeBtn);
 		
 		JButton cancelBtn = new JButton("\uCDE8\uC18C");

@@ -44,15 +44,15 @@ public class ManagerController {
 	}
 	
 	/* 메뉴 추가 */
-	public String registNewProduct(Map<String, String> ansMap) {
+	public String registNewProduct(Map<String, ?> ansMap) {
 	
 		ProductDTO productDTO = new ProductDTO();
 		
-		productDTO.setProductNum(Integer.valueOf(ansMap.get("num")));
-		productDTO.setProductName(ansMap.get("name"));
-		productDTO.setProductPrice(Integer.valueOf(ansMap.get("price")));
-		productDTO.setCategoryCode(Integer.valueOf(ansMap.get("categoryCode")));
-		productDTO.setStock(Integer.valueOf(ansMap.get("stock")));
+		productDTO.setProductNum(Integer.valueOf((int) ansMap.get("num")));
+		productDTO.setProductName((String) ansMap.get("name"));
+		productDTO.setProductPrice(Integer.valueOf((String) ansMap.get("price")));
+		productDTO.setCategoryCode(Integer.valueOf((String) ansMap.get("categoryCode")));
+		productDTO.setStock(Integer.valueOf((String) ansMap.get("stock")));
 	
 		int result = managerService.insertProduct(productDTO);
 		
