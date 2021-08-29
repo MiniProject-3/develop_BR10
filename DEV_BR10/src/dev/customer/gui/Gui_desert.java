@@ -17,7 +17,6 @@ public class Gui_desert {
       desert.setLayout(new GridLayout(2, 2));
 
       String[] size = { "아이스 롤 케이크 체리초코", "아이스 모찌 바나나킥", "아이스 모찌 초코 바닐라", "아이스크림 롤 바닐라" };
-
       JButton[] butt = new JButton[size.length];
 
       for (int i = 0; i < butt.length; i++) {
@@ -25,9 +24,7 @@ public class Gui_desert {
       }
 
       for (int i = 0; i < butt.length; i++) {
-
          desert.add(butt[i]);
-
       }
   	for (int i = 0; i < butt.length; i++) {
 		butt[i].setText("");
@@ -40,6 +37,5 @@ public class Gui_desert {
       butt[3].setIcon(kb.ImageKickButton("BR10_images/gui_order/Dessert_22.jpg", 150, 150));
       
       return desert;
-
    }
 }

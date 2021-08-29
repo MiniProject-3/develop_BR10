@@ -20,7 +20,7 @@ public class Gui_md extends JFrame {
 		this.setLayout(null);
 
 		ImageKickPanel mdPanel = new ImageKickPanel(
-				new ImageIcon("BR10_images/gui_order/bg_04.jpg").getImage().getScaledInstance(580, 970, 3));
+		new ImageIcon("BR10_images/gui_order/bg_04.jpg").getImage().getScaledInstance(580, 970, 3));
 		mdPanel.setSize(600, 1000);
 		mdPanel.setLayout(null);
 
@@ -44,7 +44,6 @@ public class Gui_md extends JFrame {
 				changePanel(startMain);
 				dispose(); // 창 꺼짐
 			}
-
 			private void changePanel(StartMain startMain) {
 			}
 		});
@@ -93,6 +92,7 @@ public class Gui_md extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Gui_hereOrToGo();
+				dispose(); // 창 꺼짐
 			}
 		});
 

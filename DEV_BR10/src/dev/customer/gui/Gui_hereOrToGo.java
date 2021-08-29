@@ -20,7 +20,7 @@ public class Gui_hereOrToGo extends JPanel {
       mf.setLayout(null);
 
       ImageKickPanel panel = new ImageKickPanel(
-            new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+      new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
       panel.setLocation(0, 0);
       panel.setSize(600, 1000);
       panel.setBackground(Color.WHITE);
@@ -47,7 +47,6 @@ public class Gui_hereOrToGo extends JPanel {
             new StartMain();
             mf.dispose(); // 창 꺼짐
          }
-
       });
 
       String[] controll = { "이전" };
@@ -69,7 +68,7 @@ public class Gui_hereOrToGo extends JPanel {
       butt4[0].addActionListener(new ActionListener() { // 액션 설정
          @Override
          public void actionPerformed(ActionEvent e) {
-            new StartMain();
+            new Gui_md();
             mf.dispose(); // 창 꺼짐
          }
       });
@@ -96,14 +95,10 @@ public class Gui_hereOrToGo extends JPanel {
          public void actionPerformed(ActionEvent e) {
             Take_In takein = new Take_In();
             changePanel(takein);
-            
          }
-
       private void changePanel(Take_In takein) {
          // TODO Auto-generated method stub
-         
       }
-
       });
 
       butt[1].addActionListener(new ActionListener() {
@@ -112,7 +107,6 @@ public class Gui_hereOrToGo extends JPanel {
             Take_Out takeout = new Take_Out();
             changePanel(takeout);
          }
-
          private void changePanel(Take_Out takeout) {
          }
       });
@@ -124,7 +118,5 @@ public class Gui_hereOrToGo extends JPanel {
       mf.add(panel);
       mf.setVisible(true);
       mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//      return hgPanel;
-
    }
 }

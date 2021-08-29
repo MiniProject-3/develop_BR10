@@ -18,7 +18,6 @@ public class QR extends JFrame {
 		this.setBounds(600, 10, 600, 1000);
 		this.setLayout(null);
 
-
 		ImageKickPanel panel = new ImageKickPanel(
 		new ImageIcon("BR10_images/QR.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setSize(600, 1000);
@@ -62,8 +61,6 @@ public class QR extends JFrame {
 	         @Override
 	         public void actionPerformed(ActionEvent e) {
 	            JOptionPane.showMessageDialog(null, "잔액이 부족합니다.");
-//	            dispose();
-//	            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	         }
 	      });
 	      
@@ -84,9 +81,8 @@ public class QR extends JFrame {
 		    butt7.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    JOptionPane.showMessageDialog(null, "ㅎㅎㅎㅎㅎ숨어 있지롱~~ :>");
-//		     dispose();
-//		     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    Gui_waitingNum gui_wait = new Gui_waitingNum();
+		    gui_wait.waitingNum();
 		         }
 		      });
 		
@@ -116,11 +112,11 @@ public class QR extends JFrame {
 		butt4[0].addActionListener(new ActionListener() {  //액션 설정
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				StartMain startMain = new StartMain();
-				changePanel(startMain);
+				Gui_payment payment = new Gui_payment();
+				changePanel(payment);
 				dispose();
 			}
-			private void changePanel(StartMain startMain) {
+			private void changePanel(Gui_payment payment) {
 			}
 		});
 

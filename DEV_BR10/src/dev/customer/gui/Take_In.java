@@ -69,10 +69,10 @@ public class Take_In extends JPanel{
       butt3.addActionListener(new ActionListener() {  //액션 설정
          @Override
          public void actionPerformed(ActionEvent e) {
-            StartMain startMain = new StartMain();
-            changePanel(startMain);
-         }
-         private void changePanel(StartMain startMain) {
+        	 Gui_md GM = new Gui_md();
+             changePanel(GM);
+          }
+          private void changePanel(Gui_md GM) {
          }
       });
 
@@ -95,8 +95,8 @@ public class Take_In extends JPanel{
             changePanel(payment);
          }
          private void changePanel(Gui_payment payment) {
-            mf.remove(panel);
-            main.add(payment);
+//            mf.remove(panel);
+//            main.add(payment);
          }
       });
 

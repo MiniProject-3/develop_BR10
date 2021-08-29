@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,7 +23,7 @@ public class Gui_waitingNum {
 		mf.setLayout(null);
 		
 		ImageKickPanel panel = new ImageKickPanel(
-				new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
+		new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setLocation(0, 0);
 		panel.setSize(600, 1000);
 		panel.setBackground(Color.WHITE);
@@ -35,6 +37,7 @@ public class Gui_waitingNum {
 		butt2.setPreferredSize(new Dimension(50, 50));
 		butt2.setIcon(kb.ImageKickButton("BR10_images/gui_order/Buttons_14.jpg", 50, 50));
 		homePanel.add(butt2);
+		
 
 		
 		TitledBorder Tb1 = new TitledBorder(new LineBorder(Color.black, 2));
@@ -63,6 +66,15 @@ public class Gui_waitingNum {
 		JButton butt = new JButton("확인");
 		butt.setLocation(125, 350);
 		butt.setSize(100, 50);
+		butt.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StartMain startMain = new StartMain();
+				changePanel(startMain);
+			}
+			private void changePanel(StartMain startMain) {
+			}
+		});
 		
 		waitingPanel.add(butt);
 		
