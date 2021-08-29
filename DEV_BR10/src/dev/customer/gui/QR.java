@@ -83,6 +83,7 @@ public class QR extends JFrame {
 		    public void actionPerformed(ActionEvent e) {
 		    Gui_waitingNum gui_wait = new Gui_waitingNum();
 		    gui_wait.waitingNum();
+		    dispose();
 		         }
 		      });
 		
