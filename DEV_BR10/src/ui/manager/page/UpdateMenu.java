@@ -33,7 +33,7 @@ public class UpdateMenu extends JPanel{
 	private MainFrame mf;
 	private ImageKick kb = new ImageKick();
 	private LineBorder line = new LineBorder(Color.black);
-	private List<ProductDTO> curProduct;		// 현재 카테고리의 기존 제품들
+	private List<ProductDTO> curProduct;	// 현재 카테고리의 기존 제품들
 	private ArrayList<String> selectedProduct; 
 	
 	public UpdateMenu(MainFrame mainFrame) {
@@ -100,8 +100,10 @@ public class UpdateMenu extends JPanel{
 		panel.add(pane);
 		
 		/* 해당되는 메뉴 선택하여 값 수정 */
+		
 		stockTable.addMouseListener(new MouseListener() {
-
+			ManagerController managerController = new ManagerController();
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				row = stockTable.getSelectedRow();
@@ -110,7 +112,7 @@ public class UpdateMenu extends JPanel{
 				String productPrice = curProduct.get(row).getProductPrice() + "";
 				String categoryCode = curProduct.get(row).getCategoryCode() + "";
 				String stock = curProduct.get(row).getStock() + "";
-				String qty = curProduct.get(row).getQty() + "";
+//				String qty = curProduct.get(row).getQty() + "";
 
 				selectedProduct.add(productNum);		// 상품번호 0
 				selectedProduct.add(productName);		// 상품명 1

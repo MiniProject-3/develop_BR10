@@ -109,7 +109,7 @@
   	         , A.STOCK
   	      FROM PRODUCT A
   	     WHERE A.CATEGORY_CODE = ?
-  	     ORDER BY CATEGORY_CODE, PRODUCT_NUM
+  	     ORDER BY PRODUCT_NUM
   	     
 	</entry>
 	
@@ -137,6 +137,7 @@
   	         , B.PAYMENT
          FROM PRODUCT A
          LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
+  	     ORDER BY PRODUCT_NUM
 	</entry>
 	
 	<entry key="selectAllPays">
