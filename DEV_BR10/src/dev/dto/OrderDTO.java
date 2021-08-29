@@ -14,12 +14,12 @@ public class OrderDTO implements Serializable{
 	private String phoneNum;	// 핸드폰번호
 	private int orderNum;		// 주문번호
 	private int qty;			// 수량
-	private	char payment;		// 결제상태
+	private	String payment;		// 결제상태
 	
 	public OrderDTO() {
 	}
 
-	public OrderDTO(int orderSeq, int productNum, String phoneNum, int orderNum, int qty, char payment) {
+	public OrderDTO(int orderSeq, int productNum, String phoneNum, int orderNum, int qty, String payment) {
 		this.orderSeq = orderSeq;
 		this.productNum = productNum;
 		this.phoneNum = phoneNum;
@@ -68,11 +68,11 @@ public class OrderDTO implements Serializable{
 		this.qty = qty;
 	}
 
-	public char getPayment() {
+	public String getPayment() {
 		return payment;
 	}
 
-	public void setPayment(char payment) {
+	public void setPayment(String payment) {
 		this.payment = payment;
 	}
 
