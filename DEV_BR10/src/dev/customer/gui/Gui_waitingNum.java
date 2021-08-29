@@ -71,6 +71,7 @@ public class Gui_waitingNum {
 			public void actionPerformed(ActionEvent e) {
 				StartMain startMain = new StartMain();
 				changePanel(startMain);
+				mf.dispose();
 			}
 			private void changePanel(StartMain startMain) {
 			}

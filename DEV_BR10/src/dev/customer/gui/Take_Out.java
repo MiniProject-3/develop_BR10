@@ -47,6 +47,7 @@ public class Take_Out extends JPanel{
             public void actionPerformed(ActionEvent e) {
                StartMain startMain = new StartMain();
                changePanel(startMain);
+               mf.dispose();
 
             }
             private void changePanel(StartMain startMain) {
@@ -70,6 +71,7 @@ public class Take_Out extends JPanel{
             public void actionPerformed(ActionEvent e) {
            	 Gui_md GM = new Gui_md();
              changePanel(GM);
+             mf.dispose();
           }
           private void changePanel(Gui_md GM) {
         	  
@@ -93,6 +95,7 @@ public class Take_Out extends JPanel{
             public void actionPerformed(ActionEvent e) {
                Gui_payment payment = new Gui_payment();
                changePanel(payment);
+               mf.dispose();
             }
             private void changePanel(Gui_payment payment) {
 //               mf.remove(panel);

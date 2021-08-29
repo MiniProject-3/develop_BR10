@@ -44,6 +44,7 @@ public class Gui_payment extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				StartMain startMain = new StartMain();
 				changePanel(startMain);
+				mf.dispose();
 			}
 			private void changePanel(StartMain startMain) {
 			}
@@ -79,6 +80,7 @@ public class Gui_payment extends JPanel{
 			public void actionPerformed(ActionEvent e) {
   		Gui_point GiftPo = new Gui_point();
   		   GiftPo.point();
+  		   mf.dispose();
 			}
 		});
 		
@@ -87,6 +89,7 @@ public class Gui_payment extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 	    	  		Gui_pointQR GiftPo = new Gui_pointQR();
 	    	  		   GiftPo.point();
+	    	  		   mf.dispose();
 	    				}
 	    			});
 

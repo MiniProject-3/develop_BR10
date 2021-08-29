@@ -95,6 +95,7 @@ public class Gui_hereOrToGo extends JPanel {
          public void actionPerformed(ActionEvent e) {
             Take_In takein = new Take_In();
             changePanel(takein);
+            mf.dispose();
          }
       private void changePanel(Take_In takein) {
          // TODO Auto-generated method stub
@@ -106,6 +107,7 @@ public class Gui_hereOrToGo extends JPanel {
          public void actionPerformed(ActionEvent e) {
             Take_Out takeout = new Take_Out();
             changePanel(takeout);
+            mf.dispose();
          }
          private void changePanel(Take_Out takeout) {
          }

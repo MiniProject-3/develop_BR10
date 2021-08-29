@@ -232,6 +232,7 @@ public class Gui extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Gui_drink drink = new Gui_drink();
 				changePanel(drink.gui_drink());
+	
 			}
 
 			private void changePanel(JPanel drink) {
