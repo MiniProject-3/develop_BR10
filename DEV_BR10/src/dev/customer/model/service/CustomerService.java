@@ -84,7 +84,7 @@ public class CustomerService {
 	
 	public int selectSeqNum(){
 		Connection con = getConnection();
-		int seq = customerDAO.selectOrderNum(con);
+		int seq = customerDAO.selectSeqNum(con);
 		
 		return seq;
 	}	

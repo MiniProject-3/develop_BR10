@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class MainFrame extends JFrame {
 	private JPanel main = null;
 	private JFrame mf = new JFrame("BR_10");
-
+	public int AA = 0 ;
 	private ImageKick kb = new ImageKick();
 	public MainFrame() {
 		this.setTitle("mini_BR10");

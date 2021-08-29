@@ -3,6 +3,7 @@ package dev.customer.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.customer.controller.CustomerController;
 import dev.dto.OrderDTO;
 
 public class MenuOrderList {
@@ -10,7 +11,6 @@ public class MenuOrderList {
 	
 	public static List orderList = new ArrayList<>();
 	
-	
-	public static int orderSeq = 
+	public static int orderSeq = CustomerController.selectSeqNum();
 	
 }
