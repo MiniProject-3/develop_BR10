@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import dev.customer.gui.ImageKick;
+import dev.customer.gui.StartMain;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
@@ -84,7 +85,8 @@ public class TextButtonPage extends JPanel{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// ------------------
+					new StartMain();
+					mf.dispose();
 				}
 			});
 		}

@@ -3,6 +3,7 @@ package dev.manager.controller;
 import java.util.List;
 import java.util.Map;
 
+import dev.dto.ManagerDTO;
 import dev.dto.OrderDTO;
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
@@ -110,6 +111,12 @@ public class ManagerController {
 		}
 	}
 	
-
+	// 매니저 키값 조회
+	public List<ManagerDTO> selectManagerKey(){
+		
+		List<ManagerDTO> managerKey = managerService.selectManagerKey();
+		
+		return managerKey;
+	}
 }
 

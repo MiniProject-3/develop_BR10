@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import dev.dto.ManagerDTO;
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
 
@@ -47,13 +48,13 @@ public class ManagerDAO {
             
             product.setProductNum(rset.getInt("PRODUCT_NUM"));
             product.setProductName(rset.getString("PRODUCT_NAME")); 
-              product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
-              product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
-              product.setStock(rset.getInt("STOCK"));
-              product.setQty(rset.getInt("QTY"));
-              product.setPayment(rset.getString("PAYMENT"));
+            product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+            product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
+            product.setStock(rset.getInt("STOCK"));
+            product.setQty(rset.getInt("QTY"));
+            product.setPayment(rset.getString("PAYMENT"));
               
-              productList.add(product);
+            productList.add(product);
          }
          
       } catch (SQLException e) {
@@ -87,10 +88,10 @@ public class ManagerDAO {
             pay.setPayNum(rset.getInt("PAY_NUM"));
             pay.setPayTime(rset.getString("PAY_TIME"));
             pay.setPhoneNum(rset.getString("PHONE_NUM"));
-             pay.setPayTotal(rset.getInt("PAY_TOTAL"));
-             pay.setPaymentNum(rset.getInt("PAYMENT_NUM"));
+            pay.setPayTotal(rset.getInt("PAY_TOTAL"));
+            pay.setPaymentNum(rset.getInt("PAYMENT_NUM"));
           
-             payList.add(pay);
+            payList.add(pay);
          }
          
       } catch (SQLException e) {
@@ -215,4 +216,32 @@ public class ManagerDAO {
       }
       return result;
    }
+
+public List<ManagerDTO> selectManagerKey(Connection con) {
+	
+	PreparedStatement pstmt = null;
+	ResultSet rset = null;
+	
+	List<ManagerDTO> manager = null;
+	
+	String query = prop.getProperty("selectManagerKey");
+	
+	try {
+		pstmt = con.prepareStatement(query);
+		rset = pstmt.executeQuery();
+		manager = new ArrayList<>();
+		
+		while (rset.next()) {
+			ManagerDTO manage = new ManagerDTO();
+			manage.setManagerKey(rset.getString("MANAGER_KEY"));
+			
+			manager.add(manage);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	return manager;
+}
 }

@@ -172,4 +172,9 @@
 	         , PAYMENT
 	      FROM BR_ORDER
 	</entry>
+	<entry key="selectManagerKey">
+	    SELECT
+	           MANAGER_KEY
+	      FROM MANAGER
+	</entry>
 </properties>
