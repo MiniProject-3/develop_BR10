@@ -62,7 +62,12 @@ public class ManagerController {
 		
 		productDTO.setProductNum(Integer.valueOf((String) ansMap.get("num")));
 		productDTO.setProductName((String) ansMap.get("name"));
-		productDTO.setProductPrice(Integer.valueOf((String) ansMap.get("price")));
+		
+		if ("".equals(ansMap.get("price")) || ansMap.get("price") == null) {
+			productDTO.setProductPrice(null);
+		} else {
+			productDTO.setProductPrice(Integer.valueOf((String) ansMap.get("price")));
+		}
 		productDTO.setCategoryCode(Integer.valueOf((String) ansMap.get("categoryCode")));
 		productDTO.setStock(Integer.valueOf((String) ansMap.get("stock")));
 	
@@ -75,6 +80,17 @@ public class ManagerController {
 		}
 	}
 
+	/* 메뉴 수정 - ALL */
+	public String modifyProduct(int productNum, String productName, int productPrice, int productStock) {
+		int result = managerService.updateProduct(productNum, productName, productPrice, productStock);
+		
+		if (result > 0) {
+			return managerResultView.displayDmlResult("updateSuccess");
+		}else {
+			return managerResultView.displayDmlResult("updateFailed");
+		}
+	}
+	
 	/* 메뉴 수정 - 가격 */
 	public String modifyProductPrice(int productNum, int productPrice) {
 		int result = managerService.updateProductPrice(productNum, productPrice);
@@ -98,8 +114,8 @@ public class ManagerController {
 	}
 	
 	/* 메뉴 수정 - 이름 */
-	public String modifyProductName(int productNum, int productName) {
-		int result = managerService.updateProductPrice(productNum, productName);
+	public String modifyProductName(int productNum, String productName) {
+		int result = managerService.updateProductName(productNum, productName);
 		
 		if (result > 0) {
 			return managerResultView.displayDmlResult("updateSuccess");

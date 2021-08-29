@@ -44,12 +44,16 @@ public class ProductDTO implements Serializable{
 		this.productName = productName;
 	}
 
-	public int getProductPrice() {
+	public Integer getProductPrice() {
 		return productPrice;
 	}
 
-	public void setProductPrice(int productPrice) {
+	public void setProductPrice(Integer productPrice) {
 		this.productPrice = productPrice;
+	}
+	
+	public void setProductPrice() {
+		this.productPrice = null;
 	}
 
 	public int getCategoryCode() {

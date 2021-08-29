@@ -25,6 +25,7 @@ import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
 public class UpdateMenu extends JPanel{
+	private int row;					// 테이블의 행 조회
 	private MainFrame mf;
 	private ImageKick kb = new ImageKick();
 	private LineBorder line = new LineBorder(Color.black);
@@ -123,6 +124,9 @@ public class UpdateMenu extends JPanel{
 				model.addRow(mix);
 			}
 		}
+		
+		/* 해당되는 메뉴 선택하여 값 수정 */
+		/**/
 		close(con);
 	}
 	

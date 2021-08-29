@@ -81,7 +81,6 @@
 	     WHERE G.GIFT_NUM = ?
 	</entry>
 	<entry key="updateUserPoint">
-
 	    UPDATE BR_USER P
 	       SET P.POINT = ?
 	     WHERE P.PHONE_NUM = ?
@@ -110,6 +109,7 @@
          FROM PRODUCT A
          LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
 	</entry>
+	
 	<entry key="selectAllPays">
 		SELECT PAY_NUM,
 		       PHONE_NUM,
@@ -138,6 +138,15 @@
 	     )
 	</entry>
 	
+	<entry key="updateProduct">
+	    UPDATE PRODUCT P
+	       SET P.PRODUCT_NAME = ?
+	       	   P.PRODUCT_PRICE = ?
+	       	   P.STOCK = ?
+	     WHERE P.PRODUCT_NUM = ?
+	</entry>
+	
+	<!--  사용 여부 확인 후 삭제  -->
 	<entry key="updateProductPrice">
 	    UPDATE PRODUCT P
 	       SET P.PRODUCT_PRICE = ?
@@ -153,6 +162,8 @@
 	       SET P.PRODUCT_NAME = ?
 	     WHERE P.PRODUCT_NUM = ?
 	</entry>
+	<!--  -->
+	
 	<entry key="deleteProduct">
 	     DELETE
 	       FROM PROUDCT P

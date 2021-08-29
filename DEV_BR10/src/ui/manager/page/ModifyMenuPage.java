@@ -34,16 +34,8 @@ public class ModifyMenuPage extends JPanel{
 			
 		this.mf = mainframe;
 		this.setBackground(Color.white);
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(201, 313, 337, 50);
-		comboBox.setFont(new Font("돋움", Font.BOLD, 20));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"아이스크림", "케이크", "디저트", "음료","MD"}));
-		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				}
-		});
 		this.setLayout(null);
-		
+
 		JLabel Label = new JLabel("\uBA54\uB274 \uCD94\uAC00");
 		Label.setBackground(Color.LIGHT_GRAY);
 		Label.setBounds(12, 206, 526, 57);
@@ -56,7 +48,6 @@ public class ModifyMenuPage extends JPanel{
 		labelCategory.setFont(new Font("돋움", Font.BOLD, 20));
 		labelCategory.setBounds(63, 311, 93, 50);
 		mf.add(labelCategory);
-		mf.add(comboBox);
 		
 		JLabel labelProductName = new JLabel("\uC81C\uD488\uBA85");
 		labelProductName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -97,6 +88,11 @@ public class ModifyMenuPage extends JPanel{
 		JButton storeBtn = new JButton("\uC800\uC7A5");
 		storeBtn.setBounds(331, 702, 207, 57);
 		storeBtn.setFont(new Font("돋움", Font.BOLD, 20));
+
+		/* textField에 기본 값 설정하기 */
+		nameField.setText("");
+		priceField.setText("");
+		stockField.setText("");
 			
 		/* 저장 버튼 눌렀을 때 */
 		/* PRODUCT TABLE에 값 update */
@@ -109,8 +105,8 @@ public class ModifyMenuPage extends JPanel{
 				/* 값을 넣어 전달할 map 생성*/
 				Map<String, String> ansMap = new HashMap<>();
 				
+				
 				/* textField에 넣어진 값들 받아오기 */
-				String newCategoryCode = comboBox.getSelectedIndex() + 1 +"";
 				String newName = nameField.getText();
 				String newPrice = priceField.getText();
 				String newStock = stockField.getText();				
@@ -122,11 +118,10 @@ public class ModifyMenuPage extends JPanel{
 				ansMap.put("num", newSeq);
 				ansMap.put("name", newName);
 				ansMap.put("price", newPrice);
-				ansMap.put("categoryCode", newCategoryCode);
 				ansMap.put("stock", newStock);
 				
 				/* DB에 값 넣기 */
-				managerController.registNewProduct(ansMap);
+//				managerController.modifyProduct(productNum, newName, newPrice, newStock);
 				
 				/* 페이지 변경하기 */
 				UpdateMenu updateMenu = new UpdateMenu(mf);

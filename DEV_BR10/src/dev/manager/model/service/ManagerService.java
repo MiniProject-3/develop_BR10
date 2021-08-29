@@ -68,6 +68,24 @@ public class ManagerService {
 		return result;
 	}
 	
+	/* 메뉴 수정 - all */
+	public int updateProduct(int productNum, String productName, int productPrice, int productStock) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = managerDAO.updateProduct(con, productNum, productName, productPrice, productStock);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
+	
 	/* 메뉴 수정 - 가격 */
 	public int updateProductPrice(int productNum, int productPrice) {
 		
@@ -105,7 +123,7 @@ public class ManagerService {
 	}
 	
 	/* 메뉴 수정 - 이름 */
-	public int updateProductName(int productNum, int productName) {
+	public int updateProductName(int productNum, String productName) {
 		
 		Connection con = getConnection();
 		int result = 0;

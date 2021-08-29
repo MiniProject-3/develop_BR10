@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -54,7 +55,6 @@ public class ManagerDAO {
 	         close(rset);
 	         close(pstmt);
 	      }
-	      
 	      return seq;
    }
    
@@ -145,7 +145,12 @@ public class ManagerDAO {
          pstmt = con.prepareStatement(query);
          pstmt.setInt(1, product.getProductNum());
          pstmt.setString(2, product.getProductName());
-         pstmt.setInt(3, product.getProductPrice());
+         if (product.getProductPrice() == null) {
+        	 pstmt.setNull(3, Types.INTEGER);
+
+         } else {        	 
+        	 pstmt.setInt(3, product.getProductPrice());
+         }
          pstmt.setInt(4, product.getCategoryCode());
          pstmt.setInt(5, product.getStock());
 
@@ -155,11 +160,33 @@ public class ManagerDAO {
       } finally {
          close(pstmt);
       }
-      
-
       return result;
    }
    
+   /* 메뉴 수정 updateProduct - all */
+   public int updateProduct(Connection con, int productNum, String productName, int productPrice, int productStock) {
+	      
+	      PreparedStatement pstmt = null;
+	      int result = 0;
+	            
+	      String query = prop.getProperty("updateProduct");
+	      
+	      try {
+	         pstmt = con.prepareStatement(query);
+	         pstmt.setString(1,productName);
+	         pstmt.setInt(2, productNum);
+	         pstmt.setInt(3, productPrice);
+	         pstmt.setInt(4, productStock);
+
+	         result = pstmt.executeUpdate();
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(pstmt);
+	      }
+	      return result;
+	   }
+	   
    /* 가격 수정 updateProductPrice */
    public int updateProductPrice(Connection con, int productNum, int productPrice) {
       
@@ -205,7 +232,7 @@ public class ManagerDAO {
    }
    
    /* 이름 수정 updateProductName */
-   public int updateProductName(Connection con, int productNum, int productName) {
+   public int updateProductName(Connection con, int productNum, String productName) {
       
       PreparedStatement pstmt = null;
       int result = 0;
@@ -214,7 +241,7 @@ public class ManagerDAO {
       
       try {
          pstmt = con.prepareStatement(query);
-         pstmt.setInt(1,productName);
+         pstmt.setString(1,productName);
          pstmt.setInt(2, productNum);
 
          result = pstmt.executeUpdate();
