@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dev.customer.menu.MenuOrderList;
+import dev.customer.model.service.CustomerService;
+
 public class Gui_hereOrToGo extends JPanel {
    private JFrame mf = new JFrame("BR_10");
    private ImageKick kb = new ImageKick();
@@ -95,6 +98,8 @@ public class Gui_hereOrToGo extends JPanel {
          public void actionPerformed(ActionEvent e) {
             Take_In takein = new Take_In();
             changePanel(takein);
+			CustomerService customerService = new CustomerService();
+			customerService.insertOrder(MenuOrderList.orderList);
             mf.dispose();
          }
       private void changePanel(Take_In takein) {
@@ -107,6 +112,8 @@ public class Gui_hereOrToGo extends JPanel {
          public void actionPerformed(ActionEvent e) {
             Take_Out takeout = new Take_Out();
             changePanel(takeout);
+			CustomerService customerService = new CustomerService();
+			customerService.insertOrder(MenuOrderList.orderList);
             mf.dispose();
          }
          private void changePanel(Take_Out takeout) {

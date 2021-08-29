@@ -26,6 +26,37 @@ public class ManagerDAO {
          e.printStackTrace();
       }
    }
+      
+   /* 상품의 마지막 일련번호 조회 selectProductLastSeq */
+   public int selectProductLastSeq(Connection con) {
+	   
+	   PreparedStatement pstmt = null;
+	   ResultSet rset = null;
+	 	   
+	   int seq = 0;
+	 
+	   String query = prop.getProperty("selectProductLastSeq");
+	   
+	   try {
+	         pstmt = con.prepareStatement(query);
+	         rset = pstmt.executeQuery();
+	         
+	         while(rset.next()) {
+	        	 
+	            ProductDTO product = new ProductDTO();
+
+	            product.setProductNum(rset.getInt("MAX(PRODUCT_NUM)"));
+	            seq = product.getProductNum();
+	            	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      
+	      return seq;
+   }
    
    /* 재고 조회 selectAllProducts */
    public List<ProductDTO> selectAllProducts(Connection con) {
@@ -47,13 +78,13 @@ public class ManagerDAO {
             
             product.setProductNum(rset.getInt("PRODUCT_NUM"));
             product.setProductName(rset.getString("PRODUCT_NAME")); 
-              product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
-              product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
-              product.setStock(rset.getInt("STOCK"));
-              product.setQty(rset.getInt("QTY"));
-              product.setPayment(rset.getString("PAYMENT"));
-              
-              productList.add(product);
+            product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+            product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
+            product.setStock(rset.getInt("STOCK"));
+            product.setQty(rset.getInt("QTY"));
+            product.setPayment(rset.getString("PAYMENT"));
+
+            productList.add(product);
          }
          
       } catch (SQLException e) {
@@ -87,10 +118,10 @@ public class ManagerDAO {
             pay.setPayNum(rset.getInt("PAY_NUM"));
             pay.setPayTime(rset.getString("PAY_TIME"));
             pay.setPhoneNum(rset.getString("PHONE_NUM"));
-             pay.setPayTotal(rset.getInt("PAY_TOTAL"));
-             pay.setPaymentNum(rset.getInt("PAYMENT_NUM"));
+            pay.setPayTotal(rset.getInt("PAY_TOTAL"));
+            pay.setPaymentNum(rset.getInt("PAYMENT_NUM"));
           
-             payList.add(pay);
+            payList.add(pay);
          }
          
       } catch (SQLException e) {

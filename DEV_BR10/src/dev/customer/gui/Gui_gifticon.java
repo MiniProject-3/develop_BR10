@@ -105,7 +105,7 @@ public class Gui_gifticon extends JFrame {
                
                GiftDTO gift = new GiftDTO();
                gift.setGiftNum(1);
-               gift.setGiftUse("Y");
+               gift.setGiftUse("N");
                Gifticon.gift.add(gift);
             } else {
                Gui_waitingNum as = new Gui_waitingNum();
