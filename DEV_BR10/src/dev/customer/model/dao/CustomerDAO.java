@@ -308,4 +308,63 @@ public class CustomerDAO {
 			}
 		   return orderList;
 	   }
+	   
+
+	   public int selectOrderNum(Connection con) {
+		   
+		   	PreparedStatement pstmt = null;
+		    ResultSet rset = null;
+		      
+		    int orderNum = 0 ;
+		      
+		    String query = prop.getProperty("selectOrderNum");
+		    
+		    try {
+				pstmt = con.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+
+					orderNum = rset.getInt("MAX(ORDER_NUM)") + 1;
+
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+		         close(rset);
+		         close(pstmt); 
+			}
+		   return orderNum;
+	   }
+	   
+	   
+
+	   public int selectSeqNum(Connection con) {
+		   
+		   	PreparedStatement pstmt = null;
+		    ResultSet rset = null;
+		      
+		    int seq = 0 ;
+		      
+		    String query = prop.getProperty("selectOrderNum");
+		    
+		    try {
+				pstmt = con.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+
+					seq = rset.getInt("MAX(ORDER_NUM)") + 1;
+
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+		         close(rset);
+		         close(pstmt); 
+			}
+		   return seq;
+	   }
 }

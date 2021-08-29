@@ -14,13 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
 import ui.manager.ManagerPanel;
 
-public class InsertMenuPage extends JPanel {
+public class insertMenuPage extends JPanel {
 	
 	private MainFrame mf;
 	private JTextField nameField;
@@ -30,12 +29,10 @@ public class InsertMenuPage extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public InsertMenuPage(MainFrame  mainframe) {
-		
+	public insertMenuPage(MainFrame  mainframe) {
 		
 		this.mf = mainframe;
 		this.setBackground(Color.white);
-		this.setSize(600, 1000);
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(201, 313, 337, 50);
 		comboBox.setFont(new Font("돋움", Font.BOLD, 20));
@@ -46,76 +43,57 @@ public class InsertMenuPage extends JPanel {
 		});
 		this.setLayout(null);
 		
-		JLabel Label = new JLabel("메뉴추가");
+		JLabel Label = new JLabel("\uBA54\uB274 \uCD94\uAC00");
 		Label.setBackground(Color.LIGHT_GRAY);
 		Label.setBounds(12, 206, 526, 57);
 		Label.setFont(new Font("돋움", Font.BOLD, 30));
 		Label.setHorizontalAlignment(SwingConstants.CENTER);
-		this.add(Label);
+		mf.add(Label);
 		
-		JLabel labelCategory = new JLabel("카테고리");
+		JLabel labelCategory = new JLabel("\uCE74\uD14C\uACE0\uB9AC");
 		labelCategory.setHorizontalAlignment(SwingConstants.CENTER);
 		labelCategory.setFont(new Font("돋움", Font.BOLD, 20));
 		labelCategory.setBounds(63, 311, 93, 50);
-		this.add(labelCategory);
-		this.add(comboBox);
+		mf.add(labelCategory);
+		mf.add(comboBox);
 		
-		JLabel labelProductName = new JLabel("제품명");
+		JLabel labelProductName = new JLabel("\uC81C\uD488\uBA85");
 		labelProductName.setHorizontalAlignment(SwingConstants.CENTER);
 		labelProductName.setFont(new Font("돋움", Font.BOLD, 20));
 		labelProductName.setBounds(63, 406, 93, 50);
-		this.add(labelProductName);
+		mf.add(labelProductName);
 		
 		nameField = new JTextField();
 		nameField.setBounds(201, 409, 337, 50);
 		nameField.setFont(new Font("돋움", Font.BOLD, 20));
-		this.add(nameField);
+		mf.add(nameField);
 		nameField.setColumns(10);
 		
-		JLabel labelPrice = new JLabel("가격");
+		JLabel labelPrice = new JLabel("\uAC00\uACA9");
 		labelPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPrice.setFont(new Font("돋움", Font.BOLD, 20));
 		labelPrice.setBounds(63, 495, 82, 50);
-		this.add(labelPrice);
-		
+		mf.add(labelPrice);
 		
 		priceField = new JTextField();
 		priceField.setBounds(201, 498, 337, 50);
 		priceField.setFont(new Font("돋움", Font.BOLD, 20));
-		this.add(priceField);		
+		mf.add(priceField);
 		priceField.setColumns(10);
-		/* 아이스크림의 경우 가격 입력 X - 콤보박스의 기본값 : 아이스크림 */
-		priceField.enable(false);
-		priceField.setBackground(Color.LIGHT_GRAY);
 		
-		comboBox.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				/* 아이스크림이 아닌 다른 카테고리 선택 시 */ 
-				if(comboBox.getSelectedIndex() != 0) {
-					priceField.enable(true);
-					priceField.setBackground(Color.white);
-					} else {
-						priceField.enable(false);
-						priceField.setBackground(Color.LIGHT_GRAY);
-					}
-				}
-		});
-
 		JLabel labelStock = new JLabel("\uC218\uB7C9");
 		labelStock.setHorizontalAlignment(SwingConstants.CENTER);
 		labelStock.setFont(new Font("돋움", Font.BOLD, 20));
 		labelStock.setBounds(63, 589, 82, 50);
-		this.add(labelStock);
+		mf.add(labelStock);
 		
 		stockField = new JTextField();
 		stockField.setBounds(201, 592, 337, 50);
 		stockField.setFont(new Font("돋움", Font.BOLD, 20));
-		this.add(stockField);
+		mf.add(stockField);
 		stockField.setColumns(10);
 		
-		JButton storeBtn = new JButton("저장");
+		JButton storeBtn = new JButton("\uC800\uC7A5");
 		storeBtn.setBounds(331, 702, 207, 57);
 		storeBtn.setFont(new Font("돋움", Font.BOLD, 20));
 
@@ -156,9 +134,9 @@ public class InsertMenuPage extends JPanel {
 				changePanel(updateMenu);
 			}
 		});
-		this.add(storeBtn);
+		mf.add(storeBtn);
 		
-		JButton cancelBtn = new JButton("취소");
+		JButton cancelBtn = new JButton("\uCDE8\uC18C");
 		cancelBtn.setBounds(63, 702, 213, 57);
 		cancelBtn.setFont(new Font("돋움", Font.BOLD, 20));
 
@@ -169,8 +147,7 @@ public class InsertMenuPage extends JPanel {
 					changePanel(managerPanel);
 				}
 		});
-		this.add(cancelBtn);
-		mf.add(this);
+		mf.add(cancelBtn);
 	}
 	
 	public void changePanel(JPanel panel) {

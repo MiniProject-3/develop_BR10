@@ -1,11 +1,15 @@
 package dev.customer.model.service;
 
 import static dev.common.JDBCTemplate.close;
+import static dev.common.JDBCTemplate.commit;
 import static dev.common.JDBCTemplate.getConnection;
+import static dev.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
+import dev.customer.menu.MenuOrderList;
 import dev.customer.model.dao.CustomerDAO;
 import dev.dto.GiftDTO;
 import dev.dto.InoDTO;
@@ -66,6 +70,45 @@ public class CustomerService {
 		List<OrderDTO> orderList = customerDAO.selectOrder(con);
 		
 		return orderList;
-	}
+	}	
+	
+	
+	/* order 시퀀스 조회 */
+	public int selectOrderNum(){
+		Connection con = getConnection();
+		int orderNum = customerDAO.selectOrderNum(con);
+		
+		return orderNum;
+	}	
+	
+	
+	public int selectSeqNum(){
+		Connection con = getConnection();
+		int seq = customerDAO.selectOrderNum(con);
+		
+		return seq;
+	}	
+	
+	
+	public int insertOrder(List orderList){
+		Connection con = getConnection();
+		int insertResult = 0;
+		OrderDTO order[] = new OrderDTO [MenuOrderList.orderList.size()];
+		for (int i = 0 ; i < MenuOrderList.orderList.size() ; i++) {
+			order[i] = (OrderDTO) MenuOrderList.orderList.get(i);
+		
+		System.out.println(order[i]);
+		
+		insertResult = customerDAO.insertOrder(con, order[i]);
+		}
+		if(insertResult > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return insertResult;
+	}	
 	
 }
