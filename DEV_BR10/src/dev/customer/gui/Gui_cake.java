@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import dev.customer.menu.MenuOrderList;
+import dev.customer.model.service.CustomerService;
 import dev.dto.OrderDTO;
 import dev.dto.UserDTO;
 import ui.manager.MainFrame;
@@ -19,7 +21,8 @@ import ui.manager.page.StockPage;
 public class Gui_cake extends JPanel {
    private JFrame mf = new JFrame("BR_10");
    private ImageKick kb = new ImageKick();
-
+   private CustomerService Cus = new CustomerService();
+   private int cusorder = Cus.selectOrderSeq();
    public JPanel gui_cake() {
 
       JPanel cake = new JPanel();
@@ -42,6 +45,9 @@ public class Gui_cake extends JPanel {
 		butt[i].setText("");
 		butt[i].setBackground(Color.WHITE);
 	}
+  	
+
+  	
       /* 케이크 이미지 추가 */
       butt[0].setIcon(kb.ImageKickButton("BR10_images/gui_order/Cake_19.jpg", 200, 200));
       butt[1].setIcon(kb.ImageKickButton("BR10_images/gui_order/Cake_20.jpg", 200, 200));
@@ -53,7 +59,7 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
+				order.setOrderSeq(cusorder);
 				order.setProductNum(13);
 //				order.setOrderNum();
 				order.setQty(1);
@@ -68,12 +74,14 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
+				order.setOrderSeq(cusorder);
 				order.setProductNum(14);
 //				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
+				
+				
 			}
 		});
 		
@@ -81,13 +89,18 @@ public class Gui_cake extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
+
+				
+
+				
 				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
+				order.setOrderSeq(cusorder);
 				order.setProductNum(15);
 //				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
+				
 			}
 		});
 		
@@ -96,7 +109,7 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
+				order.setOrderSeq(cusorder);
 				order.setProductNum(16);
 //				order.setOrderNum();
 				order.setQty(1);

@@ -1,15 +1,18 @@
 package dev.customer.model.service;
 
 import static dev.common.JDBCTemplate.close;
+import static dev.common.JDBCTemplate.commit;
 import static dev.common.JDBCTemplate.getConnection;
+import static dev.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
+import dev.customer.menu.MenuOrderList;
 import dev.customer.model.dao.CustomerDAO;
 import dev.dto.GiftDTO;
 import dev.dto.InoDTO;
-
 import dev.dto.OrderDTO;
 import dev.dto.UserDTO;
 
@@ -68,4 +71,31 @@ public class CustomerService {
 		
 		return orderList;
 	}	
+	
+	
+	/* order 시퀀스 조회 */
+	public int selectOrderSeq(){
+		Connection con = getConnection();
+		int seq = customerDAO.selectOrderSeq(con);
+		
+		return seq;
+	}	
+	
+	
+	public int insertOrder(OrderDTO orderlist){
+		Connection con = getConnection();
+		int insertResult = 0;
+
+		insertResult = customerDAO.insertOrder(con, orderlist);
+		
+		if(insertResult > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return insertResult;
+	}	
+	
 }

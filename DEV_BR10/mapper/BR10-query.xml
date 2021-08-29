@@ -158,5 +158,10 @@
 	       FROM PROUDCT P
 	      WHERE P.PRODUCT_NUM = ?
 	</entry>
+		<entry key="selectOrderSeq">
+	    SELECT
+	           MAX(ORDER_SEQ)
+	      FROM BR_ORDER
+	</entry>
 	
 </properties>

@@ -308,4 +308,33 @@ public class CustomerDAO {
 			}
 		   return orderList;
 	   }
+	   
+
+	   public int selectOrderSeq(Connection con) {
+		   
+		   	PreparedStatement pstmt = null;
+		    ResultSet rset = null;
+		      
+		    int seq = 0 ;
+		      
+		    String query = prop.getProperty("selectOrderSeq");
+		    
+		    try {
+				pstmt = con.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+
+					seq = rset.getInt("MAX(ORDER_SEQ)") + 1;
+
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+		         close(rset);
+		         close(pstmt); 
+			}
+		   return seq;
+	   }
 }
