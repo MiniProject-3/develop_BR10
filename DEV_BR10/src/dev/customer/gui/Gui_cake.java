@@ -53,9 +53,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(13);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
@@ -68,9 +68,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(14);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
@@ -82,9 +82,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(15);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
@@ -96,9 +96,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(16);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
