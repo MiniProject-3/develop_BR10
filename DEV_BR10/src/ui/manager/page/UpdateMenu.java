@@ -33,6 +33,8 @@ public class UpdateMenu extends JPanel{
 	private MainFrame mf;
 	private ImageKick kb = new ImageKick();
 	private LineBorder line = new LineBorder(Color.black);
+	private List<ProductDTO> curProduct;		// 현재 카테고리의 기존 제품들
+	private ArrayList<String> selectedProduct; 
 	
 	public UpdateMenu(MainFrame mainFrame) {
 		JPanel pan = new JPanel();
@@ -43,11 +45,16 @@ public class UpdateMenu extends JPanel{
 		
 		BackButton();
 		CategoryButton();
-		viewPanel(pan, 1);
+		viewPanel(pan, 1, curProduct);
 		plusButton();
 	}
 	
 	public UpdateMenu(MainFrame mf, int num) {
+		
+		ManagerController managerController = new ManagerController();
+		curProduct = managerController.selectProductByCategoryCode(num);
+		// 해당 카테고리의 기존 상품 모두 저장
+		
 		JPanel pan = new JPanel();
 		this.mf = mf;
 		
@@ -56,32 +63,32 @@ public class UpdateMenu extends JPanel{
 		
 		BackButton();
 		CategoryButton();
-		viewPanel(pan, num);
+		viewPanel(pan, num, curProduct);
 		plusButton();
+		
+		/* 기존 값 저장 list */
+		
+		
 	}
 
-	public void viewPanel(JPanel panel, int num) {
+	public void viewPanel(JPanel panel, int num, List<ProductDTO> curProduct) {
 		panel.setSize(500, 700);
 		panel.setLocation(40, 140);
 		panel.setBorder(line);
 		panel.setBackground(Color.white);
 		
-		createTable(panel,num);
+		createTable(panel,num,curProduct);
 		
 		this.add(panel);
 	}
 	
-	public void createTable(JPanel panel, int num) {
+	public void createTable(JPanel panel, int num, List<ProductDTO> curProduct) {
 		String header[] = {"메뉴명", "가격", "수량"};
 		DefaultTableModel model = new DefaultTableModel(header, 0);
 		JTable stockTable = new JTable(model);
 		JScrollPane pane = new JScrollPane(stockTable);
 		DefaultTableCellRenderer right = new DefaultTableCellRenderer();
 		right.setHorizontalAlignment(JLabel.RIGHT);
-		
-		ManagerController managerController = new ManagerController();
-		List<ProductDTO> curProduct = managerController.selectAllProducts();
-		// 기존 상품 모두 저장
 		
 		stockTable.getColumn("가격").setCellRenderer(right);
 		stockTable.getColumn("수량").setCellRenderer(right);
@@ -91,9 +98,6 @@ public class UpdateMenu extends JPanel{
 		pane.setSize(480, 680);
 		
 		panel.add(pane);
-
-		/* 기존 값 저장 list */
-		ArrayList<String> selectedProduct = new ArrayList<String>(); 
 		
 		/* 해당되는 메뉴 선택하여 값 수정 */
 		stockTable.addMouseListener(new MouseListener() {

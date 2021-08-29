@@ -109,6 +109,8 @@
   	         , A.STOCK
   	      FROM PRODUCT A
   	     WHERE A.CATEGORY_CODE = ?
+  	     ORDER BY CATEGORY_CODE, PRODUCT_NUM
+  	     
 	</entry>
 	
 	<entry key="selectIceCream">
