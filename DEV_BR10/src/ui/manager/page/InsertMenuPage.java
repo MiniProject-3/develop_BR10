@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
@@ -30,6 +31,7 @@ public class InsertMenuPage extends JPanel {
 	 * Create the panel.
 	 */
 	public InsertMenuPage(MainFrame  mainframe) {
+		
 		
 		this.mf = mainframe;
 		this.setBackground(Color.white);
@@ -75,12 +77,31 @@ public class InsertMenuPage extends JPanel {
 		labelPrice.setBounds(63, 495, 82, 50);
 		mf.add(labelPrice);
 		
+		
 		priceField = new JTextField();
 		priceField.setBounds(201, 498, 337, 50);
 		priceField.setFont(new Font("돋움", Font.BOLD, 20));
-		mf.add(priceField);
+		mf.add(priceField);		
 		priceField.setColumns(10);
+		/* 아이스크림의 경우 가격 입력 X - 콤보박스의 기본값 : 아이스크림 */
+		priceField.enable(false);
+		priceField.setBackground(Color.LIGHT_GRAY);
 		
+		comboBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				/* 아이스크림이 아닌 다른 카테고리 선택 시 */ 
+				if(comboBox.getSelectedIndex() != 0) {
+					priceField.enable(true);
+					priceField.setBackground(Color.white);
+					} else {
+						priceField.enable(false);
+						priceField.setBackground(Color.LIGHT_GRAY);
+					}
+				}
+		});
+
 		JLabel labelStock = new JLabel("\uC218\uB7C9");
 		labelStock.setHorizontalAlignment(SwingConstants.CENTER);
 		labelStock.setFont(new Font("돋움", Font.BOLD, 20));
