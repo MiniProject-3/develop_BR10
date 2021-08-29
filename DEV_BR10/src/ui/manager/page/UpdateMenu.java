@@ -6,9 +6,7 @@ import static dev.common.JDBCTemplate.getConnection;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -136,6 +134,16 @@ public class UpdateMenu extends JPanel{
 		plusbutton.setBorderPainted(false);
 		plusbutton.setIcon(kb.ImageKickButton("BR10_images/Plus.jpg", 65, 65));
 		
+		/* 메뉴 추가 화면 띄우기 */
+		plusbutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				InsertMenuPage insertMenuPage = new InsertMenuPage(mf);
+				changePanel(insertMenuPage);	
+			}
+			
+		});
 		this.add(plusbutton);
 	}
 	
@@ -236,7 +244,6 @@ public class UpdateMenu extends JPanel{
 		this.add(dessert);
 		this.add(drink);
 		this.add(md);
-		
 	}
 	
 	public void changePanel(JPanel panel) {

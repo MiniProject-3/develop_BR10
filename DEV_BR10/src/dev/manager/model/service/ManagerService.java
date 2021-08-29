@@ -18,6 +18,17 @@ public class ManagerService {
 	/* 관리자 서비스 시스템 */
 	private ManagerDAO managerDAO = new ManagerDAO();
 	
+	/* 상품의 마지막 일련번호 조회 */
+	public int selectProductLastSeq(){
+		
+		Connection con = getConnection();
+		int productLastSeq = managerDAO.selectProductLastSeq(con);
+		
+		close(con);
+		
+		return productLastSeq;
+	}
+	
 	/* 재고 조회 */
 	public List<ProductDTO> selectAllProducts(){
 		

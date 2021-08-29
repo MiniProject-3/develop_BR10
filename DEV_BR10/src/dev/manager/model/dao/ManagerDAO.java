@@ -27,6 +27,37 @@ public class ManagerDAO {
          e.printStackTrace();
       }
    }
+      
+   /* 상품의 마지막 일련번호 조회 selectProductLastSeq */
+   public int selectProductLastSeq(Connection con) {
+	   
+	   PreparedStatement pstmt = null;
+	   ResultSet rset = null;
+	 	   
+	   int seq = 0;
+	 
+	   String query = prop.getProperty("selectProductLastSeq");
+	   
+	   try {
+	         pstmt = con.prepareStatement(query);
+	         rset = pstmt.executeQuery();
+	         
+	         while(rset.next()) {
+	        	 
+	            ProductDTO product = new ProductDTO();
+
+	            product.setProductNum(rset.getInt("MAX(PRODUCT_NUM)"));
+	            seq = product.getProductNum();
+	            	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      
+	      return seq;
+   }
    
    /* 재고 조회 selectAllProducts */
    public List<ProductDTO> selectAllProducts(Connection con) {

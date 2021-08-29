@@ -4,13 +4,29 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
+import dev.customer.model.service.CustomerService;
+import dev.dto.OrderDTO;
+import dev.dto.PayDTO;
+import dev.dto.ProductDTO;
+import dev.manager.controller.ManagerController;
 
 public class Gui_basket extends JFrame {
 
@@ -23,8 +39,7 @@ public class Gui_basket extends JFrame {
 		mf.setLayout(null);
 
 		ImageKickPanel panel = new ImageKickPanel(
-		new ImageIcon("BR10_images/gui_order/bg_07.jpg").getImage().getScaledInstance(600, 1000, 3));
-		panel.setLocation(0, 0);
+		new ImageIcon("BR10_images/gui_order/bg_06.jpg").getImage().getScaledInstance(600, 1000, 3));
 		panel.setSize(600, 1000);
 		panel.setBackground(Color.WHITE);
 
@@ -88,6 +103,7 @@ public class Gui_basket extends JFrame {
 				mf.dispose(); // 창 꺼짐
 			}
 		});
+		createTable(panel);
 
 		panel.add(homePanel);
 		panel.add(controllPanel);
@@ -96,4 +112,21 @@ public class Gui_basket extends JFrame {
 		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mf.setVisible(true);
 	}
+	
+	public void createTable(JPanel panel) {
+		String header[] = {"메뉴명", "갯수", "금액"};
+		DefaultTableModel model = new DefaultTableModel(header, 0);
+		JTable stockTable = new JTable(model);
+		JScrollPane pane = new JScrollPane(stockTable);
+		DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+	    center.setHorizontalAlignment(JLabel.CENTER);
+		
+	    stockTable.getColumn("갯수").setCellRenderer(center);
+	    
+		pane.setLocation(100, 200);
+		pane.setSize(400, 500);
+		
+		panel.add(pane);
+	}
+	
 }

@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import dev.dto.ManagerDTO;
-import dev.dto.OrderDTO;
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
+import dev.manager.model.dao.ManagerDAO;
 import dev.manager.model.service.ManagerService;
 import dev.views.ManagerResultView;
 
@@ -14,7 +14,18 @@ public class ManagerController {
 
    private ManagerResultView managerResultView = new ManagerResultView();
    private ManagerService managerService = new ManagerService();
-
+   
+    /* 상품의 마지막 일련번호 조회 */
+   	public int selectProductLastSeq() {
+   		int productLastSeq = managerService.selectProductLastSeq();
+   		
+   		if(productLastSeq != 0) {
+   			return productLastSeq + 1;
+   		} else {
+   			return 0;
+   		}
+   	}
+   
 	/* 모든 상품 조회 (재고 조회) */
 	public List<ProductDTO> selectAllProducts() {
 		
@@ -46,24 +57,29 @@ public class ManagerController {
 	}
 	
 	/* 메뉴 추가 */
-	public String registNewProduct(Map<String, String> ansMap) {
-	
-		ProductDTO productDTO = new ProductDTO();
-		
-		productDTO.setProductNum(Integer.valueOf(ansMap.get("num")));
-		productDTO.setProductName(ansMap.get("name"));
-		productDTO.setProductPrice(Integer.valueOf(ansMap.get("price")));
-		productDTO.setCategoryCode(Integer.valueOf(ansMap.get("categoryCode")));
-		productDTO.setStock(Integer.valueOf(ansMap.get("stock")));
-	
-		int result = managerService.insertProduct(productDTO);
-		
-		if (result > 0) {
-			return managerResultView.displayDmlResult("insertSuccess");
-		}else {
-			return managerResultView.displayDmlResult("insertFailed");
-		}
-	}
+	   public String registNewProduct(Map<String, String> ansMap) {
+	   
+	      ProductDTO productDTO = new ProductDTO();
+	      
+	      productDTO.setProductNum(Integer.valueOf((String) ansMap.get("num")));
+	      productDTO.setProductName((String) ansMap.get("name"));
+	      
+	      if ("".equals(ansMap.get("price")) || ansMap.get("price") == null) {
+	         productDTO.setProductPrice(0);
+	      } else {
+	         productDTO.setProductPrice(Integer.valueOf((String) ansMap.get("price")));
+	      }
+	      productDTO.setCategoryCode(Integer.valueOf((String) ansMap.get("categoryCode")));
+	      productDTO.setStock(Integer.valueOf((String) ansMap.get("stock")));
+	   
+	      int result = managerService.insertProduct(productDTO);
+	      
+	      if (result > 0) {
+	         return managerResultView.displayDmlResult("insertSuccess");
+	      }else {
+	         return managerResultView.displayDmlResult("insertFailed");
+	      }
+	   }
 
 	/* 메뉴 수정 - 가격 */
 	public String modifyProductPrice(int productNum, int productPrice) {
