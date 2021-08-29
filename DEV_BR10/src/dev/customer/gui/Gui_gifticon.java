@@ -1,6 +1,7 @@
 package dev.customer.gui;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,9 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.RepaintManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+
+import dev.customer.menu.Gifticon;
+import dev.dto.GiftDTO;
 
 public class Gui_gifticon extends JFrame {
 
@@ -99,10 +102,16 @@ public class Gui_gifticon extends JFrame {
                JOptionPane.showMessageDialog(null, "다시입력");
                giftNum.setText("");
                giftNum.requestFocus();
+               
+               GiftDTO gift = new GiftDTO();
+               gift.setGiftNum(1);
+               gift.setGiftUse("Y");
+               Gifticon.gift.add(gift);
             } else {
                Gui_waitingNum as = new Gui_waitingNum();
                as.waitingNum();
                mf.dispose();
+               
             }
          }
       });

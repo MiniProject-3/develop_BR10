@@ -11,10 +11,6 @@ import javax.swing.JPanel;
 
 import dev.customer.menu.MenuOrderList;
 import dev.dto.OrderDTO;
-import dev.dto.UserDTO;
-import ui.manager.MainFrame;
-import ui.manager.ManagerPanel;
-import ui.manager.page.StockPage;
 
 public class Gui_cake extends JPanel {
    private JFrame mf = new JFrame("BR_10");
@@ -53,9 +49,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(13);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
@@ -68,9 +64,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(14);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
@@ -82,9 +78,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(15);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
@@ -96,9 +92,9 @@ public class Gui_cake extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq();
+//				order.setOrderSeq();
 				order.setProductNum(16);
-				order.setOrderNum();
+//				order.setOrderNum();
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(order);
