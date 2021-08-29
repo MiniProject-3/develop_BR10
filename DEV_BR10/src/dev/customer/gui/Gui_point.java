@@ -101,7 +101,7 @@ public class Gui_point extends JFrame {
 					JOptionPane.showMessageDialog(null, "100p 적립 예정입니다.");
 					Gui_gifticon Gcon = new Gui_gifticon();
 					Gcon.gift();
-					dispose();
+					mf.dispose();
 						}
 			}
 		});
@@ -111,7 +111,7 @@ public class Gui_point extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Gui_gifticon Gcon = new Gui_gifticon();
 				   Gcon.gift();
-				   dispose();
+				   mf.dispose();
 					}
 				});
 

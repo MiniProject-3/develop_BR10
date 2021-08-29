@@ -100,7 +100,7 @@ public class Gui_pointQR extends JFrame {
 					
 					JOptionPane.showMessageDialog(null, "100p 적립 예정입니다.");
 					new QR();
-					dispose();
+					mf.dispose();
 					
 				}
 			}
@@ -112,7 +112,7 @@ public class Gui_pointQR extends JFrame {
 		
 		QR qr = new QR();
 		changePanel(qr);
-		dispose();
+		mf.dispose();
 	}
 	private void changePanel(QR qr) {
 	}
