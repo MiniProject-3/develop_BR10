@@ -44,11 +44,10 @@ public class ManagerDAO {
 	         while(rset.next()) {
 	        	 
 	            ProductDTO product = new ProductDTO();
-	            
-	            product.setProductNum(rset.getInt("PRODUCT_NUM"));
-	              
-	         }
-	         
+
+	            product.setProductNum(rset.getInt("MAX(PRODUCT_NUM)"));
+	            seq = product.getProductNum();
+	            	         }
 	      } catch (SQLException e) {
 	         e.printStackTrace();
 	      } finally {
@@ -79,13 +78,13 @@ public class ManagerDAO {
             
             product.setProductNum(rset.getInt("PRODUCT_NUM"));
             product.setProductName(rset.getString("PRODUCT_NAME")); 
-              product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
-              product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
-              product.setStock(rset.getInt("STOCK"));
-              product.setQty(rset.getInt("QTY"));
-              product.setPayment(rset.getString("PAYMENT"));
+            product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+            product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
+            product.setStock(rset.getInt("STOCK"));
+            product.setQty(rset.getInt("QTY"));
+            product.setPayment(rset.getString("PAYMENT"));
               
-              productList.add(product);
+            productList.add(product);
          }
          
       } catch (SQLException e) {

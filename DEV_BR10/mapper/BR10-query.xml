@@ -94,8 +94,8 @@
 	<!-- manager -->
 	
 	<entry key="selectProductLastSeq">
-	    SELECT MAX(A.PRODUCT_NUM)
-	      FROM PRODUCT A
+	    SELECT MAX(PRODUCT_NUM)
+	      FROM PRODUCT 
 	</entry>
 	
 	<entry key="selectAllProducts">
@@ -123,7 +123,7 @@
 	      INTO PRODUCT P
 	    (
 	      P.PRODUCT_NUM
-	    , P.PROPDUCT_NAME
+	    , P.PRODUCT_NAME
 	    , P.PRODUCT_PRICE
 	    , P.CATEGORY_CODE
 	    , P.STOCK
@@ -137,11 +137,11 @@
 	     , ?
 	     )
 	</entry>
+	
 	<entry key="updateProductPrice">
 	    UPDATE PRODUCT P
 	       SET P.PRODUCT_PRICE = ?
 	     WHERE P.PRODUCT_NUM = ?
-	    
 	</entry>
 	<entry key="updateProductStock">
 	    UPDATE PRODUCT P

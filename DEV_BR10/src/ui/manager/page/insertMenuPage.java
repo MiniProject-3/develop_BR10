@@ -100,35 +100,38 @@ public class insertMenuPage extends JPanel {
 		
 		/* 저장 버튼 눌렀을 때 */
 		/* PRODUCT TABLE에 값 INSERT */
-		/*
-		 * 카테고리 - comboBox
-		 * 이름 - nameField
-		 * 가격 - priceField
-		 * 수량 - stockField
-		 */
+
 		storeBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-				ManagerController manageController = new ManagerController();
+				ManagerController managerController = new ManagerController();
 				
 				/* 값을 넣어 전달할 map 생성*/
-				Map<String, ?> ansMap;
+				Map<String, String> ansMap = new HashMap<>();
 				
 				/* textField에 넣어진 값들 받아오기 */
-				int newCategoryCode = comboBox.getSelectedIndex() + 1;
+				String newCategoryCode = comboBox.getSelectedIndex() + 1 +"";
 				String newName = nameField.getText();
 				String newPrice = priceField.getText();
-				int newStock = Integer.parseInt(stockField.getText());				
+				String newStock = stockField.getText();				
 				
 				/* 일련번호 만들기 */
-				int newSeq;
+				String newSeq = managerController.selectProductLastSeq() + "";
 				
-//				newSeq = 
 				/* map에 데이터 추가하기 */
+				ansMap.put("num", newSeq);
+				ansMap.put("name", newName);
+				ansMap.put("price", newPrice);
+				ansMap.put("categoryCode", newCategoryCode);
+				ansMap.put("stock", newStock);
 				
-//				StockPage stock = new StockPage(mf);
-//				changePanel(stock);
+				/* DB에 값 넣기 */
+				managerController.registNewProduct(ansMap);
+				
+				/* 페이지 변경하기 */
+				UpdateMenu updateMenu = new UpdateMenu(mf);
+				changePanel(updateMenu);
 			}
 		});
 		mf.add(storeBtn);
