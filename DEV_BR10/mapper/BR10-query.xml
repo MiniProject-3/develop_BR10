@@ -179,4 +179,14 @@
 	           MANAGER_KEY
 	      FROM MANAGER
 	</entry>
+	<entry key="selectOrderNum">
+ 	    SELECT
+	           MAX(ORDER_NUM)
+ 	      FROM BR_ORDER
+ 	</entry>
+	<entry key="selectSeqNum">
+	    SELECT
+	           MAX(A.ORDER_SEQ)
+	      FROM BR_ORDER A
+	</entry>
 </properties>
