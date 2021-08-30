@@ -1,3 +1,5 @@
+package dev.customer.gui;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
