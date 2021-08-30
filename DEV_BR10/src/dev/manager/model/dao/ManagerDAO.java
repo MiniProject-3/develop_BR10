@@ -28,7 +28,6 @@ public class ManagerDAO {
          e.printStackTrace();
       }
    }
-      
    /* 상품의 마지막 일련번호 조회 selectProductLastSeq */
    public int selectProductLastSeq(Connection con) {
 	   

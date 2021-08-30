@@ -4,12 +4,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import dev.dto.OrderDTO;
 
 public class QR extends JFrame {
 	private ImageKick qr = new ImageKick();
@@ -120,7 +124,7 @@ public class QR extends JFrame {
 			private void changePanel(Gui_payment payment) {
 			}
 		});
-
+		
 		panel.add(homePanel);
 		panel.add(controllPanel);
 		panel.add(homePanel2);
@@ -132,5 +136,4 @@ public class QR extends JFrame {
 		this.setVisible(true);
 		revalidate();
 	}
-
 }

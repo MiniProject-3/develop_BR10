@@ -98,8 +98,7 @@ public class Take_In extends JPanel{
             mf.dispose();
          }
          private void changePanel(Gui_payment payment) {
-//            mf.remove(panel);
-//            main.add(payment);
+
          }
       });
 

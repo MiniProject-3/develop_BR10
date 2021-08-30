@@ -59,8 +59,6 @@ public class Gui_waitingNum {
 		waitingPanel.add(waitingPanel1);
 		waitingPanel1.revalidate();
 		
-		
-		
 		waitingPanel.repaint();
 
 		JButton butt = new JButton("확인");
@@ -69,6 +67,9 @@ public class Gui_waitingNum {
 		butt.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			
+				
+				
 				StartMain startMain = new StartMain();
 				changePanel(startMain);
 				mf.dispose();
@@ -76,6 +77,8 @@ public class Gui_waitingNum {
 			private void changePanel(StartMain startMain) {
 			}
 		});
+		
+		
 		
 		waitingPanel.add(butt);
 		

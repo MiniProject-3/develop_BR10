@@ -41,7 +41,6 @@ public class CustomerController {
 	
 	/* (생략) 주문 추가 insertOrder */
 	public int insertOrder() {
-		
 		return 0;
 
 	}

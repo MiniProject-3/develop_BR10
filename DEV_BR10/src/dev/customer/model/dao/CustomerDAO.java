@@ -345,7 +345,6 @@ public class CustomerDAO {
 		   return orderNum;
 	   }
 	   
-	   
 
 	   public int selectSeqNum(Connection con) {
 		   

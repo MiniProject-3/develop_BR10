@@ -8,7 +8,6 @@ public class ManagerMenu {
 
 		ManagerController managerController = new ManagerController();
 		
-		/*  */
 	}
 
 }
