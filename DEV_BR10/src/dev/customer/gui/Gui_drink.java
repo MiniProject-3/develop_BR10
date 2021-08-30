@@ -50,12 +50,12 @@ public class Gui_drink extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq(MenuOrderList.orderSeq++);
 				order.setProductNum(23);
+				order.setOrderSeq(MenuOrderList.orderSeq++);                        // Static으로 생성한 orderSeq int에 물품 주문번호를 계속해서 넣어준다.
 				order.setOrderNum(cusorder);
 				order.setQty(1);
 				order.setPayment("N");
-				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order); // Static으로 생성한 List 객체에 주문현황을 계속 넣어준다. 
 				System.out.println(order);
 			}
 		});
@@ -65,12 +65,12 @@ public class Gui_drink extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq(MenuOrderList.orderSeq++);
 				order.setProductNum(21);
+				order.setOrderSeq(MenuOrderList.orderSeq++);                         // Static으로 생성한 orderSeq int에 물품 주문번호를 계속해서 넣어준다.
 				order.setOrderNum(cusorder);
 				order.setQty(1);
 				order.setPayment("N");
-				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);  // Static으로 생성한 List 객체에 주문현황을 계속 넣어준다. 
 				System.out.println(order);
 
 			}
@@ -81,12 +81,12 @@ public class Gui_drink extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq(MenuOrderList.orderSeq++);
 				order.setProductNum(24);
+				order.setOrderSeq(MenuOrderList.orderSeq++);                         // Static으로 생성한 orderSeq int에 물품 주문번호를 계속해서 넣어준다.
 				order.setOrderNum(cusorder);
 				order.setQty(1);
 				order.setPayment("N");
-				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);  // Static으로 생성한 List 객체에 주문현황을 계속 넣어준다. 
 				System.out.println(order);
 			}
 		});
@@ -96,12 +96,12 @@ public class Gui_drink extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				OrderDTO order = new OrderDTO();
-				order.setOrderSeq(MenuOrderList.orderSeq++);
 				order.setProductNum(22);
+				order.setOrderSeq(MenuOrderList.orderSeq++);                         // Static으로 생성한 orderSeq int에 물품 주문번호를 계속해서 넣어준다.
 				order.setOrderNum(cusorder);
 				order.setQty(1);
 				order.setPayment("N");
-				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);  // Static으로 생성한 List 객체에 주문현황을 계속 넣어준다. 
 				System.out.println(order);
 
 			}

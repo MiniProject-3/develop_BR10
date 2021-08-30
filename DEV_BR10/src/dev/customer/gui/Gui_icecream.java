@@ -1,23 +1,25 @@
 package dev.customer.gui;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import dev.customer.menu.MenuOrderList;
+import dev.customer.model.service.CustomerService;
 import dev.dto.OrderDTO;
-import ui.manager.MainFrame;
 
 public class Gui_icecream extends JPanel {
+	private CustomerService Cus = new CustomerService();
+	private int cusorder = Cus.selectOrderNum();
 	private ImageKick kb = new ImageKick();
-	int ice = 0;
+	int iceSize = 0;
+	int i = 0;
+
 	public JPanel gui_icecream(int ice) {
-		this.ice = ice;
 		JPanel icecream = new JPanel();
 		icecream.setLocation(125, 250);
 		icecream.setSize(350, 450);
@@ -38,152 +40,32 @@ public class Gui_icecream extends JPanel {
 			butt[i].setIcon(kb.ImageKickButton("BR10_images/gui_order/flavor_" + j + ".jpg", 100, 100));
 			j++;
 		}
-		
-		butt[0].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(1);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("Y");
-				MenuOrderList.orderList.add(order);
-			}
-		});
 
-		butt[1].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(2);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		}); 
-		butt[2].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(3);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[3].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(4);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[4].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(5);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[5].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(6);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[6].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(7);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[7].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(8);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[8].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(9);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[9].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(10);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[10].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(11);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
-		butt[11].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(12);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
-			}
-		});
+		for (i = 0; i < butt.length; i++) {                                       //    아이스크림 선택 제한
+			int ProductNumber = i + 1;
+			butt[i].addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (ice > iceSize) {
+						OrderDTO order = new OrderDTO();
+						order.setOrderSeq(MenuOrderList.orderSeq++);
+						order.setProductNum(ProductNumber);
+						order.setOrderNum(cusorder);
+						order.setQty(1);
+						order.setPayment("N");
+						MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+						System.out.println(order);
+						iceSize++;
+						System.out.println(iceSize);
+					} else {
+						JOptionPane.showMessageDialog(null, "이미" + ice + "가지 맛 모두를 선택하셨습니다.", "경고",
+								JOptionPane.WARNING_MESSAGE);
+					}
+
+				}
+			});
+		}
+
 		return icecream;
 	}
 }
