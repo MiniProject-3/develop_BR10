@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
@@ -188,4 +189,197 @@
 	      FROM BR_ORDER A
 	</entry>
 
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment></comment>
+
+	<!-- customer -->
+	<entry key="insertOrder">
+	 INSERT
+	      INTO BR_ORDER O
+	    (
+	      O.ORDER_SEQ
+	    , O.PRODUCT_NUM
+	    , O.PHONE_NUM
+	   	, O.ORDER_NUM
+	    , O.QTY
+	    , O.PAYMENT
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
+	<entry key="insertPay">
+	 INSERT
+	      INTO PAY P
+	    (
+	      P.PAY_NUM
+		, P.PHONE_NUM
+		, P.PAY_TIME
+		, P.PAY_TOTAL
+		, P.PAYMENT_NUM
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
+	<entry key="insertIno">
+	 INSERT
+	      INTO INO I
+	    (
+	      I.INO_NUM
+		, I.INO
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     )
+	</entry>
+	
+	<entry key="selectAllUsers">
+		SELECT PHONE_NUM,
+		       POINT,
+		       PHONE_CO
+		  FROM BR_USER
+	</entry>
+	<entry key="selectAllGifts">
+		SELECT GIFT_NUM,
+		       GIFT_USE
+		  FROM GIFT
+	</entry>
+	<entry key="selectAllInos">
+		SELECT INO_NUM,
+		       INO
+		  FROM INO
+	</entry>
+	
+	<entry key="updateGiftUse">
+	    UPDATE GIFT G
+	       SET G.GIFT_USE = ?
+	     WHERE G.GIFT_NUM = ?
+	</entry>
+	<entry key="updateUserPoint">
+
+	    UPDATE BR_USER P
+	       SET P.POINT = ?
+	     WHERE P.PHONE_NUM = ?
+	</entry>
+	<entry key="updateManagerKey">
+	    UPDATE MANAGER M
+	       SET M.MANAGER_KEY = ?
+	</entry>
+
+	<!-- manager -->
+	
+	<entry key="selectProductLastSeq">
+	    SELECT MAX(PRODUCT_NUM)
+	      FROM PRODUCT 
+	</entry>
+	
+	<entry key="selectAllProducts">
+	    SELECT
+  	           A.PRODUCT_NUM
+  	         , A.PRODUCT_NAME
+  	         , A.PRODUCT_PRICE
+       	     , A.CATEGORY_CODE
+  	         , A.STOCK
+  	         , B.QTY
+  	         , B.PAYMENT
+         FROM PRODUCT A
+         LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
+	</entry>
+	<entry key="selectAllPays">
+		SELECT PAY_NUM,
+		       PHONE_NUM,
+		       PAY_TIME,
+		       PAY_TOTAL,
+		       PAYMENT_NUM
+		  FROM PAY
+	</entry>
+	<entry key="insertProduct">
+	    INSERT
+	      INTO PRODUCT P
+	    (
+	      P.PRODUCT_NUM
+	    , P.PRODUCT_NAME
+	    , P.PRODUCT_PRICE
+	    , P.CATEGORY_CODE
+	    , P.STOCK
+	     ) 
+	     VALUES
+	     (
+	       ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+	</entry>
+	
+	<entry key="updateProductPrice">
+	    UPDATE PRODUCT P
+	       SET P.PRODUCT_PRICE = ?
+	     WHERE P.PRODUCT_NUM = ?
+	</entry>
+	<entry key="updateProductStock">
+	    UPDATE PRODUCT P
+	       SET STOCK = ?
+	     WHERE P.PRODUCT_NUM = ?
+	</entry>
+	<entry key="updateProductName">
+	    UPDATE PRODUCT P
+	       SET P.PRODUCT_NAME = ?
+	     WHERE P.PRODUCT_NUM = ?
+	</entry>
+	<entry key="deleteProduct">
+	     DELETE
+	       FROM PROUDCT P
+	      WHERE P.PRODUCT_NUM = ?
+	</entry>
+	
+	<entry key="selectManagerKey">
+	    SELECT
+	           MANAGER_KEY
+	      FROM MANAGER
+	</entry>
+		<entry key="selectOrder">
+	    SELECT
+	           ORDER_SEQ
+	         , PRODUCT_NUM
+	         , PHONE_NUM
+	         , ORDER_NUM
+	         , QTY
+	         , PAYMENT
+	      FROM BR_ORDER
+	</entry>
+	<entry key="selectManagerKey">
+	    SELECT
+	           MANAGER_KEY
+	      FROM MANAGER
+	</entry>
+	<entry key="selectOrderNum">
+ 	    SELECT
+	           MAX(ORDER_NUM)
+ 	      FROM BR_ORDER
+ 	</entry>
+	<entry key="selectSeqNum">
+	    SELECT
+	           MAX(A.ORDER_SEQ)
+	      FROM BR_ORDER A
+	</entry>
+>>>>>>> refs/remotes/origin/HS_OD_1.2
 </properties>
