@@ -59,6 +59,44 @@ public class ManagerDAO {
 	      return seq;
    }
    
+   /* selectQtyNProductByProductNum */
+   public List<ProductDTO> selectQtyNProductByProductNum(Connection con, int productNum) {
+	      
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      List<ProductDTO> productList = null;
+	      
+	      String query = prop.getProperty("selectQtyNProductByProductNum");
+	      
+	      try {
+	         pstmt = con.prepareStatement(query);
+	         pstmt.setInt(1, productNum);
+	         
+	         rset = pstmt.executeQuery();
+	         
+	         productList = new ArrayList<>();
+	         
+	         if(rset.next()) {
+	            ProductDTO product = new ProductDTO();
+	            product.setProductNum(rset.getInt("PRODUCT_NUM"));
+	            product.setProductName(rset.getString("PRODUCT_NAME")); 
+	            product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+	            product.setQty(rset.getInt("QTY"));
+	            
+	            productList.add(product);
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      return productList;
+	   }
+   
+   
    /* 카테고리 별 상품 조회 - selectProductByCategoryCode*/
    public List<ProductDTO> selectProductByCategoryCode(Connection con, int categoryCode) {
 	      

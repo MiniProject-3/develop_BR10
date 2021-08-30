@@ -55,10 +55,71 @@ public class CustomerDAO {
           } finally {
              close(pstmt);
           }
-      
       return result;
    }
 
+   /* 주문 업데이트 updateOrder */
+   public int updateOrder(Connection con, int orderNum, String payMent) {
+	      
+       PreparedStatement pstmt = null;
+         int result = 0;
+               
+         String query = prop.getProperty("updateOrder");
+         
+         try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1,payMent);
+            pstmt.setInt(2, orderNum);
+
+	         result = pstmt.executeUpdate();
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(pstmt);
+	      }
+	      return result;
+	}
+   
+   /* selectOrderByOrderNum */
+   public List<OrderDTO> selectOrderByOrderNum(Connection con, int orderNum) {
+	      
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      List<OrderDTO> orderList = null;
+	      
+	      String query = prop.getProperty("selectOrderByOrderNum");
+	      
+	      try {
+	         pstmt = con.prepareStatement(query);
+	         pstmt.setInt(1, orderNum);
+	         
+	         rset = pstmt.executeQuery();
+	         
+	         orderList = new ArrayList<>();
+	         
+	         if(rset.next()) {
+	            OrderDTO order = new OrderDTO();
+	            order.setOrderSeq(rset.getInt("ORDER_SEQ"));
+	            order.setProductNum(rset.getInt("PRODUCT_NUM")); 
+	            order.setPhoneNum(rset.getString("PHONE_NUM"));
+	            order.setOrderNum(rset.getInt("ORDER_NUM"));
+	            order.setQty(rset.getInt("QTY"));
+	            order.setPayment(rset.getString("PAYMENT"));
+	            
+	            orderList.add(order);
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      return orderList;
+	   }
+   
+ 
    /* 결제 추가 insertPay */
    public int insertPay(Connection con, PayDTO pay) {
       
@@ -134,28 +195,6 @@ public class CustomerDAO {
             pstmt.setInt(1,point);
             pstmt.setInt(2, phoneNum);
 
-	         result = pstmt.executeUpdate();
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } finally {
-	         close(pstmt);
-	      }
-	      return result;
-	}
-	
-	/* 확인 후 삭제 */
-	/* 관리자키 변경(업데이트) */
-	public int updateManagerKey(Connection con, int managerKey) {
-		
-		 PreparedStatement pstmt = null;
-	      int result = 0;
-	            
-	      String query = prop.getProperty("updateManagerKey");
-	      
-	      try {
-	         pstmt = con.prepareStatement(query);
-	         pstmt.setInt(1,managerKey);
-	         
 	         result = pstmt.executeUpdate();
 	      } catch (SQLException e) {
 	         e.printStackTrace();
@@ -281,6 +320,7 @@ public class CustomerDAO {
 		      return result;
 		   }
 	
+	   /* 주문 내역 전체 조회 selectOrder */
 	   public List<OrderDTO> selectOrder(Connection con) {
 		   
 		   	PreparedStatement pstmt = null;

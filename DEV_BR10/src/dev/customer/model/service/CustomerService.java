@@ -16,6 +16,7 @@ import dev.dto.GiftDTO;
 import dev.dto.InoDTO;
 import dev.dto.OrderDTO;
 import dev.dto.PayDTO;
+import dev.dto.ProductDTO;
 import dev.dto.UserDTO;
 
 public class CustomerService {
@@ -39,6 +40,35 @@ public class CustomerService {
 		close(con);
 
 		return result;
+	}
+	
+	/* 주문 업데이트 updateOrder */
+	public int updateOrder(int orderNum, String payMent) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = customerDAO.updateOrder(con, orderNum, payMent);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
+	
+	/* 주문 완료된 항목 값들 가져오기 selectOrderByOrderNum */
+	public List<OrderDTO> selectOrderByOrderNum(int orderNum){
+		
+		Connection con = getConnection();
+		List<OrderDTO> orderList = customerDAO.selectOrderByOrderNum(con, orderNum);
+		
+		close(con);
+		
+		return orderList;
 	}
 	
 	/* 결제 추가 - insertPay */

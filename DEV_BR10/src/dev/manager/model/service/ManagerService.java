@@ -40,6 +40,17 @@ public class ManagerService {
 		return productList;
 	}
 	
+	/* selectQtyNProductByProductNum */
+	public List<ProductDTO> selectQtyNProductByProductNum(int productNum){
+		
+		Connection con = getConnection();
+		List<ProductDTO> productList = managerDAO.selectQtyNProductByProductNum(con, productNum);
+		
+		close(con);
+		
+		return productList;
+	}
+	
 	/* 재고 조회 */
 	public List<ProductDTO> selectAllProducts(){
 		

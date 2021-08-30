@@ -4,12 +4,23 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import dev.customer.controller.CustomerController;
+import dev.dto.OrderDTO;
+import dev.dto.ProductDTO;
+import dev.manager.controller.ManagerController;
 
 public class QR extends JFrame {
 	private ImageKick qr = new ImageKick();
@@ -77,13 +88,67 @@ public class QR extends JFrame {
 			butt7.setIcon(qr.ImageKickButton("BR10_images/White.jpg", 350, 70));
 			butt7.setBorderPainted(false); // 버튼 테두리 설정해제
 			
-		/*다이얼로그 설정*/ 
+		/* 다이얼로그 설정 */ 
 		    butt7.addActionListener(new ActionListener() {
 		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		    Gui_waitingNum gui_wait = new Gui_waitingNum();
-		    gui_wait.waitingNum();
-		    dispose();
+		    	public void actionPerformed(ActionEvent e) {
+
+		    	CustomerController customerController = new CustomerController();
+		    	ManagerController managerController = new ManagerController();
+		    	
+		    	String payMentNum = "1";											// QR 결제
+		    	int qrOrderNum = customerController.selectOrderNum() - 1;		// 주문번호 받아오기
+		    	
+		    	/* selectOrderByOrderNum == customerController.selectOrderNum() - 1 */
+		    	Map<String, String> ansMap = new HashMap<>();
+		    	
+		    	List<OrderDTO> orderList = new ArrayList<>();
+		    	orderList = customerController.selectOrderByOrderNum(qrOrderNum);
+		    	
+		    	SimpleDateFormat format1 = new SimpleDateFormat("yy/MM/dd");
+		    	
+		    	Date time = new Date();
+		    	String payTime = "00/00/00"; 
+		    	
+		    	int orderPayTotal = 0;
+
+		    	for(OrderDTO order :orderList) {
+		    		 String orderSeq = order.getOrderSeq() + "";			// 주문_일련번호(PK)
+		    		 String productNum = order.getProductNum() + "";		// 상품번호
+		    		 String phoneNum = order.getPhoneNum();					// 핸드폰번호
+		    		 String orderNum = order.getOrderNum() + "";			// 주문번호
+		    		 String qty = order.getQty() + "";						// 수량
+		    		 String payment = order.getPayment();					// 결제상태
+		    		 System.out.println(productNum);
+		    		 
+				     List<ProductDTO> productList = managerController.selectQtyNProductByProductNum(order.getProductNum());		// productNum으로 찾아낸 product
+			    		 for (ProductDTO product : productList) {
+			    			 int productQty = product.getQty();
+			    			 int price = product.getProductPrice();
+			    			 int productPayTotal = productQty * price;
+			    			 System.out.println(productPayTotal + " " + productQty + " " + price + " ");
+			    			 orderPayTotal += productPayTotal;
+			    		 }
+		    		 
+		    		 payTime = format1.format(time);
+		    		 /* insertPay */
+		    		 ansMap.put("payNum", orderNum);
+		    		 ansMap.put("payTime", payTime);
+		    		 ansMap.put("phoneNum", phoneNum);
+		    		 ansMap.put("paymentNum", payMentNum);
+		    		 
+		    		 System.out.println(orderNum + " " + payTime + " " + phoneNum + " " + orderPayTotal + " " + payMentNum );
+		    	}
+		    	ansMap.put("payTotal", orderPayTotal + "");
+		    	
+		    	/* DB에 값 넣기 */
+		    	customerController.registNewPay(ansMap);
+
+		    	
+		    	/* 결제 완료 - 화면 전환 */
+		    	Gui_waitingNum gui_wait = new Gui_waitingNum();
+		   		gui_wait.waitingNum();
+	 			dispose();
 		    }
 		    });
 		

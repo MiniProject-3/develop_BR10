@@ -14,10 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import dev.customer.controller.CustomerController;
+
 public class Gui_waitingNum {
 	   private JFrame mf = new JFrame("BR_10");
 	   private ImageKick kb = new ImageKick();
-	public void waitingNum() {
+	
+	   public void waitingNum() {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
@@ -59,16 +62,26 @@ public class Gui_waitingNum {
 		waitingPanel.add(waitingPanel1);
 		waitingPanel1.revalidate();
 		
-		
-		
 		waitingPanel.repaint();
 
 		JButton butt = new JButton("확인");
 		butt.setLocation(125, 350);
 		butt.setSize(100, 50);
+		
+		
 		butt.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				CustomerController customerController = new CustomerController();
+				
+				/* orderNum (주문번호) 받아오기 */
+				int orderNum = customerController.selectOrderNum() - 1;
+				
+				System.out.println(orderNum);
+				/* 해당 주문 건들의 결제 상태 변경 */
+				customerController.modifyOrder(orderNum, "Y");
+				
 				StartMain startMain = new StartMain();
 				changePanel(startMain);
 				mf.dispose();
