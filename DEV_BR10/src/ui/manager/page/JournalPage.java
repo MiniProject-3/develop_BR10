@@ -128,6 +128,7 @@ public class JournalPage extends JPanel{
 							if (product.getProductNum() == orderDTO.getProductNum()) {
 								String menu = product.getProductName();
 								ar.add(menu);
+								break;
 							}
 						}
 					}
