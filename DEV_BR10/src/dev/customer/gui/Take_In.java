@@ -98,7 +98,6 @@ public class Take_In extends JPanel{
             mf.dispose();
          }
          private void changePanel(Gui_payment payment) {
-
          }
       });
 
@@ -129,7 +128,6 @@ public class Take_In extends JPanel{
       spinner1.setLocation(330, 400);
       spinner1.setSize(150, 50);
 
-
       SpinnerNumberModel candle = new SpinnerNumberModel(0, 0, 10, 1);
 
       JSpinner spinner2 = new JSpinner(candle);
@@ -145,10 +143,9 @@ public class Take_In extends JPanel{
       mf.add(spinner1);
       mf.add(spinner2);
       mf.add(panel);
-
+      
       mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       mf.setVisible(true);
 
    }
-
 }

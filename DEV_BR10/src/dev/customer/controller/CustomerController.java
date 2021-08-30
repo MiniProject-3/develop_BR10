@@ -29,9 +29,7 @@ public class CustomerController {
 	}
 	
 	public static int selectSeqNum() {
-		
 		int seq = customerService.selectSeqNum();
-		
 		if(seq > 0) {		// 값이 0보다 큰 경우.
 			return seq;
 		} else {							// 비어있는 경우
@@ -42,7 +40,6 @@ public class CustomerController {
 	/* (생략) 주문 추가 insertOrder */
 	public int insertOrder() {
 		return 0;
-
 	}
 	
 	/* 주문 업데이트 updateOrder */
@@ -132,7 +129,6 @@ public class CustomerController {
 			return "수정 실패";
 		}
 	}
-	
 	/* 입출고 내역 조회 selectAllInos */
 	public List<InoDTO> selectAllInos() {
 		
@@ -144,7 +140,6 @@ public class CustomerController {
 			return null;
 		}
 	}
-	
 	/*  입출고 내역 추가 - insertIno */
 	public String registNewIno(Map<String, String> ansMap) {
 		
@@ -179,8 +174,4 @@ public class CustomerController {
 			return null;
 		}
 	}
-
-	
-	
-	
 }

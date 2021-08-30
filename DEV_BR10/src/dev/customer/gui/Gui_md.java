@@ -51,7 +51,6 @@ public class Gui_md extends JFrame {
 				changePanel(startMain);
 				dispose(); // 창 꺼짐
 			}
-
 			private void changePanel(StartMain startMain) {
 			}
 		});

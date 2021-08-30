@@ -139,7 +139,7 @@
    </entry>
    
    <entry key="selectAllProducts">
-       SELECT
+       SELECT DISTINCT
                 A.PRODUCT_NUM
               , A.PRODUCT_NAME
               , A.PRODUCT_PRICE

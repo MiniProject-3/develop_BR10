@@ -106,7 +106,6 @@ public class Gui_payment extends JPanel{
 
 	  panel.add(homePanel);
       mf.add(panel);
-
       mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       mf.setVisible(true);
    }

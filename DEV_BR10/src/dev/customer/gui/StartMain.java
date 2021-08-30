@@ -44,13 +44,10 @@ public class StartMain extends JFrame  {
 				
 			}
 		});
-
 		add(SMpanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		revalidate();
-		
-	
 	}	
 }	
 

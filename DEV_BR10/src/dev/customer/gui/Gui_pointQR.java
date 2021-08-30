@@ -117,7 +117,6 @@ public class Gui_pointQR extends JFrame {
 	private void changePanel(QR qr) {
 	}
 });
-
 		panel.add(giftPanel);
 		panel.add(homePanel);
 		mf.add(panel);

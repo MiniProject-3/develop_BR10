@@ -25,10 +25,8 @@ public class Gui extends JPanel {
 		mf.setTitle("mini_BR10");
 		mf.setBounds(600, 10, 600, 1000);
 		mf.setLayout(null);
-
-		this.orderPanel();
-
 		mf.add(this);
+		this.orderPanel();
 		revalidate();
 	}
 
@@ -45,11 +43,8 @@ public class Gui extends JPanel {
 		for (int i = 0; i < butt3.length; i++) {
 			butt3[i] = new JButton(category[i]);
 		}
-
 		for (int i = 0; i < butt3.length; i++) {
-
 			categoryPanel.add(butt3[i]);
-
 		}
 
 		main = new JPanel();
@@ -63,11 +58,9 @@ public class Gui extends JPanel {
 		for (int i = 0; i < butt.length; i++) {
 			butt[i] = new JButton(size[i]);
 		}
-
 		for (int i = 0; i < butt.length; i++) {
 			main.add(butt[i]);
 		}
-
 		for (int i = 0; i < butt.length; i++) {
 			butt[i].setText("");
 			butt[i].setBackground(Color.WHITE);
@@ -80,7 +73,6 @@ public class Gui extends JPanel {
 		butt[4].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_43.jpg", 150, 150));
 		butt[5].setIcon(kb.ImageKickButton("BR10_images/gui_order/Size_44.jpg", 150, 150));
 
-		
 		/*
 		 * 아이스크림 사이즈 선택 시 아이스크림 맛 선택으로 이동 int ice 값을 매개변수로 하여 사이즈 만큼 맛 선택
 		 */
@@ -167,10 +159,8 @@ public class Gui extends JPanel {
 					revalidate();
 				}
 			});
-
 			mf.add(main);
 			mf.add(categoryPanel);
-
 		}
 	}
 }

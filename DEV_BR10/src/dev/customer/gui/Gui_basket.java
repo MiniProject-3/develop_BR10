@@ -128,5 +128,4 @@ public class Gui_basket extends JFrame {
 		
 		panel.add(pane);
 	}
-	
 }

@@ -31,13 +31,11 @@ public class CustomerDAO {
          e.printStackTrace();
       }
    }
-   
    /* 주문 추가 insertOrder*/
    public int insertOrder(Connection con, OrderDTO order) {
       
       PreparedStatement pstmt = null;
       int result = 0;
-      
       String query = prop.getProperty("insertOrder");
          
       try {
@@ -93,7 +91,6 @@ public class CustomerDAO {
 	      try {
 	         pstmt = con.prepareStatement(query);
 	         pstmt.setInt(1, orderNum);
-	         
 	         rset = pstmt.executeQuery();
 	         
 	         orderList = new ArrayList<>();
@@ -118,7 +115,6 @@ public class CustomerDAO {
 	      }
 	      return orderList;
 	   }
-   
  
    /* 결제 추가 insertPay */
    public int insertPay(Connection con, PayDTO pay) {

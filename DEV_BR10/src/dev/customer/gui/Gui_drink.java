@@ -103,7 +103,6 @@ public class Gui_drink extends JFrame {
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);  // Static으로 생성한 List 객체에 주문현황을 계속 넣어준다. 
 				System.out.println(order);
-
 			}
 		});
 		return drink;

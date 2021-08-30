@@ -61,11 +61,9 @@ public class Gui_icecream extends JPanel {
 						JOptionPane.showMessageDialog(null, "이미" + ice + "가지 맛 모두를 선택하셨습니다.", "경고",
 								JOptionPane.WARNING_MESSAGE);
 					}
-
 				}
 			});
 		}
-
 		return icecream;
 	}
 }

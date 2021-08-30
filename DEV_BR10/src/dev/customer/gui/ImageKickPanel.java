@@ -22,7 +22,5 @@ class ImageKickPanel extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, null);
 	}
-	
-
 }
 

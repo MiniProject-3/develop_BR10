@@ -18,7 +18,6 @@ public class Take_Out extends JPanel{
    private ImageKick kb = new ImageKick();
    private JPanel main = null;
 
-   
    public Take_Out() {
          mf.setTitle("mini_BR10");
          mf.setBounds(600, 10, 600, 1000);
@@ -98,8 +97,6 @@ public class Take_Out extends JPanel{
                mf.dispose();
             }
             private void changePanel(Gui_payment payment) {
-//               mf.remove(panel);
-//               main.add(payment);
             }
          });
 
@@ -132,20 +129,17 @@ public class Take_Out extends JPanel{
          label4.setBackground(Color.pink);
 
          SpinnerNumberModel time = new SpinnerNumberModel(0, 0, 60, 10);
-
          JSpinner spinner1 = new JSpinner(time);
          spinner1.setLocation(330, 350);
          spinner1.setSize(150, 50);
 
 
          SpinnerNumberModel spoon = new SpinnerNumberModel(0, 0, 10, 1);
-
          JSpinner spinner2 = new JSpinner(spoon);
          spinner2.setLocation(330, 500);
          spinner2.setSize(150, 50);
 
          SpinnerNumberModel candle = new SpinnerNumberModel(0, 0, 10, 1);
-
          JSpinner spinner3 = new JSpinner(candle);
          spinner3.setLocation(330, 650);
          spinner3.setSize(150, 50);
@@ -164,7 +158,5 @@ public class Take_Out extends JPanel{
 
          mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          mf.setVisible(true);
-
       }
-
 }
