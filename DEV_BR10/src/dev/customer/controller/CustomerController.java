@@ -45,6 +45,29 @@ public class CustomerController {
 
 	}
 	
+	/* 주문 업데이트 updateOrder */
+	public String modifyOrder(int orderNum, String payMent) {
+		int result = customerService.updateOrder(orderNum, payMent);
+		
+		if (result > 0) {
+			return "수정 성공";
+		}else {
+			return "수정 실패";
+		}
+	}
+	
+	/* 주문 완료된 항목 값들 가져오기 selectOrderByOrderNum */
+	public List<OrderDTO> selectOrderByOrderNum(int orderNum) {
+		
+		List<OrderDTO> orderList = customerService.selectOrderByOrderNum(orderNum);
+		
+		if(!orderList.isEmpty()) {		
+			return orderList;
+		} else {							
+			return null;
+		}
+	}
+	
 	/* 결제 추가 insertPay */
 	public String registNewPay(Map<String, String> ansMap) {
 		

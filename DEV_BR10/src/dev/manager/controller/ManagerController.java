@@ -37,6 +37,18 @@ public class ManagerController {
 			return null;
 		}
 	}
+	
+	/* selectQtyNProductByProductNum */
+	public List<ProductDTO> selectQtyNProductByProductNum(int productNum) {
+		
+		List<ProductDTO> productList = managerService.selectQtyNProductByProductNum(productNum);
+		
+		if(!productList.isEmpty()) {		
+			return productList;
+		} else {							
+			return null;
+		}
+	}
    
 	/* 모든 상품 조회 (재고 조회) */
 	public List<ProductDTO> selectAllProducts() {
