@@ -14,13 +14,13 @@ public class ProductDTO implements Serializable{
 	private Integer productPrice;	// 상품가격
 	private int categoryCode;		// 카테고리코드
 	private Integer stock;			// 재고
-	private int qty;
+	private Integer qty;
 	private String payment;
 	
 	public ProductDTO() {
 	}
 
-	public ProductDTO(int productNum, String productName, int productPrice, int categoryCode, int stock) {
+	public ProductDTO(int productNum, String productName, Integer productPrice, int categoryCode, Integer stock) {
 		this.productNum = productNum;
 		this.productName = productName;
 		this.productPrice = productPrice;
@@ -64,11 +64,11 @@ public class ProductDTO implements Serializable{
 		this.categoryCode = categoryCode;
 	}
 
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
 
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 
@@ -76,11 +76,11 @@ public class ProductDTO implements Serializable{
 		return serialVersionUID;
 	}
 	
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 

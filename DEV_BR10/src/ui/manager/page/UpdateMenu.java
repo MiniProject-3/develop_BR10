@@ -33,8 +33,17 @@ public class UpdateMenu extends JPanel{
 	private MainFrame mf;
 	private ImageKick kb = new ImageKick();
 	private LineBorder line = new LineBorder(Color.black);
-	private List<ProductDTO> curProduct;	// 현재 카테고리의 기존 제품들
-	private ArrayList<String> selectedProduct; 
+	private ArrayList<String> selectedProduct;
+	
+	private ManagerController managercontroller = new ManagerController();
+	private List<ProductDTO> curProduct = null;
+	
+	private List<ProductDTO> product1 = managercontroller.selectProductByCategoryCode(1);
+	private List<ProductDTO> product2 = managercontroller.selectProductByCategoryCode(2);
+	private List<ProductDTO> product3 = managercontroller.selectProductByCategoryCode(3);
+	private List<ProductDTO> product4 = managercontroller.selectProductByCategoryCode(4);
+	private List<ProductDTO> product5 = managercontroller.selectProductByCategoryCode(5);
+
 	
 	public UpdateMenu(MainFrame mainFrame) {
 		JPanel pan = new JPanel();
@@ -45,44 +54,37 @@ public class UpdateMenu extends JPanel{
 		
 		BackButton();
 		CategoryButton();
-		viewPanel(pan, 1, curProduct);
+		viewPanel(pan, 1);
 		plusButton();
 	}
 	
-	public UpdateMenu(MainFrame mf, int num) {
-		
-		ManagerController managerController = new ManagerController();
-		curProduct = managerController.selectProductByCategoryCode(num);
-		// 해당 카테고리의 기존 상품 모두 저장
-		
+	public UpdateMenu(MainFrame mf, int num, List<ProductDTO> curProduct) {
+				
 		JPanel pan = new JPanel();
 		this.mf = mf;
 		
+		curProduct = managercontroller.selectProductByCategoryCode(num);
+		
 		this.setSize(600,1000);
 		this.setBackground(Color.white);
-		
 		BackButton();
 		CategoryButton();
-		viewPanel(pan, num, curProduct);
+		viewPanel(pan, num);
 		plusButton();
-		
-		/* 기존 값 저장 list */
-		
-		
 	}
 
-	public void viewPanel(JPanel panel, int num, List<ProductDTO> curProduct) {
+	public void viewPanel(JPanel panel, int num ) {
 		panel.setSize(500, 700);
 		panel.setLocation(40, 140);
 		panel.setBorder(line);
 		panel.setBackground(Color.white);
 		
-		createTable(panel,num,curProduct);
+		createTable(panel,num);
 		
 		this.add(panel);
 	}
 	
-	public void createTable(JPanel panel, int num, List<ProductDTO> curProduct) {
+	public void createTable(JPanel panel, int num ) {
 		String header[] = {"메뉴명", "가격", "수량"};
 		DefaultTableModel model = new DefaultTableModel(header, 0);
 		JTable stockTable = new JTable(model);
@@ -100,96 +102,174 @@ public class UpdateMenu extends JPanel{
 		panel.add(pane);
 		
 		/* 해당되는 메뉴 선택하여 값 수정 */
-		
 		stockTable.addMouseListener(new MouseListener() {
-			ManagerController managerController = new ManagerController();
-			
+
+			@Override
+			public void mousePressed(MouseEvent e) {}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+
+			@Override
+			public void mouseExited(MouseEvent e) {}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				row = stockTable.getSelectedRow();
-				String productNum = curProduct.get(row).getProductNum() + "";
-				String productName = curProduct.get(row).getProductName();
-				String productPrice = curProduct.get(row).getProductPrice() + "";
-				String categoryCode = curProduct.get(row).getCategoryCode() + "";
-				String stock = curProduct.get(row).getStock() + "";
-//				String qty = curProduct.get(row).getQty() + "";
-
-				selectedProduct.add(productNum);		// 상품번호 0
-				selectedProduct.add(productName);		// 상품명 1
-				selectedProduct.add(productPrice);		// 상품가격 2
-				selectedProduct.add(categoryCode);		// 카테고리코드 3
-				selectedProduct.add(stock);				// 재고 4
+				row = stockTable.getSelectedRow() + 1;
+				
+				ManagerController mc = new ManagerController();
+				
+				ArrayList<String> selectedProduct = new ArrayList<String>();
+				
+				switch(num){
+					case 1 :
+						/* 선택된 행의 값을 리스트에 삽입 */
+						selectedProduct.add(product1.get(row).getProductNum()+"");		// 0_상품번호
+						selectedProduct.add(product1.get(row).getProductName()+"");		// 1_상품명
+						selectedProduct.add(product1.get(row).getProductPrice()+"");	// 2_상품가격
+						selectedProduct.add(product1.get(row).getCategoryCode()+"");	// 3_카테고리코드
+						selectedProduct.add(product1.get(row).getStock()+"");   		// 4_재고
+						break;
+					case 2 :
+						/* 선택된 행의 값을 리스트에 삽입 */
+						selectedProduct.add(product2.get(row).getProductNum()+"");		// 0_상품번호
+						selectedProduct.add(product2.get(row).getProductName()+"");		// 1_상품명
+						selectedProduct.add(product2.get(row).getProductPrice()+"");	// 2_상품가격
+						selectedProduct.add(product2.get(row).getCategoryCode()+"");	// 3_카테고리코드
+						selectedProduct.add(product2.get(row).getStock()+"");   		// 4_재고
+						break;
+					case 3 :
+						/* 선택된 행의 값을 리스트에 삽입 */
+						selectedProduct.add(product3.get(row).getProductNum()+"");		// 0_상품번호
+						selectedProduct.add(product3.get(row).getProductName()+"");		// 1_상품명
+						selectedProduct.add(product3.get(row).getProductPrice()+"");	// 2_상품가격
+						selectedProduct.add(product3.get(row).getCategoryCode()+"");	// 3_카테고리코드
+						selectedProduct.add(product3.get(row).getStock()+"");   		// 4_재고
+						break;
+					case 4 :
+						/* 선택된 행의 값을 리스트에 삽입 */
+						selectedProduct.add(product4.get(row).getProductNum()+"");		// 0_상품번호
+						selectedProduct.add(product4.get(row).getProductName()+"");		// 1_상품명
+						selectedProduct.add(product4.get(row).getProductPrice()+"");	// 2_상품가격
+						selectedProduct.add(product4.get(row).getCategoryCode()+"");	// 3_카테고리코드
+						selectedProduct.add(product4.get(row).getStock()+"");   		// 4_재고
+						break;
+					case 5 :
+						/* 선택된 행의 값을 리스트에 삽입 */
+						selectedProduct.add(product5.get(row).getProductNum()+"");		// 0_상품번호
+						selectedProduct.add(product5.get(row).getProductName()+"");		// 1_상품명
+						selectedProduct.add(product5.get(row).getProductPrice()+"");	// 2_상품가격
+						selectedProduct.add(product5.get(row).getCategoryCode()+"");	// 3_카테고리코드
+						selectedProduct.add(product5.get(row).getStock()+"");   		// 4_재고
+						break;
+					default :
+						selectedProduct = null;
+						break;
+				}
 				
 				/* 메뉴 수정 창으로 이동 */
 				ModifyMenuPage modifyMenuPage = new ModifyMenuPage(mf, selectedProduct);
-				changePanel(modifyMenuPage);	
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				
+				changePanel(modifyMenuPage);					
 			}
 		});
-		
 	}
 	
-	public void addTable(DefaultTableModel model, int num) {
+public void addTable(DefaultTableModel model, int num) {
 		
 		ManagerDAO managerDAO = new ManagerDAO();
 		Connection con = getConnection();
 		List<ProductDTO> productList = managerDAO.selectAllProducts(con);
 		
+		
 		for (ProductDTO product : productList) {
 			if (num == 1 && product.getCategoryCode() == 1) {
+				/* 테이블에 값 넣기 */
 				String name = product.getProductName();
 				String price = product.getProductPrice() + "";
 				String preStock = product.getStock() + "";
 				String[] mix = {name, price, preStock};
 				model.addRow(mix);
+				
+				/* 테이블에 입력된 순서대로 리스트에 넣기 */
+				ProductDTO productByCategory = new ProductDTO();
+				
+				productByCategory.setProductNum(product.getProductNum());
+				productByCategory.setCategoryCode(product.getCategoryCode());
+				productByCategory.setProductName(product.getProductName());
+				productByCategory.setProductPrice(product.getProductPrice());
+				productByCategory.setStock(product.getStock());
+				
+				product1.add(productByCategory);
+
 			} else if (num == 2 && product.getCategoryCode() == 2) {
 				String name = product.getProductName();
 				String price = product.getProductPrice() + "";
 				String preStock = product.getStock() + "";
 				String[] mix = {name, price, preStock};
 				model.addRow(mix);
+				
+				ProductDTO productByCategory = new ProductDTO();
+				
+				productByCategory.setProductNum(product.getProductNum());
+				productByCategory.setCategoryCode(product.getCategoryCode());
+				productByCategory.setProductName(product.getProductName());
+				productByCategory.setProductPrice(product.getProductPrice());
+				productByCategory.setStock(product.getStock());
+				
+				product2.add(productByCategory);
 			} else if (num == 3 && product.getCategoryCode() == 3) {
 				String name = product.getProductName();
 				String price = product.getProductPrice() + "";
 				String preStock = product.getStock() + "";
 				String[] mix = {name, price, preStock};
 				model.addRow(mix);
+				
+				ProductDTO productByCategory = new ProductDTO();
+
+				productByCategory.setProductNum(product.getProductNum());
+				productByCategory.setCategoryCode(product.getCategoryCode());
+				productByCategory.setProductName(product.getProductName());
+				productByCategory.setProductPrice(product.getProductPrice());
+				productByCategory.setStock(product.getStock());
+				
+				product3.add(productByCategory);
 			} else if (num == 4 && product.getCategoryCode() == 4) {
 				String name = product.getProductName();
 				String price = product.getProductPrice() + "";
 				String preStock = product.getStock() + "";
 				String[] mix = {name, price, preStock};
 				model.addRow(mix);
+				
+				ProductDTO productByCategory = new ProductDTO();
+
+				productByCategory.setProductNum(product.getProductNum());
+				productByCategory.setCategoryCode(product.getCategoryCode());
+				productByCategory.setProductName(product.getProductName());
+				productByCategory.setProductPrice(product.getProductPrice());
+				productByCategory.setStock(product.getStock());
+				
+				product4.add(productByCategory);
 			} else if (num == 5 && product.getCategoryCode() == 5) {
 				String name = product.getProductName();
 				String price = product.getProductPrice() + "";
 				String preStock = product.getStock() + "";
 				String[] mix = {name, price, preStock};
 				model.addRow(mix);
+				
+				ProductDTO productByCategory = new ProductDTO();
+
+				productByCategory.setProductNum(product.getProductNum());
+				productByCategory.setCategoryCode(product.getCategoryCode());
+				productByCategory.setProductName(product.getProductName());
+				productByCategory.setProductPrice(product.getProductPrice());
+				productByCategory.setStock(product.getStock());
+				
+				product5.add(productByCategory);
 			}
 		}
-		
-		
-		
 		close(con);
 	}
 	
@@ -244,7 +324,8 @@ public class UpdateMenu extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 1;
-				UpdateMenu md = new UpdateMenu(mf, num);
+				curProduct = managercontroller.selectProductByCategoryCode(num);
+				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
 				changePanel(md);
 			}
 		});
@@ -258,7 +339,8 @@ public class UpdateMenu extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 2;
-				UpdateMenu md = new UpdateMenu(mf, num);
+				curProduct = managercontroller.selectProductByCategoryCode(num);
+				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
 				changePanel(md);
 			}
 		});
@@ -272,7 +354,8 @@ public class UpdateMenu extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 3;
-				UpdateMenu md = new UpdateMenu(mf, num);
+				curProduct = managercontroller.selectProductByCategoryCode(num);
+				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
 				changePanel(md);
 				
 			}
@@ -287,7 +370,8 @@ public class UpdateMenu extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 4;
-				UpdateMenu md = new UpdateMenu(mf, num);
+				curProduct = managercontroller.selectProductByCategoryCode(num);
+				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
 				changePanel(md);				
 			}
 		});
@@ -301,7 +385,8 @@ public class UpdateMenu extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 5;
-				UpdateMenu md = new UpdateMenu(mf, num);
+				curProduct = managercontroller.selectProductByCategoryCode(num);
+				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
 				changePanel(md);
 			}
 		});

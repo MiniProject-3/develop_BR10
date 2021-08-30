@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Console;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -26,7 +27,6 @@ public class ModifyMenuPage  extends JPanel {
     * Create the panel.
     */
    public ModifyMenuPage(MainFrame  mainframe , ArrayList<String> selectedProduct) {
-      
       
       this.mf = mainframe;
       this.setBackground(Color.white);
@@ -58,13 +58,20 @@ public class ModifyMenuPage  extends JPanel {
       labelPrice.setBounds(63, 495, 82, 50);
       this.add(labelPrice);
       
+      
       priceField = new JTextField();
       priceField.setBounds(201, 498, 337, 50);
       priceField.setFont(new Font("돋움", Font.BOLD, 20));
+      /* 아이스크림에 대한 메뉴 수정일 때 - 가격 수정 불가능 */
+      if(selectedProduct.get(3).equals("1")) {
+          priceField.enable(false);
+          priceField.setBackground(Color.LIGHT_GRAY);
+      } else {
+    	  priceField.enable(true);
+          priceField.setBackground(Color.white);
+      }
       this.add(priceField);      
       priceField.setColumns(10);
-//      priceField.enable(false);
-//      priceField.setBackground(Color.LIGHT_GRAY);
       
       JLabel labelStock = new JLabel("재고");
       labelStock.setHorizontalAlignment(SwingConstants.CENTER);
@@ -78,6 +85,11 @@ public class ModifyMenuPage  extends JPanel {
       this.add(stockField);
       stockField.setColumns(10);
       
+      /* textField에 기본 값 설정하기 */
+      nameField.setText(selectedProduct.get(1));		// 상품명
+      priceField.setText(selectedProduct.get(2)+"");		// 가격
+      stockField.setText(selectedProduct.get(4)+"");		// 재고
+      
       JButton storeBtn = new JButton("저장");
       storeBtn.setBounds(331, 702, 207, 57);
       storeBtn.setFont(new Font("돋움", Font.BOLD, 20));
@@ -90,11 +102,6 @@ public class ModifyMenuPage  extends JPanel {
 				selectedProduct.add(stock);				// 재고 4
        */
       
-      /* textField에 기본 값 설정하기 */
-      nameField.setText(selectedProduct.get(1));		// 상품명
-      priceField.setText(selectedProduct.get(2)+"");		// 가격
-      stockField.setText(selectedProduct.get(4)+"");		// 재고
-         
       /* 저장 버튼 눌렀을 때 */
       /* PRODUCT TABLE에 값 update */
          storeBtn.addActionListener(new ActionListener() {
@@ -111,6 +118,9 @@ public class ModifyMenuPage  extends JPanel {
             /* productNum 받아오기 */
       		int productNum = Integer.valueOf(selectedProduct.get(0));
            
+      		/* console test */
+      		System.out.println(newName + " " + newPrice + " " + newStock + " " + productNum);
+      		
             /* DB에 값 넣기 */
             managerController.modifyProduct(productNum, newName, newPrice, newStock);
             
@@ -119,8 +129,6 @@ public class ModifyMenuPage  extends JPanel {
             changePanel(updateMenu);
          }
       });
-
-      
       this.add(storeBtn);
       
       JButton cancelBtn = new JButton("취소");

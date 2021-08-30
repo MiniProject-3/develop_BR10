@@ -212,7 +212,9 @@ public class ManagerDAO {
 	      
 	      try {
 	         pstmt = con.prepareStatement(query);
-	         pstmt.setString(1,productName);
+	         pstmt.setString(1, productName);
+	         
+	         /* integer형 null 판단 */
 	         if (productPrice == null) {
 	        	 pstmt.setNull(2, Types.INTEGER);
 	         } else {        	 
@@ -223,6 +225,7 @@ public class ManagerDAO {
 	         } else {        	 
 	        	 pstmt.setInt(3, productStock);
 	         }
+	         
 	         pstmt.setInt(4, productNum);
 
 	         result = pstmt.executeUpdate();
