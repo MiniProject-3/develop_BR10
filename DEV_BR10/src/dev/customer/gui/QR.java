@@ -105,9 +105,6 @@ public class QR extends JFrame {
 		    	List<OrderDTO> orderList = new ArrayList<>();
 		    	orderList = customerController.selectOrderByOrderNum(qrOrderNum);
 		    	
-		    	System.out.println(orderList.get(0));
-//		    	System.out.println(orderList.get(1));
-		    	
 		    	SimpleDateFormat format1 = new SimpleDateFormat("yy/MM/dd");
 		    	
 		    	Date time = new Date();
@@ -116,12 +113,9 @@ public class QR extends JFrame {
 		    	int orderPayTotal = 0;
 
 		    	for(OrderDTO order :orderList) {
-		    		 String orderSeq = order.getOrderSeq() + "";			// 주문_일련번호(PK)
 		    		 String productNum = order.getProductNum() + "";		// 상품번호
 		    		 String phoneNum = order.getPhoneNum();					// 핸드폰번호
 		    		 String orderNum = order.getOrderNum() + "";			// 주문번호
-		    		 String qty = order.getQty() + "";						// 수량
-		    		 String payment = order.getPayment();					// 결제상태
 		    		 System.out.println(productNum);
 		    		 
 				     List<ProductDTO> productList = managerController.selectQtyNProductByProductNum(order.getProductNum());		// productNum으로 찾아낸 product
@@ -129,7 +123,6 @@ public class QR extends JFrame {
 			    			 int productQty = product.getQty();
 			    			 int price = product.getProductPrice();
 			    			 int productPayTotal = productQty * price;
-			    			 System.out.println(productPayTotal + " " + productQty + " " + price + " ");
 			    			 orderPayTotal += productPayTotal;
 			    		 }
 		    		 
@@ -139,15 +132,12 @@ public class QR extends JFrame {
 		    		 ansMap.put("payTime", payTime);
 		    		 ansMap.put("phoneNum", phoneNum);
 		    		 ansMap.put("paymentNum", payMentNum);
-		    		 
-		    		 System.out.println(orderNum + " " + payTime + " " + phoneNum + " " + orderPayTotal + " " + payMentNum );
 		    	}
 		    	ansMap.put("payTotal", orderPayTotal + "");
 		    	
 		    	/* DB에 값 넣기 */
 		    	customerController.registNewPay(ansMap);
 
-		    	
 		    	/* 결제 완료 - 화면 전환 */
 		    	Gui_waitingNum gui_wait = new Gui_waitingNum();
 		   		gui_wait.waitingNum();
@@ -200,5 +190,4 @@ public class QR extends JFrame {
 		this.setVisible(true);
 		revalidate();
 	}
-
 }

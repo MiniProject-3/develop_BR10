@@ -98,7 +98,7 @@ public class CustomerDAO {
 	         
 	         orderList = new ArrayList<>();
 	         
-	         if(rset.next()) {
+	         while(rset.next()) {
 	            OrderDTO order = new OrderDTO();
 	            order.setOrderSeq(rset.getInt("ORDER_SEQ"));
 	            order.setProductNum(rset.getInt("PRODUCT_NUM")); 

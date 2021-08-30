@@ -6,6 +6,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,8 +23,12 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import dev.customer.controller.CustomerController;
 import dev.customer.menu.Gifticon;
 import dev.dto.GiftDTO;
+import dev.dto.OrderDTO;
+import dev.dto.ProductDTO;
+import dev.manager.controller.ManagerController;
 
 public class Gui_gifticon extends JFrame {
 
@@ -108,6 +118,54 @@ public class Gui_gifticon extends JFrame {
                gift.setGiftUse("N");
                Gifticon.gift.add(gift);
             } else {
+            	
+            	/* insertPay */
+            	 CustomerController customerController = new CustomerController();
+ 		    	ManagerController managerController = new ManagerController();
+ 		    	
+ 		    	String payMentNum = "2";											// 기프티콘 결제
+ 		    	int giftOrderNum = customerController.selectOrderNum() - 1;		// 주문번호 받아오기
+ 		    	
+ 		    	/* selectOrderByOrderNum == customerController.selectOrderNum() - 1 */
+ 		    	Map<String, String> ansMap = new HashMap<>();
+ 		    	
+ 		    	List<OrderDTO> orderList = new ArrayList<>();
+ 		    	orderList = customerController.selectOrderByOrderNum(giftOrderNum);
+ 		    	
+ 		    	SimpleDateFormat format1 = new SimpleDateFormat("yy/MM/dd");
+ 		    	
+ 		    	Date time = new Date();
+ 		    	String payTime = "00/00/00"; 
+ 		    	
+ 		    	int orderPayTotal = 0;
+
+ 		    	for(OrderDTO order :orderList) {
+ 		    		 String productNum = order.getProductNum() + "";		// 상품번호
+ 		    		 String phoneNum = order.getPhoneNum();					// 핸드폰번호
+ 		    		 String orderNum = order.getOrderNum() + "";			// 주문번호
+ 		    		 System.out.println(productNum);
+ 		    		 
+ 				     List<ProductDTO> productList = managerController.selectQtyNProductByProductNum(order.getProductNum());		// productNum으로 찾아낸 product
+ 			    		 for (ProductDTO product : productList) {
+ 			    			 int productQty = product.getQty();
+ 			    			 int price = product.getProductPrice();
+ 			    			 int productPayTotal = productQty * price;
+ 			    			 orderPayTotal += productPayTotal;
+ 			    		 }
+ 		    		 payTime = format1.format(time);
+ 		    		 
+ 		    		 /* insertPay */
+ 		    		 ansMap.put("payNum", orderNum);
+ 		    		 ansMap.put("payTime", payTime);
+ 		    		 ansMap.put("phoneNum", phoneNum);
+ 		    		 ansMap.put("paymentNum", payMentNum);
+ 		    	}
+ 		    	ansMap.put("payTotal", orderPayTotal + "");
+ 		    	
+ 		    	/* DB에 값 넣기 */
+ 		    	customerController.registNewPay(ansMap);
+            	
+            	/* 화면 전환 */
                Gui_waitingNum as = new Gui_waitingNum();
                as.waitingNum();
                mf.dispose();
