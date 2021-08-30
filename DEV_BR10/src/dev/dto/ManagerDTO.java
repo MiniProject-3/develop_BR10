@@ -2,14 +2,14 @@ package dev.dto;
 
 import java.io.Serializable;
 
-public class ManagerDTO implements Serializable{
+public class ManagerDTO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7602630580305883026L;
 
-	private String managerKey;		// 관리자키
+	private String managerKey; // 관리자키
 
 	public ManagerDTO() {
 	}
@@ -34,7 +34,5 @@ public class ManagerDTO implements Serializable{
 	public String toString() {
 		return "ManagerDTO [managerKey=" + managerKey + "]";
 	}
-	
-	
-	
+
 }

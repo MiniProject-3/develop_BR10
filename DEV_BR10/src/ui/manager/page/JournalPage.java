@@ -69,6 +69,16 @@ public class JournalPage extends JPanel{
 	    stockTable.getColumn("총결제금액").setCellRenderer(center);
 	    stockTable.getColumn("결제수단").setCellRenderer(center);
 	    
+	    addTable(model, stockTable);
+	    
+		pane.setLocation(10, 10);
+		pane.setSize(480, 680);
+		
+		panel.add(pane);
+	}
+	
+	// 테이블 내부 값 넣기
+	public void addTable(DefaultTableModel model,JTable stockTable) {
 		ManagerController manage = new ManagerController();
 		CustomerService cus = new CustomerService();
 		
@@ -126,10 +136,6 @@ public class JournalPage extends JPanel{
 				ar.clear();
 			}
 		});
-		pane.setLocation(10, 10);
-		pane.setSize(480, 680);
-		
-		panel.add(pane);
 	}
 	
 	public void BackButton() {

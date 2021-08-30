@@ -69,6 +69,7 @@ public class StockPage extends JPanel{
 		viewMoney();
 	}
 
+	// 테이블을 붙일 판넬
 	public void viewPanel(JPanel panel, int num) {
 		panel.setSize(500, 700);
 		panel.setLocation(40, 140);
@@ -89,7 +90,8 @@ public class StockPage extends JPanel{
 		center.setHorizontalAlignment(JLabel.CENTER);
 		
 		addTable(model, num);
-		stockTable.getColumnModel().getColumn(0).setPreferredWidth(130);
+		
+		stockTable.getColumnModel().getColumn(0).setPreferredWidth(130);	// 첫번째 컬럼의 크기 설정
 		stockTable.getColumn("기존재고").setCellRenderer(center);
 		stockTable.getColumn("판매량").setCellRenderer(center);
 		stockTable.getColumn("잔량").setCellRenderer(center);
@@ -100,7 +102,7 @@ public class StockPage extends JPanel{
 		panel.add(pane);
 	}
 
-	
+	// 카테고리 별 화면 보여주기
 	public void CategoryButton() {
 		JButton ice = new JButton("아이스크림");
 		
@@ -181,6 +183,7 @@ public class StockPage extends JPanel{
 		
 	}
 	
+	// 테이블의 내용을 넣는 메소드
 	public void addTable(DefaultTableModel model, int num) {
 		
 		ManagerDAO managerDAO = new ManagerDAO();
@@ -199,6 +202,7 @@ public class StockPage extends JPanel{
 						stocknum = (product.getStock() - product.getQty()) + "";
 					}
 				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
+				
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 2 && product.getCategoryCode() == 2) {
@@ -212,6 +216,7 @@ public class StockPage extends JPanel{
 						stocknum = (product.getStock() - product.getQty()) + "";
 					}
 				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
+				
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 3 && product.getCategoryCode() == 3) {
@@ -225,6 +230,7 @@ public class StockPage extends JPanel{
 						stocknum = (product.getStock() - product.getQty()) + "";
 					}
 				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
+				
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 4 && product.getCategoryCode() == 4) {
@@ -238,6 +244,7 @@ public class StockPage extends JPanel{
 						stocknum = (product.getStock() - product.getQty()) + "";
 					}
 				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
+				
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			} else if (num == 5 && product.getCategoryCode() == 5) {
@@ -251,6 +258,7 @@ public class StockPage extends JPanel{
 						stocknum = (product.getStock() - product.getQty()) + "";
 					}
 				} else JOptionPane.showMessageDialog(stockTable,"재고량은 -가 될수 없습니다");
+				
 				String[] mix = {name, preStock, sellnum, stocknum};
 				model.addRow(mix);
 			}

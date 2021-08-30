@@ -10,12 +10,41 @@ import dev.dto.OrderDTO;
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
 import dev.dto.UserDTO;
+import dev.customer.menu.MenuOrderList;
+import dev.customer.model.service.CustomerService;
+import dev.dto.OrderDTO;
 
 public class CustomerController {
-
-	private CustomerService customerService = new CustomerService();
+	private static CustomerService customerService = new CustomerService();
+	
+	public int selectOrderNum() {
+		
+		int orderNum = customerService.selectOrderNum();
+		
+		if(orderNum > 0) {		// 값이 0보다 큰 경우.
+			return orderNum;
+		} else {							// 비어있는 경우
+			return 1;
+		}
+	}
+	
+	public static int selectSeqNum() {
+		
+		int seq = customerService.selectSeqNum();
+		
+		if(seq > 0) {		// 값이 0보다 큰 경우.
+			return seq;
+		} else {							// 비어있는 경우
+			return 1;
+		}
+	}
 	
 	/* (생략) 주문 추가 insertOrder */
+	public int insertOrder() {
+		
+		return 0;
+
+	}
 	
 	/* 결제 추가 insertPay */
 	public String registNewPay(Map<String, String> ansMap) {

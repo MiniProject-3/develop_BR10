@@ -3,6 +3,7 @@ package dev.manager.controller;
 import java.util.List;
 import java.util.Map;
 
+import dev.dto.ManagerDTO;
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
 import dev.manager.model.dao.ManagerDAO;
@@ -147,5 +148,13 @@ public class ManagerController {
 		else {
 			return managerResultView.displayDmlResult("deleteFailed");
 		}
+	}
+	
+	// 매니저 키값 조회
+	public List<ManagerDTO> selectManagerKey(){
+		
+		List<ManagerDTO> managerKey = managerService.selectManagerKey();
+		
+		return managerKey;
 	}
 }

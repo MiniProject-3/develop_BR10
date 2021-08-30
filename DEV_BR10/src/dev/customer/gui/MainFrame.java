@@ -2,20 +2,28 @@ package dev.customer.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
+import dev.dto.ManagerDTO;
+import dev.manager.controller.ManagerController;
 
 public class MainFrame extends JFrame {
 	private JPanel main = null;
 	private JFrame mf = new JFrame("BR_10");
-
+	public int AA = 0 ;
 	private ImageKick kb = new ImageKick();
 	public MainFrame() {
 		this.setTitle("mini_BR10");
@@ -110,6 +118,77 @@ public class MainFrame extends JFrame {
 				dispose();
 		}});
 		
+		// 매니저관리 화면으로 가는 버튼
+		JButton enterManager = new JButton();
+		enterManager.setBounds(500, 110, 50, 50);
+		enterManager.setBackground(Color.white);
+		enterManager.setBorderPainted(false);
+		ManagerController manager = new ManagerController();
+		List<ManagerDTO> selectManager = manager.selectManagerKey();
+		
+		enterManager.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Font font = new Font("맑은 고딕",Font.BOLD, 30);
+				
+				JFrame fr = new JFrame();
+				JPanel mg = new JPanel();
+				JLabel label = new JLabel("관리자 키를 입력하세요");
+				label.setFont(font);
+				label.setBounds(110, 50, 500, 50);
+				fr.setLayout(null);
+				mg.setLayout(null);
+				mg.setSize(600, 300);
+				mg.setBackground(Color.white);
+				
+				fr.setBounds(600,300,600,300);
+				
+				JPasswordField  managerKey = new JPasswordField (20);
+				managerKey.setBounds(80, 150, 350, 50);
+				JButton butt = new JButton("확인");
+				JButton cancel = new JButton("취소");
+				
+				cancel.setBounds(500, 150, 70, 50);
+				butt.setBounds(430,150,70,50);
+				cancel.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						fr.dispose();
+					}
+				});
+				
+				butt.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						for (ManagerDTO manager : selectManager) {
+							if (managerKey.getText().equals(manager.getManagerKey())) {
+								new ui.manager.MainFrame();
+								fr.dispose();
+								dispose();
+							} else {
+								JOptionPane.showMessageDialog(fr, "틀렸습니다. 다시 입력하세요");
+								managerKey.setText("");
+								managerKey.requestFocus();
+							} 
+						}
+					}
+				});
+				
+				mg.add(cancel);
+				mg.add(label);
+				mg.add(butt);
+				mg.add(managerKey);
+				fr.add(mg);
+				
+				fr.setVisible(true);
+				fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}
+		});
+		
+		panel.add(enterManager);
 		panel.add(homePanel);
 		panel.add(controllPanel);
 

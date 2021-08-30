@@ -33,16 +33,18 @@ public class ManagerPanel extends JPanel{
 		mf.add(this);
 	}
 	
+	// 매니저 화면 버튼
 	public void ManagerButton() {
 		JButton searchStock = new JButton("재고파악");
 		searchStock.setFont(font);
 		searchStock.setLocation(20, 100);
 		searchStock.setSize(270, 400);
-		searchStock.setOpaque(false);
-		searchStock.setContentAreaFilled(false);
-		searchStock.setBorderPainted(true);
+		searchStock.setOpaque(false);				// 버튼을 투명하게 만들기
+		searchStock.setContentAreaFilled(false);	// 버튼 내용역역 채우지않음
+		searchStock.setBorderPainted(true);			// 버튼 테두리 X
 		searchStock.setBorder(new LineBorder(Color.black));
 		
+		// 재고화면으로 이동
 		searchStock.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -60,6 +62,7 @@ public class ManagerPanel extends JPanel{
 		searchJournal.setBorderPainted(true);
 		searchJournal.setBorder(new LineBorder(Color.black));
 		
+		// 저널조회 화면 이동
 		searchJournal.addActionListener(new ActionListener() {
 			
 			@Override

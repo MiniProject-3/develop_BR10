@@ -21,118 +21,118 @@ import dev.dto.ProductDTO;
 import dev.dto.UserDTO;
 
 public class CustomerDAO {
-	
-	private Properties prop = new Properties();
-	
-	public CustomerDAO() {
-		try {
-			prop.loadFromXML(new FileInputStream("mapper/BR10-query.xml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/* 주문 추가 insertOrder*/
-	public int insertOrder(Connection con, OrderDTO order) {
-		
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("insertOrder");
-	      
-		try {
-	          pstmt = con.prepareStatement(query);
-	          pstmt.setInt(1, order.getOrderSeq());
-	          pstmt.setInt(2, order.getProductNum());
-	          pstmt.setString(3, order.getPhoneNum());
-	          pstmt.setInt(4, order.getOrderNum());
-	          pstmt.setInt(5, order.getQty());
-	          pstmt.setString(6, order.getPayment());
+   
+   private Properties prop = new Properties();
+   
+   public CustomerDAO() {
+      try {
+         prop.loadFromXML(new FileInputStream("mapper/BR10-query.xml"));
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }
+   
+   /* 주문 추가 insertOrder*/
+   public int insertOrder(Connection con, OrderDTO order) {
+      
+      PreparedStatement pstmt = null;
+      int result = 0;
+      
+      String query = prop.getProperty("insertOrder");
+         
+      try {
+             pstmt = con.prepareStatement(query);
+             pstmt.setInt(1, order.getOrderSeq());
+             pstmt.setInt(2, order.getProductNum());
+             pstmt.setString(3, order.getPhoneNum());
+             pstmt.setInt(4, order.getOrderNum());
+             pstmt.setInt(5, order.getQty());
+             pstmt.setString(6, order.getPayment());
 
-	          result = pstmt.executeUpdate();
-	       } catch (SQLException e) {
-	          e.printStackTrace();
-	       } finally {
-	          close(pstmt);
-	       }
-		
-		return result;
-	}
+             result = pstmt.executeUpdate();
+          } catch (SQLException e) {
+             e.printStackTrace();
+          } finally {
+             close(pstmt);
+          }
+      
+      return result;
+   }
 
-	/* 결제 추가 insertPay */
-	public int insertPay(Connection con, PayDTO pay) {
-		
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("insertPay");
-	      
-		try {
-	          pstmt = con.prepareStatement(query);
-	          pstmt.setInt(1, pay.getPayNum());
-	          pstmt.setString(2, pay.getPayTime());
-	          pstmt.setString(3, pay.getPhoneNum());
-	          pstmt.setInt(4, pay.getPayTotal());
-	          pstmt.setInt(5, pay.getPaymentNum());
+   /* 결제 추가 insertPay */
+   public int insertPay(Connection con, PayDTO pay) {
+      
+      PreparedStatement pstmt = null;
+      int result = 0;
+      
+      String query = prop.getProperty("insertPay");
+         
+      try {
+             pstmt = con.prepareStatement(query);
+             pstmt.setInt(1, pay.getPayNum());
+             pstmt.setString(2, pay.getPayTime());
+             pstmt.setString(3, pay.getPhoneNum());
+             pstmt.setInt(4, pay.getPayTotal());
+             pstmt.setInt(5, pay.getPaymentNum());
 
-	          result = pstmt.executeUpdate();
-	       } catch (SQLException e) {
-	          e.printStackTrace();
-	       } finally {
-	          close(pstmt);
-	       }
-		
-		return result;
-	}
-	
-	/* 회원 여부 조회 - 포인트 조회 */
-	/* 1. 결제할 때 통신사 조회
-	 * 2. 적립할 때 핸드폰 번호 존재 여부 조회
-	 * */
-	public List<UserDTO> selectAllUsers(Connection con) {
-	      
-	      PreparedStatement pstmt = null;
-	      ResultSet rset = null;
-	      
-	      List<UserDTO> userList = null;
-	      
-	      String query = prop.getProperty("selectAllUsers");
-	      
-	      try {
-	         pstmt = con.prepareStatement(query);
-	         rset = pstmt.executeQuery();
-	         userList = new ArrayList<>();
-	         
-	         while(rset.next()) {
-	            UserDTO user = new UserDTO();
-	            
-	            user.setPhoneNum(rset.getString("PHONE_NUM"));
-	            user.setPoint(rset.getInt("POINT"));
-	            user.setPhoneCo(rset.getString("PHONE_CO")); 
-	            userList.add(user);
-	         }
-	         
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } finally {
-	         close(rset);
-	         close(pstmt);
-	      }
-	      return userList;
-	   }	
-	
-	/* 포인트 내역 업데이트 (사용, 적립) */
-	public int updateUserPoint(Connection con, int phoneNum, int point) {
-		
-		 PreparedStatement pstmt = null;
-	      int result = 0;
-	            
-	      String query = prop.getProperty("updateUserPoint");
-	      
-	      try {
-	         pstmt = con.prepareStatement(query);
-	         pstmt.setInt(1,point);
-	         pstmt.setInt(2, phoneNum);
+             result = pstmt.executeUpdate();
+          } catch (SQLException e) {
+             e.printStackTrace();
+          } finally {
+             close(pstmt);
+          }
+      
+      return result;
+   }
+   
+   /* 회원 여부 조회 - 포인트 조회 */
+   /* 1. 결제할 때 통신사 조회
+    * 2. 적립할 때 핸드폰 번호 존재 여부 조회
+    * */
+   public List<UserDTO> selectAllUsers(Connection con) {
+         
+         PreparedStatement pstmt = null;
+         ResultSet rset = null;
+         
+         List<UserDTO> userList = null;
+         
+         String query = prop.getProperty("selectAllUsers");
+         
+         try {
+            pstmt = con.prepareStatement(query);
+            rset = pstmt.executeQuery();
+            userList = new ArrayList<>();
+            
+            while(rset.next()) {
+               UserDTO user = new UserDTO();
+               
+               user.setPhoneNum(rset.getString("PHONE_NUM"));
+               user.setPoint(rset.getInt("POINT"));
+               user.setPhoneCo(rset.getString("PHONE_CO")); 
+               userList.add(user);
+            }
+            
+         } catch (SQLException e) {
+            e.printStackTrace();
+         } finally {
+            close(rset);
+            close(pstmt);
+         }
+         return userList;
+      }   
+   
+   /* 포인트 내역 업데이트 (사용, 적립) */
+   public int updateUserPoint(Connection con, int phoneNum, int point) {
+      
+       PreparedStatement pstmt = null;
+         int result = 0;
+               
+         String query = prop.getProperty("updateUserPoint");
+         
+         try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,point);
+            pstmt.setInt(2, phoneNum);
 
 	         result = pstmt.executeUpdate();
 	      } catch (SQLException e) {
@@ -314,5 +314,64 @@ public class CustomerDAO {
 		         close(pstmt); 
 			}
 		   return orderList;
+	   }
+	   
+
+	   public int selectOrderNum(Connection con) {
+		   
+		   	PreparedStatement pstmt = null;
+		    ResultSet rset = null;
+		      
+		    int orderNum = 0 ;
+		      
+		    String query = prop.getProperty("selectOrderNum");
+		    
+		    try {
+				pstmt = con.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+
+					orderNum = rset.getInt("MAX(ORDER_NUM)") + 1;
+
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+		         close(rset);
+		         close(pstmt); 
+			}
+		   return orderNum;
+	   }
+	   
+	   
+
+	   public int selectSeqNum(Connection con) {
+		   
+		   	PreparedStatement pstmt = null;
+		    ResultSet rset = null;
+		      
+		    int seq = 0 ;
+		      
+		    String query = prop.getProperty("selectSeqNum");
+		    
+		    try {
+				pstmt = con.prepareStatement(query);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+
+					seq = rset.getInt("MAX(A.ORDER_SEQ)") + 1;
+
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+		         close(rset);
+		         close(pstmt); 
+			}
+		   return seq;
 	   }
 }

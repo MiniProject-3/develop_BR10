@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import dev.dto.ManagerDTO;
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
 
@@ -122,7 +123,7 @@ public class ManagerDAO {
             product.setStock(rset.getInt("STOCK"));
             product.setQty(rset.getInt("QTY"));
             product.setPayment(rset.getString("PAYMENT"));
-
+              
             productList.add(product);
          }
          
@@ -323,4 +324,32 @@ public class ManagerDAO {
       }
       return result;
    }
+
+public List<ManagerDTO> selectManagerKey(Connection con) {
+	
+	PreparedStatement pstmt = null;
+	ResultSet rset = null;
+	
+	List<ManagerDTO> manager = null;
+	
+	String query = prop.getProperty("selectManagerKey");
+	
+	try {
+		pstmt = con.prepareStatement(query);
+		rset = pstmt.executeQuery();
+		manager = new ArrayList<>();
+		
+		while (rset.next()) {
+			ManagerDTO manage = new ManagerDTO();
+			manage.setManagerKey(rset.getString("MANAGER_KEY"));
+			
+			manager.add(manage);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	return manager;
+}
 }

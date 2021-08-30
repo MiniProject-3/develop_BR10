@@ -8,6 +8,7 @@ import static dev.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
+import dev.dto.ManagerDTO;
 import dev.dto.PayDTO;
 import dev.dto.ProductDTO;
 import dev.manager.model.dao.ManagerDAO;
@@ -167,6 +168,14 @@ public class ManagerService {
 		close(con);
 
 		return result;
+	}
+
+	public List<ManagerDTO> selectManagerKey() {
+		Connection con = getConnection();
+		
+		List<ManagerDTO> managerKey = managerDAO.selectManagerKey(con);
+		
+		return managerKey;
 	}
 	
 }

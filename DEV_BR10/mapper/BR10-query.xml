@@ -86,8 +86,13 @@
 	       SET P.POINT = ?
 	     WHERE P.PHONE_NUM = ?
 	</entry>
+	<entry key="updateManagerKey">
+	    UPDATE MANAGER M
+	       SET M.MANAGER_KEY = ?
+	</entry>
 
 	<!-- manager -->
+	
 	<entry key="selectProductLastSeq">
 	    SELECT MAX(PRODUCT_NUM)
 	      FROM PRODUCT 
@@ -115,7 +120,6 @@
          FROM PRODUCT A
          LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
 	  	 ORDER BY PRODUCT_NUM
-	
 	</entry>
 	<entry key="selectAllPays">
 		SELECT PAY_NUM,
@@ -144,7 +148,7 @@
 	     , ?
 	     )
 	</entry>
-		<entry key="updateProduct">
+	<entry key="updateProduct">
 	    UPDATE PRODUCT P
 	       SET P.PRODUCT_NAME = ?
 	       	 , P.PRODUCT_PRICE = ?
@@ -152,13 +156,18 @@
 	     WHERE P.PRODUCT_NUM = ?
 	    
 	</entry>
-	
 	<entry key="deleteProduct">
 	     DELETE
 	       FROM PRODUCT P
 	      WHERE P.PRODUCT_NUM = ?
 	</entry>
-	<entry key="selectOrder">
+	
+	<entry key="selectManagerKey">
+	    SELECT
+	           MANAGER_KEY
+	      FROM MANAGER
+	</entry>
+		<entry key="selectOrder">
 	    SELECT
 	           ORDER_SEQ
 	         , PRODUCT_NUM
