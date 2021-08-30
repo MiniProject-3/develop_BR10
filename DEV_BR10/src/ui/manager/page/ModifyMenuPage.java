@@ -97,8 +97,8 @@ public class ModifyMenuPage  extends JPanel {
       cancelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	 UpdateMenu updateMenu = new UpdateMenu(mf);
-                 changePanel(updateMenu);
+            	UpdateMenu updateMenu = new UpdateMenu(mf);
+                changePanel(updateMenu);
             }
       });
       this.add(cancelBtn);

@@ -122,7 +122,6 @@ public class InsertMenuPage extends JPanel {
       
       /* 저장 버튼 눌렀을 때 */
       /* PRODUCT TABLE에 값 INSERT */
-
       storeBtn.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -158,6 +157,7 @@ public class InsertMenuPage extends JPanel {
       });
       this.add(storeBtn);
       
+      /* 취소 버튼 */
       JButton cancelBtn = new JButton("취소");
       cancelBtn.setBounds(63, 702, 213, 57);
       cancelBtn.setFont(new Font("돋움", Font.BOLD, 20));
@@ -165,8 +165,8 @@ public class InsertMenuPage extends JPanel {
       cancelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               ManagerPanel managerPanel = new ManagerPanel(mf);
-               changePanel(managerPanel);
+            	UpdateMenu updateMenu = new UpdateMenu(mf);
+                changePanel(updateMenu);
             }
       });
       this.add(cancelBtn);
