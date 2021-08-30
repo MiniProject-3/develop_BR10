@@ -217,5 +217,4 @@
 	           MAX(A.ORDER_SEQ)
 	      FROM BR_ORDER A
 	</entry>
-
 </properties>

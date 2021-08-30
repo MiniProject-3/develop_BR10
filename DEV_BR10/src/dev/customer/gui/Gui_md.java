@@ -12,18 +12,22 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import dev.customer.menu.MenuOrderList;
+import dev.customer.model.service.CustomerService;
 import dev.dto.OrderDTO;
 
 public class Gui_md extends JFrame {
-
+	private int SelectedNum = 0;
 	private ImageKick ab = new ImageKick();
+	private CustomerService Cus = new CustomerService();
+	private int cusorder = Cus.selectOrderNum();
+
 	public Gui_md() {
 		this.setTitle("mini_BR10");
 		this.setBounds(600, 10, 600, 1000);
 		this.setLayout(null);
 
 		ImageKickPanel mdPanel = new ImageKickPanel(
-		new ImageIcon("BR10_images/gui_order/bg_04.jpg").getImage().getScaledInstance(580, 970, 3));
+				new ImageIcon("BR10_images/gui_order/bg_04.jpg").getImage().getScaledInstance(580, 970, 3));
 		mdPanel.setSize(600, 1000);
 		mdPanel.setLayout(null);
 
@@ -47,6 +51,7 @@ public class Gui_md extends JFrame {
 				changePanel(startMain);
 				dispose(); // 창 꺼짐
 			}
+
 			private void changePanel(StartMain startMain) {
 			}
 		});
@@ -77,18 +82,36 @@ public class Gui_md extends JFrame {
 		butt[1].setSize(100, 100);
 		butt[1].setIcon(ab.ImageKickButton("BR10_images/gui_order/md1.jpg", 100, 100));
 		butt[2].setLocation(150, 550);
-		butt[2].setSize(125, 30);
+		butt[2].setSize(125, 40);
 		butt[2].setIcon(
 				ab.ImageKickButton("BR10_images/gui_order/Buttons_17.jpg", butt[2].getWidth(), butt[2].getHeight()));
 		butt[3].setLocation(325, 550);
-		butt[3].setSize(125, 30);
+		butt[3].setSize(125, 40);
 		butt[3].setIcon(
 				ab.ImageKickButton("BR10_images/gui_order/Buttons_18.jpg", butt[3].getWidth(), butt[3].getHeight()));
 		butt[4].setLocation(490, 120);
 		butt[4].setSize(25, 25);
 		butt[4].setIcon(ab.ImageKickButton("BR10_images/gui_order/Buttons_15.png", 25, 25));
-//      butt[4].setText("");
-//      butt[4].setBackground(new Color(255, 0, 0, 0));
+
+		butt[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				butt[0].setIcon(ab.ImageKickButton("BR10_images/gui_order/md2_Selected.jpg", 100, 100));
+				butt[1].setIcon(ab.ImageKickButton("BR10_images/gui_order/md1.jpg", 100, 100));
+				repaint();
+				SelectedNum = 1;
+			}
+		});
+
+		butt[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				butt[1].setIcon(ab.ImageKickButton("BR10_images/gui_order/md1_Selected.jpg", 100, 100));
+				butt[0].setIcon(ab.ImageKickButton("BR10_images/gui_order/md2.jpg", 100, 100));
+				repaint();
+				SelectedNum = 2;
+			}
+		});
 
 		/* 매장포장 페이지 넘기기 */
 		butt[2].addActionListener(new ActionListener() {
@@ -103,30 +126,41 @@ public class Gui_md extends JFrame {
 		butt[3].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "옵션을 선택하세요.");
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(25);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
+
+				if (SelectedNum == 0) {                                  //  미선택
+					JOptionPane.showMessageDialog(null, "옵션을 선택하세요.");
+				} else if (SelectedNum == 1) {                           //  핑크 신발선택
+					OrderDTO order = new OrderDTO();
+					order.setOrderSeq(MenuOrderList.orderSeq++);
+					order.setProductNum(25);
+					order.setOrderNum(cusorder);
+					order.setQty(1);
+					order.setPayment("N");
+					MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+					System.out.println(order);
+					new Gui_hereOrToGo();
+					dispose(); 
+				} else {                                                //  블루 신발선택
+					OrderDTO order = new OrderDTO();
+					order.setOrderSeq(MenuOrderList.orderSeq++);
+					order.setProductNum(26);
+					order.setOrderNum(cusorder);
+					order.setQty(1);
+					order.setPayment("N");
+					MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+					System.out.println(order);
+					new Gui_hereOrToGo();
+					dispose(); 
+				}
 			}
 		});
-		
-		/* md상품 취소 -> 메뉴선택화면 전환 */ 
+
+		/* md상품 취소 -> 메뉴선택화면 전환 */
 		butt[4].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new MainFrame();
 				dispose();
-				OrderDTO order = new OrderDTO();
-//				order.setOrderSeq();
-				order.setProductNum(26);
-//				order.setOrderNum();
-				order.setQty(1);
-				order.setPayment("N");
-				MenuOrderList.orderList.add(order);
 			}
 		});
 
