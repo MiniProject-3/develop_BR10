@@ -139,7 +139,7 @@
 	</entry>
 	
 	<entry key="selectAllProducts">
-	    SELECT
+	    SELECT DISTINCT
   	           A.PRODUCT_NUM
   	         , A.PRODUCT_NAME
   	         , A.PRODUCT_PRICE
@@ -151,6 +151,7 @@
          LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
 	  	 ORDER BY PRODUCT_NUM
 	</entry>
+	
 	<entry key="selectAllPays">
 		SELECT PAY_NUM,
 		       PHONE_NUM,
