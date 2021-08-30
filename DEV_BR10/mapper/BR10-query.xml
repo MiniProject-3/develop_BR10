@@ -98,6 +98,16 @@
 	      FROM PRODUCT 
 	</entry>
 	
+	<entry key="selectProductByCategoryCode">
+	    SELECT A.PRODUCT_NUM
+  	         , A.PRODUCT_NAME
+  	         , A.PRODUCT_PRICE
+       	     , A.CATEGORY_CODE
+  	         , A.STOCK
+  	      FROM PRODUCT A
+  	     WHERE A.CATEGORY_CODE = ?
+  	     ORDER BY PRODUCT_NUM
+	</entry>
 	<entry key="selectAllProducts">
 	    SELECT
   	           A.PRODUCT_NUM
@@ -109,6 +119,7 @@
   	         , B.PAYMENT
          FROM PRODUCT A
          LEFT JOIN BR_ORDER B ON (A.PRODUCT_NUM = B.PRODUCT_NUM)
+	  	 ORDER BY PRODUCT_NUM
 	</entry>
 	<entry key="selectAllPays">
 		SELECT PAY_NUM,
@@ -137,25 +148,17 @@
 	     , ?
 	     )
 	</entry>
-	
-	<entry key="updateProductPrice">
-	    UPDATE PRODUCT P
-	       SET P.PRODUCT_PRICE = ?
-	     WHERE P.PRODUCT_NUM = ?
-	</entry>
-	<entry key="updateProductStock">
-	    UPDATE PRODUCT P
-	       SET STOCK = ?
-	     WHERE P.PRODUCT_NUM = ?
-	</entry>
-	<entry key="updateProductName">
+	<entry key="updateProduct">
 	    UPDATE PRODUCT P
 	       SET P.PRODUCT_NAME = ?
+	       	 , P.PRODUCT_PRICE = ?
+	       	 , P.STOCK = ?
 	     WHERE P.PRODUCT_NUM = ?
+	    
 	</entry>
 	<entry key="deleteProduct">
 	     DELETE
-	       FROM PROUDCT P
+	       FROM PRODUCT P
 	      WHERE P.PRODUCT_NUM = ?
 	</entry>
 	
@@ -174,11 +177,6 @@
 	         , PAYMENT
 	      FROM BR_ORDER
 	</entry>
-	<entry key="selectManagerKey">
-	    SELECT
-	           MANAGER_KEY
-	      FROM MANAGER
-	</entry>
 	<entry key="selectOrderNum">
  	    SELECT
 	           MAX(ORDER_NUM)
@@ -189,4 +187,5 @@
 	           MAX(A.ORDER_SEQ)
 	      FROM BR_ORDER A
 	</entry>
+
 </properties>

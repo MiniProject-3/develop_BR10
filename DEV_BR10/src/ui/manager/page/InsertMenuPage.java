@@ -4,19 +4,23 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.Console;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 import dev.manager.controller.ManagerController;
 import ui.manager.MainFrame;
+import ui.manager.ManagerPanel;
 
-public class ModifyMenuPage  extends JPanel {
+public class InsertMenuPage extends JPanel {
    
    private MainFrame mf;
    private JTextField nameField;
@@ -26,19 +30,35 @@ public class ModifyMenuPage  extends JPanel {
    /**
     * Create the panel.
     */
-   public ModifyMenuPage(MainFrame  mainframe , ArrayList<String> selectedProduct) {
+   public InsertMenuPage(MainFrame  mainframe) {
+      
       
       this.mf = mainframe;
       this.setBackground(Color.white);
       this.setSize(600, 1000);
+      JComboBox comboBox = new JComboBox();
+      comboBox.setBounds(201, 313, 337, 50);
+      comboBox.setFont(new Font("돋움", Font.BOLD, 20));
+      comboBox.setModel(new DefaultComboBoxModel(new String[] {"아이스크림", "케이크", "디저트", "음료","MD"}));
+      comboBox.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+         }
+      });
       this.setLayout(null);
       
-      JLabel Label = new JLabel("메뉴수정");
+      JLabel Label = new JLabel("메뉴추가");
       Label.setBackground(Color.LIGHT_GRAY);
       Label.setBounds(12, 206, 526, 57);
       Label.setFont(new Font("돋움", Font.BOLD, 30));
       Label.setHorizontalAlignment(SwingConstants.CENTER);
       this.add(Label);
+      
+      JLabel labelCategory = new JLabel("카테고리");
+      labelCategory.setHorizontalAlignment(SwingConstants.CENTER);
+      labelCategory.setFont(new Font("돋움", Font.BOLD, 20));
+      labelCategory.setBounds(63, 311, 93, 50);
+      this.add(labelCategory);
+      this.add(comboBox);
       
       JLabel labelProductName = new JLabel("제품명");
       labelProductName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -62,17 +82,27 @@ public class ModifyMenuPage  extends JPanel {
       priceField = new JTextField();
       priceField.setBounds(201, 498, 337, 50);
       priceField.setFont(new Font("돋움", Font.BOLD, 20));
-      /* 아이스크림에 대한 메뉴 수정일 때 - 가격 수정 불가능 */
-      if(selectedProduct.get(3).equals("1")) {
-          priceField.enable(false);
-          priceField.setBackground(Color.LIGHT_GRAY);
-      } else {
-    	  priceField.enable(true);
-          priceField.setBackground(Color.white);
-      }
       this.add(priceField);      
       priceField.setColumns(10);
+      /* 아이스크림의 경우 가격 입력 X - 콤보박스의 기본값 : 아이스크림 */
+      priceField.enable(false);
+      priceField.setBackground(Color.LIGHT_GRAY);
       
+      comboBox.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+
+            /* 아이스크림이 아닌 다른 카테고리 선택 시 */ 
+            if(comboBox.getSelectedIndex() != 0) {
+               priceField.enable(true);
+               priceField.setBackground(Color.white);
+               } else {
+                  priceField.enable(false);
+                  priceField.setBackground(Color.LIGHT_GRAY);
+               }
+            }
+      });
+
       JLabel labelStock = new JLabel("재고");
       labelStock.setHorizontalAlignment(SwingConstants.CENTER);
       labelStock.setFont(new Font("돋움", Font.BOLD, 20));
@@ -84,72 +114,41 @@ public class ModifyMenuPage  extends JPanel {
       stockField.setFont(new Font("돋움", Font.BOLD, 20));
       this.add(stockField);
       stockField.setColumns(10);
-
-      /* textField에 기본 값 설정하기 */
-      nameField.setText(selectedProduct.get(1));		// 상품명
-      priceField.setText(selectedProduct.get(2)+"");		// 가격
-      stockField.setText(selectedProduct.get(4)+"");		// 재고
       
-      /* 취소 버튼 */
-      JButton cancelBtn = new JButton("취소");
-      cancelBtn.setFont(new Font("돋움", Font.BOLD, 20));
-      cancelBtn.setBounds(63, 702, 213, 57);
-      cancelBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	UpdateMenu updateMenu = new UpdateMenu(mf);
-                changePanel(updateMenu);
-            }
-      });
-      this.add(cancelBtn);
-      
-      /* 저장 버튼 */
       JButton storeBtn = new JButton("저장");
       storeBtn.setBounds(331, 702, 207, 57);
       storeBtn.setFont(new Font("돋움", Font.BOLD, 20));
-      
-      /*
-      			selectedProduct.add(productNum);		// 상품번호 0
-				selectedProduct.add(productName);		// 상품명 1
-				selectedProduct.add(productPrice);		// 상품가격 2
-				selectedProduct.add(categoryCode);		// 카테고리코드 3
-				selectedProduct.add(stock);				// 재고 4
-       */
+
       
       /* 저장 버튼 눌렀을 때 */
-      /* PRODUCT TABLE에 값 update */
-         storeBtn.addActionListener(new ActionListener() {
+      /* PRODUCT TABLE에 값 INSERT */
+      storeBtn.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
          
             ManagerController managerController = new ManagerController();
             
+            /* 값을 넣어 전달할 map 생성*/
+            Map<String, String> ansMap = new HashMap<>();
+            
             /* textField에 넣어진 값들 받아오기 */
+            String newCategoryCode = comboBox.getSelectedIndex() + 1 +"";
             String newName = nameField.getText();
-            Integer newPrice;
-            Integer newStock;
+            String newPrice = priceField.getText();
+            String newStock = stockField.getText();            
             
-            if (priceField.getText().equals("0")) {
-            	newPrice = null;
-            } else {
-            	
-            	newPrice = Integer.valueOf(priceField.getText());
-            }
-            if (stockField.getText().equals("0")) {
-            	newStock = null;
-            } else {
-            	
-            	newStock = Integer.valueOf(stockField.getText());
-            }
+            /* 일련번호 만들기 */
+            String newSeq = managerController.selectProductLastSeq() + "";
             
-            /* productNum 받아오기 */
-      		int productNum = Integer.valueOf(selectedProduct.get(0));
-           
-      		/* console test */
-      		System.out.println(newName + " " + newPrice + " " + newStock + " " + productNum);
-      		
+            /* map에 데이터 추가하기 */
+            ansMap.put("num", newSeq);
+            ansMap.put("name", newName);
+            ansMap.put("price", newPrice);
+            ansMap.put("categoryCode", newCategoryCode);
+            ansMap.put("stock", newStock);
+            
             /* DB에 값 넣기 */
-            managerController.modifyProduct(productNum, newName, newPrice, newStock);
+            managerController.registNewProduct(ansMap);
             
             /* 페이지 변경하기 */
             UpdateMenu updateMenu = new UpdateMenu(mf);
@@ -158,29 +157,19 @@ public class ModifyMenuPage  extends JPanel {
       });
       this.add(storeBtn);
       
-      /* 메뉴 삭제 버튼 */
-      JButton delBtn = new JButton("삭제");
-      delBtn.setBounds(63, 815, 475, 50);
+      /* 취소 버튼 */
+      JButton cancelBtn = new JButton("취소");
+      cancelBtn.setBounds(63, 702, 213, 57);
+      cancelBtn.setFont(new Font("돋움", Font.BOLD, 20));
 
-      delBtn.setFont(new Font("돋움", Font.BOLD, 20));
-
-      delBtn.addActionListener(new ActionListener() {
+      cancelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                 ManagerController managerController = new ManagerController();
-                 
-                 /* 받아온 리스트의 productNum */
-                 int selectedProductNum = Integer.valueOf(selectedProduct.get(0));
-                 
-                 /* DB에서 해당 메뉴 삭제 */
-                 managerController.deleteProduct(selectedProductNum);
-
-            	 UpdateMenu updateMenu = new UpdateMenu(mf);
-                 changePanel(updateMenu);
+            	UpdateMenu updateMenu = new UpdateMenu(mf);
+                changePanel(updateMenu);
             }
       });
-      this.add(delBtn);
+      this.add(cancelBtn);
       mf.add(this);
    }
    

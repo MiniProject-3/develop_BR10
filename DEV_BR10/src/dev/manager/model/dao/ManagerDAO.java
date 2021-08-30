@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -55,9 +56,47 @@ public class ManagerDAO {
 	         close(rset);
 	         close(pstmt);
 	      }
-	      
 	      return seq;
    }
+   
+   /* 카테고리 별 상품 조회 - selectProductByCategoryCode*/
+   public List<ProductDTO> selectProductByCategoryCode(Connection con, int categoryCode) {
+	      
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      List<ProductDTO> productList = null;
+	      
+	      String query = prop.getProperty("selectProductByCategoryCode");
+	      
+	      try {
+	         pstmt = con.prepareStatement(query);
+	         pstmt.setInt(1, categoryCode);
+	         
+	         rset = pstmt.executeQuery();
+	         
+	         productList = new ArrayList<>();
+	         
+	         if(rset.next()) {
+	            ProductDTO product = new ProductDTO();
+	            product.setProductNum(rset.getInt("PRODUCT_NUM"));
+	            product.setProductName(rset.getString("PRODUCT_NAME")); 
+	            product.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+	            product.setCategoryCode(rset.getInt("CATEGORY_CODE"));
+	            product.setStock(rset.getInt("STOCK"));
+	            
+	            productList.add(product);
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      
+	      return productList;
+	   }
    
    /* 재고 조회 selectAllProducts */
    public List<ProductDTO> selectAllProducts(Connection con) {
@@ -146,7 +185,12 @@ public class ManagerDAO {
          pstmt = con.prepareStatement(query);
          pstmt.setInt(1, product.getProductNum());
          pstmt.setString(2, product.getProductName());
-         pstmt.setInt(3, product.getProductPrice());
+         if (product.getProductPrice() == null) {
+        	 pstmt.setNull(3, Types.INTEGER);
+
+         } else {        	 
+        	 pstmt.setInt(3, product.getProductPrice());
+         }
          pstmt.setInt(4, product.getCategoryCode());
          pstmt.setInt(5, product.getStock());
 
@@ -156,11 +200,44 @@ public class ManagerDAO {
       } finally {
          close(pstmt);
       }
-      
-
       return result;
    }
    
+   /* 메뉴 수정 updateProduct - all */
+   public int updateProduct(Connection con, int productNum, String productName, Integer productPrice, Integer productStock) {
+	      
+	      PreparedStatement pstmt = null;
+	      int result = 0;
+	            
+	      String query = prop.getProperty("updateProduct");
+	      
+	      try {
+	         pstmt = con.prepareStatement(query);
+	         pstmt.setString(1, productName);
+	         
+	         /* integer형 null 판단 */
+	         if (productPrice == null) {
+	        	 pstmt.setNull(2, Types.INTEGER);
+	         } else {        	 
+	        	 pstmt.setInt(2, productPrice);
+	         }
+	         if (productStock == null) {
+	        	 pstmt.setNull(3, Types.INTEGER);
+	         } else {        	 
+	        	 pstmt.setInt(3, productStock);
+	         }
+	         
+	         pstmt.setInt(4, productNum);
+
+	         result = pstmt.executeUpdate();
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(pstmt);
+	      }
+	      return result;
+	   }
+	   
    /* 가격 수정 updateProductPrice */
    public int updateProductPrice(Connection con, int productNum, int productPrice) {
       
@@ -206,7 +283,7 @@ public class ManagerDAO {
    }
    
    /* 이름 수정 updateProductName */
-   public int updateProductName(Connection con, int productNum, int productName) {
+   public int updateProductName(Connection con, int productNum, String productName) {
       
       PreparedStatement pstmt = null;
       int result = 0;
@@ -215,7 +292,7 @@ public class ManagerDAO {
       
       try {
          pstmt = con.prepareStatement(query);
-         pstmt.setInt(1,productName);
+         pstmt.setString(1,productName);
          pstmt.setInt(2, productNum);
 
          result = pstmt.executeUpdate();

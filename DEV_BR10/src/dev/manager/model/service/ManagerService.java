@@ -29,6 +29,17 @@ public class ManagerService {
 		return productLastSeq;
 	}
 	
+	/* 카테고리 별 상품 조회 selectProductByCategoryCode*/
+	public List<ProductDTO> selectProductByCategoryCode(int categoryCode){
+		
+		Connection con = getConnection();
+		List<ProductDTO> productList = managerDAO.selectProductByCategoryCode(con, categoryCode);
+		
+		close(con);
+		
+		return productList;
+	}
+	
 	/* 재고 조회 */
 	public List<ProductDTO> selectAllProducts(){
 		
@@ -58,6 +69,24 @@ public class ManagerService {
 		int result = 0;
 		
 		result = managerDAO.insertProduct(con, product);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
+	
+	/* 메뉴 수정 - all */
+	public int updateProduct(int productNum, String productName, Integer productPrice, Integer productStock) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = managerDAO.updateProduct(con, productNum, productName, productPrice, productStock);
 		
 		if(result > 0) 
 			commit(con);
@@ -106,7 +135,7 @@ public class ManagerService {
 	}
 	
 	/* 메뉴 수정 - 이름 */
-	public int updateProductName(int productNum, int productName) {
+	public int updateProductName(int productNum, String productName) {
 		
 		Connection con = getConnection();
 		int result = 0;

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import dev.customer.menu.MenuOrderList;
 import dev.customer.model.dao.CustomerDAO;
 import dev.dto.GiftDTO;
@@ -18,13 +19,50 @@ import dev.dto.PayDTO;
 import dev.dto.UserDTO;
 
 public class CustomerService {
+	
+	/* 고객 서비스 시스템 */
 	private CustomerDAO customerDAO = new CustomerDAO();
 	
-	/* insertOrder */
+	/* 주문 추가 - insertOrder */
+	public int insertOrder(OrderDTO order) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = customerDAO.insertOrder(con, order);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
 	
-	/* insertPay */
+	/* 결제 추가 - insertPay */
+	public int insertPay(PayDTO pay) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = customerDAO.insertPay(con, pay);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
 	
-	/* selectAllUsers */
+	/* 회원 여부 조회 - 포인트 조회 selectAllUsers */
+	/* 1. 결제할 때 통신사 조회
+	 * 2. 적립할 때 핸드폰 번호 존재 여부 조회
+	 * */
 	public List<UserDTO> selectAllUsers(){
 		Connection con = getConnection();
 		
@@ -35,11 +73,25 @@ public class CustomerService {
 		return userList;
 	}
 	
-	/* updateUsers */
+	/* 포인트 내역 업데이트 (사용, 적립) - updateUserPoint */
+	public int updateUserPoint(int phoneNum, int point) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = customerDAO.updateUserPoint(con, phoneNum, point);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
 	
-	/* updateManagerKey */
-	
-	/* selectAllGifts */
+	/* 기프티콘 내역 조회 - selectAllGifts */
 	public List<GiftDTO> selectAllGifts(){
 		Connection con = getConnection();
 		
@@ -49,9 +101,26 @@ public class CustomerService {
 		
 		return giftList;
 	}
-	/* updateGift */
 	
-	/* selectAllInos */
+	/* 기프티콘 내역 업데이트(사용) - updateGiftUse */
+	public int updateGiftUse(String giftUse, int giftNum) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = customerDAO.updateGiftUse(con, giftUse, giftNum);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
+	
+	/* 입출고 내역 조회 selectAllInos */
 	public List<InoDTO> selectAllInos(){
 		Connection con = getConnection();
 		
@@ -62,7 +131,23 @@ public class CustomerService {
 		return inoList;
 	}
 	
-	/* insertIno */
+	/*  입출고 내역 추가 - insertIno */
+	public int insertIno(InoDTO ino) {
+		
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = customerDAO.insertIno(con, ino);
+		
+		if(result > 0) 
+			commit(con);
+		else 
+			rollback(con);
+
+		close(con);
+
+		return result;
+	}
 	
 	/* order 조회 */
 	public List<OrderDTO> selectOrder(){
