@@ -56,7 +56,6 @@ public class Gui_drink extends JFrame {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
-
 				System.out.println(order);
 			}
 		});
@@ -72,6 +71,7 @@ public class Gui_drink extends JFrame {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				System.out.println(order);
 
 			}
 		});
@@ -87,6 +87,7 @@ public class Gui_drink extends JFrame {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				System.out.println(order);
 			}
 		});
 
@@ -101,6 +102,7 @@ public class Gui_drink extends JFrame {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				System.out.println(order);
 
 			}
 		});

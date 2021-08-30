@@ -15,6 +15,7 @@ public class Gui extends JPanel {
 	private JFrame mf = new JFrame("BR_10");
 	private ImageKick kb = new ImageKick();
 	private JPanel main = null;
+	int ice = 0;
 	public Gui(MainFrame mainFrame) {
 		this.mf = mainFrame;
 		mf.setTitle("mini_BR10");
@@ -87,7 +88,7 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
+				changePanel(icecream.gui_icecream(ice));
 			}
 			private void changePanel(JPanel icecream) {
 				mf.remove(main);
@@ -102,7 +103,7 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
+				changePanel(icecream.gui_icecream(ice));
 			}
 
 			private void changePanel(JPanel icecream) {
@@ -118,7 +119,7 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
+				changePanel(icecream.gui_icecream(ice));
 			}
 
 			private void changePanel(JPanel icecream) {
@@ -134,7 +135,7 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
+				changePanel(icecream.gui_icecream(ice));
 			}
 			
 			private void changePanel(JPanel icecream) {
@@ -150,7 +151,7 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
+				changePanel(icecream.gui_icecream(ice));
 			}
 
 			private void changePanel(JPanel icecream) {
@@ -166,7 +167,7 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
+				changePanel(icecream.gui_icecream(ice));
 			}
 
 			private void changePanel(JPanel icecream) {
@@ -184,7 +185,7 @@ public class Gui extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gui_icecream icecream = new Gui_icecream();
-				changePanel(icecream.gui_icecream());
+				changePanel(icecream.gui_icecream(ice));
 			}
 
 			private void changePanel(JPanel icecream) {

@@ -59,7 +59,6 @@ public class Gui_cake extends JPanel {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
-			
 				System.out.println(order);
 			
 			}
@@ -76,7 +75,7 @@ public class Gui_cake extends JPanel {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
-
+				System.out.println(order);
 			}
 		});
 
@@ -91,6 +90,7 @@ public class Gui_cake extends JPanel {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
+				System.out.println(order);
 			}
 		});
 
@@ -105,7 +105,7 @@ public class Gui_cake extends JPanel {
 				order.setQty(1);
 				order.setPayment("N");
 				MenuOrderList.orderList.add(MenuOrderList.orderList.size(), order);
-
+				System.out.println(order);
 			}
 		});
 

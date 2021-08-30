@@ -15,9 +15,9 @@ import ui.manager.MainFrame;
 
 public class Gui_icecream extends JPanel {
 	private ImageKick kb = new ImageKick();
-
-	public JPanel gui_icecream() {
-
+	int ice = 0;
+	public JPanel gui_icecream(int ice) {
+		this.ice = ice;
 		JPanel icecream = new JPanel();
 		icecream.setLocation(125, 250);
 		icecream.setSize(350, 450);
