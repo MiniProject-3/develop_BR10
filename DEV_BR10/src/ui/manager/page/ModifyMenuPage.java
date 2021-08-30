@@ -84,12 +84,26 @@ public class ModifyMenuPage  extends JPanel {
       stockField.setFont(new Font("돋움", Font.BOLD, 20));
       this.add(stockField);
       stockField.setColumns(10);
-      
+
       /* textField에 기본 값 설정하기 */
       nameField.setText(selectedProduct.get(1));		// 상품명
       priceField.setText(selectedProduct.get(2)+"");		// 가격
       stockField.setText(selectedProduct.get(4)+"");		// 재고
       
+      /* 취소 버튼 */
+      JButton cancelBtn = new JButton("취소");
+      cancelBtn.setFont(new Font("돋움", Font.BOLD, 20));
+      cancelBtn.setBounds(63, 702, 213, 57);
+      cancelBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	 UpdateMenu updateMenu = new UpdateMenu(mf);
+                 changePanel(updateMenu);
+            }
+      });
+      this.add(cancelBtn);
+      
+      /* 저장 버튼 */
       JButton storeBtn = new JButton("저장");
       storeBtn.setBounds(331, 702, 207, 57);
       storeBtn.setFont(new Font("돋움", Font.BOLD, 20));
@@ -112,8 +126,21 @@ public class ModifyMenuPage  extends JPanel {
             
             /* textField에 넣어진 값들 받아오기 */
             String newName = nameField.getText();
-            Integer newPrice = Integer.valueOf(priceField.getText());
-            Integer newStock = Integer.valueOf(stockField.getText()); 
+            Integer newPrice;
+            Integer newStock;
+            
+            if (priceField.getText().equals("0")) {
+            	newPrice = null;
+            } else {
+            	
+            	newPrice = Integer.valueOf(priceField.getText());
+            }
+            if (stockField.getText().equals("0")) {
+            	newStock = null;
+            } else {
+            	
+            	newStock = Integer.valueOf(stockField.getText());
+            }
             
             /* productNum 받아오기 */
       		int productNum = Integer.valueOf(selectedProduct.get(0));
@@ -131,18 +158,29 @@ public class ModifyMenuPage  extends JPanel {
       });
       this.add(storeBtn);
       
-      JButton cancelBtn = new JButton("취소");
-      cancelBtn.setBounds(63, 702, 213, 57);
-      cancelBtn.setFont(new Font("돋움", Font.BOLD, 20));
+      /* 메뉴 삭제 버튼 */
+      JButton delBtn = new JButton("삭제");
+      delBtn.setBounds(63, 815, 475, 50);
 
-      cancelBtn.addActionListener(new ActionListener() {
+      delBtn.setFont(new Font("돋움", Font.BOLD, 20));
+
+      delBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+                 ManagerController managerController = new ManagerController();
+                 
+                 /* 받아온 리스트의 productNum */
+                 int selectedProductNum = Integer.valueOf(selectedProduct.get(0));
+                 
+                 /* DB에서 해당 메뉴 삭제 */
+                 managerController.deleteProduct(selectedProductNum);
+
             	 UpdateMenu updateMenu = new UpdateMenu(mf);
                  changePanel(updateMenu);
             }
       });
-      this.add(cancelBtn);
+      this.add(delBtn);
       mf.add(this);
    }
    

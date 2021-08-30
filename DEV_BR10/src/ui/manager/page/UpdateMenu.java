@@ -44,7 +44,6 @@ public class UpdateMenu extends JPanel{
 	private List<ProductDTO> product4 = managercontroller.selectProductByCategoryCode(4);
 	private List<ProductDTO> product5 = managercontroller.selectProductByCategoryCode(5);
 
-	
 	public UpdateMenu(MainFrame mainFrame) {
 		JPanel pan = new JPanel();
 		this.mf = mainFrame;
@@ -58,13 +57,10 @@ public class UpdateMenu extends JPanel{
 		plusButton();
 	}
 	
-	public UpdateMenu(MainFrame mf, int num, List<ProductDTO> curProduct) {
+	public UpdateMenu(MainFrame mf, int num) {
 				
 		JPanel pan = new JPanel();
 		this.mf = mf;
-		
-		curProduct = managercontroller.selectProductByCategoryCode(num);
-		
 		this.setSize(600,1000);
 		this.setBackground(Color.white);
 		BackButton();
@@ -182,7 +178,6 @@ public void addTable(DefaultTableModel model, int num) {
 		ManagerDAO managerDAO = new ManagerDAO();
 		Connection con = getConnection();
 		List<ProductDTO> productList = managerDAO.selectAllProducts(con);
-		
 		
 		for (ProductDTO product : productList) {
 			if (num == 1 && product.getCategoryCode() == 1) {
@@ -324,8 +319,7 @@ public void addTable(DefaultTableModel model, int num) {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 1;
-				curProduct = managercontroller.selectProductByCategoryCode(num);
-				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
+				UpdateMenu md = new UpdateMenu(mf, num);
 				changePanel(md);
 			}
 		});
@@ -339,8 +333,7 @@ public void addTable(DefaultTableModel model, int num) {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 2;
-				curProduct = managercontroller.selectProductByCategoryCode(num);
-				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
+				UpdateMenu md = new UpdateMenu(mf, num);
 				changePanel(md);
 			}
 		});
@@ -354,8 +347,7 @@ public void addTable(DefaultTableModel model, int num) {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 3;
-				curProduct = managercontroller.selectProductByCategoryCode(num);
-				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
+				UpdateMenu md = new UpdateMenu(mf, num);
 				changePanel(md);
 				
 			}
@@ -370,8 +362,7 @@ public void addTable(DefaultTableModel model, int num) {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 4;
-				curProduct = managercontroller.selectProductByCategoryCode(num);
-				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
+				UpdateMenu md = new UpdateMenu(mf, num);
 				changePanel(md);				
 			}
 		});
@@ -385,8 +376,7 @@ public void addTable(DefaultTableModel model, int num) {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int num = 5;
-				curProduct = managercontroller.selectProductByCategoryCode(num);
-				UpdateMenu md = new UpdateMenu(mf, num, curProduct);
+				UpdateMenu md = new UpdateMenu(mf, num);
 				changePanel(md);
 			}
 		});

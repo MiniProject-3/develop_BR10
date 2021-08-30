@@ -155,7 +155,7 @@
 	
 	<entry key="deleteProduct">
 	     DELETE
-	       FROM PROUDCT P
+	       FROM PRODUCT P
 	      WHERE P.PRODUCT_NUM = ?
 	</entry>
 	<entry key="selectOrder">
