@@ -105,6 +105,9 @@ public class QR extends JFrame {
 		    	List<OrderDTO> orderList = new ArrayList<>();
 		    	orderList = customerController.selectOrderByOrderNum(qrOrderNum);
 		    	
+		    	System.out.println(orderList.get(0));
+//		    	System.out.println(orderList.get(1));
+		    	
 		    	SimpleDateFormat format1 = new SimpleDateFormat("yy/MM/dd");
 		    	
 		    	Date time = new Date();
